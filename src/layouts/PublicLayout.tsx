@@ -213,23 +213,14 @@ export default function PublicLayout() {
                 >
                   Iniciar sesión
                 </Link>
-                <Button
-                  as={Link as any}
-                  to="/registro"
-                  size="sm"
-                  className="hidden sm:inline-flex"
-                >
-                  Empezar gratis
-                </Button>
+                <Link to="/registro" className="hidden sm:inline-flex">
+                  <Button size="sm">Empezar gratis</Button>
+                </Link>
               </>
             ) : auth.role === 'empresa' ? (
-              <Button as={Link as any} to="/empresa/dashboard" size="sm">
-                Mi panel
-              </Button>
+              <Link to="/empresa/dashboard"><Button size="sm">Mi panel</Button></Link>
             ) : (
-              <Button as={Link as any} to="/estudiante/dashboard" size="sm">
-                Mi panel
-              </Button>
+              <Link to="/estudiante/dashboard"><Button size="sm">Mi panel</Button></Link>
             )}
 
             {/* Mobile hamburger */}
@@ -283,9 +274,9 @@ export default function PublicLayout() {
                   <Link to="/login" className="block px-3 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)] rounded-[var(--radius-md)] transition-colors">
                     Iniciar sesión
                   </Link>
-                  <Button as={Link as any} to="/registro" size="md" className="w-full">
-                    Empezar gratis
-                  </Button>
+                  <Link to="/registro" className="block">
+                    <Button size="md" className="w-full">Empezar gratis</Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

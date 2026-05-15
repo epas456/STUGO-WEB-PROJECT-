@@ -21,13 +21,7 @@ export default function ServerError() {
           >
             Reintentar
           </Button>
-          <Button
-            as={Link as any}
-            to="/"
-            leftIcon={<Home size={16} />}
-          >
-            Ir al inicio
-          </Button>
+          <Link to="/"><Button leftIcon={<Home size={16} />}>Ir al inicio</Button></Link>
         </div>
       </div>
     </div>
