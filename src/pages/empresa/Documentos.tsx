@@ -1,15 +1,58 @@
-import { FolderOpen } from 'lucide-react'
+import { CheckCircle2, Clock, AlertCircle, Upload } from 'lucide-react'
+import { toast } from 'sonner'
 
-export default function Documentos() {
+const docs = [
+  { name: 'Licencia de apertura', status: 'verified', expiry: '31/12/2027' },
+  { name: 'Seguro de responsabilidad civil', status: 'verified', expiry: '01/03/2027' },
+  { name: 'Certificado corriente pago SS', status: 'pending', expiry: null },
+  { name: 'DNI/NIF del representante legal', status: 'verified', expiry: null },
+  { name: 'Protocolo de prevención de riesgos laborales', status: 'missing', expiry: null },
+]
+
+const STATUS = {
+  verified: { icon: CheckCircle2, color: '#10B981', label: 'Verificado' },
+  pending: { icon: Clock, color: '#F59E0B', label: 'En revisión' },
+  missing: { icon: AlertCircle, color: '#EF4444', label: 'Pendiente' },
+}
+
+export default function EmpresaDocumentos() {
+  const allOk = docs.every(d => d.status === 'verified')
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-16">
-      <div className="w-16 h-16 bg-[var(--bg-muted)] rounded-[var(--radius-xl)] flex items-center justify-center mb-6">
-        <FolderOpen size={28} className="text-[var(--text-tertiary)]" />
+    <div className="p-6 max-w-2xl">
+      <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Documentación</h1>
+      <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>Mantén tus documentos actualizados para publicar turnos sin interrupciones.</p>
+      {allOk && (
+        <div className="flex items-center gap-2 p-4 rounded-[var(--radius-md)] mb-6 text-sm font-medium" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', color: '#166534' }}>
+          <CheckCircle2 size={18} /> Todos tus documentos están verificados y al día.
+        </div>
+      )}
+      <div className="space-y-3">
+        {docs.map((doc, i) => {
+          const s = STATUS[doc.status as keyof typeof STATUS]
+          return (
+            <div key={i} className="flex items-center justify-between p-4 rounded-[var(--radius-lg)]"
+              style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
+              <div className="flex items-center gap-3">
+                <s.icon size={18} style={{ color: s.color }} />
+                <div>
+                  <div className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{doc.name}</div>
+                  {doc.expiry && <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Caduca: {doc.expiry}</div>}
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-medium" style={{ color: s.color }}>{s.label}</span>
+                {doc.status !== 'verified' && (
+                  <button onClick={() => toast.success('Documento subido. Lo revisaremos en menos de 24h.')}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium"
+                    style={{ background: 'var(--brand-primary)', color: 'white' }}>
+                    <Upload size={12} /> Subir
+                  </button>
+                )}
+              </div>
+            </div>
+          )
+        })}
       </div>
-      <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-3">Documentos</h1>
-      <p className="text-[var(--text-secondary)] max-w-md">
-        Gestión de contratos y documentación laboral.
-      </p>
     </div>
   )
 }
