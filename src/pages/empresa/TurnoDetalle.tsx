@@ -1,15 +1,347 @@
-import { ClipboardList } from 'lucide-react'
+import { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import {
+  ArrowLeft,
+  MapPin,
+  Clock,
+  Users,
+  Calendar,
+  CheckCircle,
+  MessageSquare,
+  Eye,
+  Star,
+} from 'lucide-react'
+import { turnos } from '@/mocks/turnos'
+import { estudiantes } from '@/mocks/estudiantes'
+import { MatchScoreCircle } from '@/components/MatchScoreCircle'
+import { AvatarCircle } from '@/components/AvatarCircle'
+import { StarRating } from '@/components/StarRating'
+
+const TABS = ['Candidatos', 'Confirmados', 'Detalles', 'Histórico']
+
+const ESTADO_COLORS = {
+  abierto: { bg: '#DCFCE7', text: '#15803D' },
+  cubierto: { bg: '#DBEAFE', text: '#1D4ED8' },
+  completado: { bg: '#F3F4F6', text: '#374151' },
+  cancelado: { bg: '#FEE2E2', text: '#B91C1C' },
+}
+
+const HISTORICO = [
+  { fecha: '2026-05-10 09:00', evento: 'Turno publicado', tipo: 'info' },
+  { fecha: '2026-05-11 14:23', evento: 'Primera candidatura recibida', tipo: 'success' },
+  { fecha: '2026-05-12 11:45', evento: 'Candidato aceptado: Lucía M.', tipo: 'success' },
+  { fecha: '2026-05-13 16:30', evento: 'Candidato aceptado: Carlos R.', tipo: 'success' },
+  { fecha: '2026-05-14 10:00', evento: 'Turno marcado como cubierto', tipo: 'info' },
+]
 
 export default function TurnoDetalle() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+  const [activeTab, setActiveTab] = useState(0)
+  const [accepted, setAccepted] = useState<Set<string>>(new Set())
+
+  const turno = turnos.find((t) => t.id === id) ?? turnos[0]
+  const candidatos = estudiantes.slice(0, 5).map((e, i) => ({
+    ...e,
+    matchScore: e.matchScore ?? [94, 88, 75, 62, 81][i] ?? 70,
+    confirmado: i < 2,
+  }))
+
+  const estadoColors = ESTADO_COLORS[turno.estado]
+
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-16">
-      <div className="w-16 h-16 bg-[var(--bg-muted)] rounded-[var(--radius-xl)] flex items-center justify-center mb-6">
-        <ClipboardList size={28} className="text-[var(--text-tertiary)]" />
+    <div className="p-6 max-w-5xl mx-auto space-y-6">
+      {/* Header */}
+      <div className="flex items-start gap-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="mt-1 p-2 rounded-[var(--radius-md)] border border-[var(--border)] hover:bg-[var(--bg-muted)]"
+        >
+          <ArrowLeft size={16} style={{ color: 'var(--text-secondary)' }} />
+        </button>
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-1">
+            <span
+              className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
+              style={{ backgroundColor: estadoColors.bg, color: estadoColors.text }}
+            >
+              {turno.estado.charAt(0).toUpperCase() + turno.estado.slice(1)}
+            </span>
+            {turno.urgente && (
+              <span
+                className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                style={{ backgroundColor: '#FEF9C3', color: '#A16207' }}
+              >
+                Urgente
+              </span>
+            )}
+          </div>
+          <h1 className="text-2xl font-bold text-[var(--text-primary)]">{turno.titulo}</h1>
+          <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-[var(--text-secondary)]">
+            <span className="flex items-center gap-1">
+              <Calendar size={14} />
+              {turno.fecha}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock size={14} />
+              {turno.horaInicio} – {turno.horaFin} ({turno.duracionHoras}h)
+            </span>
+            <span className="flex items-center gap-1">
+              <MapPin size={14} />
+              {turno.ciudad}
+            </span>
+            <span className="flex items-center gap-1">
+              <Users size={14} />
+              {turno.vacantesOcupadas}/{turno.vacantes} plazas
+            </span>
+            <span className="font-semibold text-[var(--brand-primary)]">
+              {turno.salarioHora}€/h
+            </span>
+          </div>
+        </div>
       </div>
-      <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-3">Detalle del Turno</h1>
-      <p className="text-[var(--text-secondary)] max-w-md">
-        Gestiona candidatos y detalles de este turno.
-      </p>
+
+      {/* Tabs */}
+      <div className="flex gap-1 border-b border-[var(--border)]">
+        {TABS.map((tab, i) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(i)}
+            className="px-4 py-2.5 text-sm font-medium border-b-2 transition-colors"
+            style={{
+              borderBottomColor: activeTab === i ? 'var(--brand-primary)' : 'transparent',
+              color: activeTab === i ? 'var(--brand-primary)' : 'var(--text-secondary)',
+            }}
+          >
+            {tab}
+            {tab === 'Candidatos' && (
+              <span
+                className="ml-2 px-1.5 py-0.5 rounded-full text-xs"
+                style={{ backgroundColor: 'var(--bg-muted)', color: 'var(--text-secondary)' }}
+              >
+                {candidatos.filter((c) => !c.confirmado).length}
+              </span>
+            )}
+            {tab === 'Confirmados' && (
+              <span
+                className="ml-2 px-1.5 py-0.5 rounded-full text-xs"
+                style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+              >
+                {candidatos.filter((c) => c.confirmado).length}
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab content */}
+      {activeTab === 0 && (
+        <div className="space-y-3">
+          {candidatos.filter((c) => !c.confirmado).length === 0 ? (
+            <div className="py-12 text-center text-[var(--text-secondary)]">
+              No hay candidatos pendientes de revisar
+            </div>
+          ) : (
+            candidatos
+              .filter((c) => !c.confirmado)
+              .map((est) => (
+                <CandidatoCard
+                  key={est.id}
+                  est={est}
+                  accepted={accepted.has(est.id)}
+                  onAccept={() => setAccepted((prev) => new Set([...prev, est.id]))}
+                />
+              ))
+          )}
+        </div>
+      )}
+
+      {activeTab === 1 && (
+        <div className="space-y-3">
+          {candidatos
+            .filter((c) => c.confirmado || accepted.has(c.id))
+            .map((est) => (
+              <CandidatoCard key={est.id} est={est} accepted confirmed />
+            ))}
+          {candidatos.filter((c) => c.confirmado || accepted.has(c.id)).length === 0 && (
+            <div className="py-12 text-center text-[var(--text-secondary)]">
+              No hay candidatos confirmados todavía
+            </div>
+          )}
+        </div>
+      )}
+
+      {activeTab === 2 && (
+        <div
+          className="rounded-[var(--radius-lg)] border border-[var(--border)] p-6 space-y-5"
+          style={{ backgroundColor: 'var(--bg-base)', boxShadow: 'var(--shadow-md)' }}
+        >
+          <div>
+            <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+              Información del turno
+            </h3>
+            <div className="space-y-3">
+              {[
+                { label: 'Empresa', value: turno.empresaNombre },
+                { label: 'Sector', value: turno.sector },
+                { label: 'Dirección', value: turno.direccion },
+                { label: 'Ciudad', value: turno.ciudad },
+                { label: 'Tipo contrato', value: turno.tipoContrato },
+                { label: 'Uniforme', value: turno.uniforme ?? 'No especificado' },
+                { label: 'Salario total', value: `${turno.salarioTotal}€` },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex gap-4">
+                  <span className="text-sm text-[var(--text-secondary)] w-32 shrink-0">{label}</span>
+                  <span className="text-sm text-[var(--text-primary)]">{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+              Descripción
+            </h3>
+            <p className="text-sm text-[var(--text-primary)] leading-relaxed">{turno.descripcion}</p>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+              Requisitos
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {turno.requisitos.map((req) => (
+                <span
+                  key={req}
+                  className="px-3 py-1 rounded-full text-sm border border-[var(--border)] text-[var(--text-secondary)]"
+                >
+                  {req}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 3 && (
+        <div
+          className="rounded-[var(--radius-lg)] border border-[var(--border)] p-6"
+          style={{ backgroundColor: 'var(--bg-base)', boxShadow: 'var(--shadow-md)' }}
+        >
+          <div className="relative">
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-[var(--border)]" />
+            <div className="space-y-6">
+              {HISTORICO.map((item, i) => (
+                <div key={i} className="flex gap-6 pl-10 relative">
+                  <div
+                    className="absolute left-2.5 w-3 h-3 rounded-full border-2 border-white"
+                    style={{
+                      backgroundColor:
+                        item.tipo === 'success' ? 'var(--success)' : 'var(--brand-primary)',
+                      top: '4px',
+                    }}
+                  />
+                  <div>
+                    <p className="text-sm text-[var(--text-primary)]">{item.evento}</p>
+                    <p className="text-xs text-[var(--text-secondary)] mt-0.5">{item.fecha}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function CandidatoCard({
+  est,
+  accepted = false,
+  confirmed = false,
+  onAccept,
+}: {
+  est: (typeof estudiantes)[0] & { matchScore: number; confirmado?: boolean }
+  accepted?: boolean
+  confirmed?: boolean
+  onAccept?: () => void
+}) {
+  const isConfirmed = confirmed || accepted
+  return (
+    <div
+      className="rounded-[var(--radius-lg)] border border-[var(--border)] p-4 flex items-center gap-4"
+      style={{
+        backgroundColor: 'var(--bg-base)',
+        boxShadow: 'var(--shadow-md)',
+        borderColor: isConfirmed ? 'var(--success)' : 'var(--border)',
+      }}
+    >
+      <AvatarCircle
+        name={est.nombre + ' ' + est.apellidos}
+        size={48}
+        online={est.estado === 'online'}
+      />
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className="font-semibold text-[var(--text-primary)]">
+            {est.nombre} {est.apellidos}
+          </p>
+          {est.verificado && (
+            <span
+              className="px-2 py-0.5 rounded-full text-xs font-medium"
+              style={{ backgroundColor: '#DBEAFE', color: '#1D4ED8' }}
+            >
+              Verificado
+            </span>
+          )}
+          {isConfirmed && (
+            <span
+              className="px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1"
+              style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+            >
+              <CheckCircle size={10} />
+              Confirmado
+            </span>
+          )}
+        </div>
+        <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+          {est.edad} años · {est.ciudad} · {est.nTurnos} turnos completados
+        </p>
+        <div className="flex items-center gap-3 mt-1.5">
+          <StarRating value={Math.round(est.valoracion)} size={12} />
+          <span className="text-xs text-[var(--text-secondary)]">{est.valoracion}</span>
+          <div className="flex gap-1 flex-wrap">
+            {est.sectores.map((s) => (
+              <span
+                key={s}
+                className="px-2 py-0.5 rounded-full text-xs"
+                style={{ backgroundColor: 'var(--bg-muted)', color: 'var(--text-secondary)' }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <MatchScoreCircle score={est.matchScore} size={52} />
+      {!isConfirmed && (
+        <div className="flex flex-col gap-1.5 shrink-0">
+          <button
+            onClick={onAccept}
+            className="px-3 py-1.5 rounded-[var(--radius-md)] text-xs font-semibold text-white flex items-center gap-1"
+            style={{ backgroundColor: 'var(--success)' }}
+          >
+            <CheckCircle size={12} />
+            Aceptar
+          </button>
+          <button className="px-3 py-1.5 rounded-[var(--radius-md)] text-xs font-medium border border-[var(--border)] text-[var(--text-secondary)] flex items-center gap-1">
+            <MessageSquare size={12} />
+            Mensaje
+          </button>
+          <button className="px-3 py-1.5 rounded-[var(--radius-md)] text-xs font-medium border border-[var(--border)] text-[var(--text-secondary)] flex items-center gap-1">
+            <Eye size={12} />
+            Ver perfil
+          </button>
+        </div>
+      )}
     </div>
   )
 }

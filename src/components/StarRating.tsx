@@ -4,9 +4,10 @@ interface Props {
   value: number
   onChange?: (v: number) => void
   size?: number
+  readonly?: boolean
 }
 
-export function StarRating({ value, onChange, size = 20 }: Props) {
+export function StarRating({ value, onChange, size = 20, readonly }: Props) {
   return (
     <div className="flex gap-0.5">
       {[1, 2, 3, 4, 5].map((i) => (
