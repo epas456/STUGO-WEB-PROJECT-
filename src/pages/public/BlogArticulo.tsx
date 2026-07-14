@@ -53,7 +53,7 @@ export default function BlogArticulo() {
           <div className="mt-12 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
             <p className="text-sm font-medium mb-3" style={{ color: 'var(--text-primary)' }}>¿Te ha resultado útil este artículo?</p>
             <div className="flex gap-3">
-              <button onClick={() => toast.success('Gracias por tu feedback 👍')}
+              <button onClick={() => toast.success('Gracias por tu feedback ')}
                 className="flex items-center gap-2 px-4 py-2 rounded-[var(--radius-md)] text-sm transition-colors hover:bg-green-50"
                 style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
                 <ThumbsUp size={16} /> Sí, me ayudó

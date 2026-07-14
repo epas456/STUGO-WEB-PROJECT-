@@ -28,8 +28,8 @@ export function DarkModeToggle({ className, size = 'md' }: DarkModeToggleProps) 
       aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
       title={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
       className={cn(
-        'flex items-center justify-center rounded-[var(--radius-md)] transition-all duration-150',
-        'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]',
+ 'flex items-center justify-center rounded-[var(--radius-md)] transition-all duration-150',
+ 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]',
         size === 'sm' ? 'w-8 h-8' : 'w-10 h-10',
         className
       )}

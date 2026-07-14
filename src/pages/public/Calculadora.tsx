@@ -87,7 +87,7 @@ export default function Calculadora() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Header */}
-      <div className="py-16 text-center px-4" style={{ background: 'linear-gradient(180deg, rgba(45,91,255,0.06) 0%, transparent 100%)' }}>
+      <div className="py-16 text-center px-4" style={{ background: 'linear-gradient(180deg, rgba(14,15,18,0.05) 0%, transparent 100%)' }}>
         <span className="text-xs font-bold uppercase tracking-widest mb-4 block" style={{ color: 'var(--brand-primary)' }}>
           Herramienta gratuita
         </span>
@@ -240,7 +240,7 @@ export default function Calculadora() {
 
               {/* Net highlight */}
               <div className="p-5 text-center rounded-[var(--radius-lg)]"
-                style={{ background: 'linear-gradient(135deg, rgba(255,214,61,0.15), rgba(255,214,61,0.05))', border: '2px solid var(--brand-accent)' }}>
+                style={{ background: 'rgba(214,248,74,0.14)', border: '2px solid var(--brand-accent)' }}>
                 <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Tu neto mensual estimado</p>
                 <p className="text-5xl font-black mb-1" style={{ color: 'var(--text-primary)' }}>
                   {results.monthlyNet.toFixed(0)} €

@@ -55,7 +55,7 @@ export default function Faq() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Header */}
-      <div className="py-20 text-center px-4" style={{ background: 'linear-gradient(180deg, rgba(45,91,255,0.05) 0%, transparent 100%)' }}>
+      <div className="py-20 text-center px-4" style={{ background: 'transparent' }}>
         <span className="text-xs font-bold uppercase tracking-widest mb-4 block" style={{ color: 'var(--brand-primary)' }}>
           Ayuda
         </span>
@@ -115,7 +115,7 @@ export default function Faq() {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="text-center py-20">
-            <div className="text-6xl mb-4">🔍</div>
+            <div className="text-6xl mb-4"></div>
             <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>No encontramos resultados</h3>
             <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>
               Prueba con otros términos o{' '}
@@ -149,7 +149,7 @@ export default function Faq() {
                 >
                   <div className="flex-1">
                     <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-2 inline-block"
-                      style={{ background: 'rgba(45,91,255,0.08)', color: 'var(--brand-primary)' }}>
+                      style={{ background: 'rgba(14,15,18,0.05)', color: 'var(--brand-primary)' }}>
                       {categoriaLabels[item.categoria] || item.categoria}
                     </span>
                     <p className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>

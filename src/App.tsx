@@ -37,7 +37,6 @@ const AvisoLegal = lazy(() => import('@/pages/public/AvisoLegal'))
 const Login = lazy(() => import('@/pages/public/Login'))
 const Registro = lazy(() => import('@/pages/public/Registro'))
 const RecuperarPassword = lazy(() => import('@/pages/public/RecuperarPassword'))
-const Academy = lazy(() => import('@/pages/public/Academy'))
 
 // ──────────────── EMPRESA PAGES ────────────────
 const EmpresaDashboard = lazy(() => import('@/pages/empresa/Dashboard'))
@@ -62,7 +61,6 @@ const EstudianteMensajes = lazy(() => import('@/pages/estudiante/Mensajes'))
 const EstudiantePerfil = lazy(() => import('@/pages/estudiante/Perfil'))
 const EstudianteValoraciones = lazy(() => import('@/pages/estudiante/Valoraciones'))
 const EstudianteCartera = lazy(() => import('@/pages/estudiante/Cartera'))
-const EstudianteAcademy = lazy(() => import('@/pages/estudiante/Academy'))
 const EstudianteBadges = lazy(() => import('@/pages/estudiante/Badges'))
 const EstudianteConfiguracion = lazy(() => import('@/pages/estudiante/Configuracion'))
 const EstudianteNotificaciones = lazy(() => import('@/pages/estudiante/Notificaciones'))
@@ -152,7 +150,6 @@ export default function App() {
             <Route path="terminos" element={<Terminos />} />
             <Route path="cookies" element={<Cookies />} />
             <Route path="aviso-legal" element={<AvisoLegal />} />
-            <Route path="academy" element={<Academy />} />
 
             {/* Auth pages (still use public layout) */}
             <Route path="login" element={<Login />} />
@@ -206,7 +203,6 @@ export default function App() {
             <Route path="valoraciones" element={<EstudianteValoraciones />} />
             <Route path="valoraciones/pendientes" element={<EstudianteValoraciones />} />
             <Route path="cartera" element={<EstudianteCartera />} />
-            <Route path="academy" element={<EstudianteAcademy />} />
             <Route path="badges" element={<EstudianteBadges />} />
             <Route path="configuracion" element={<EstudianteConfiguracion />} />
             <Route path="notificaciones" element={<EstudianteNotificaciones />} />

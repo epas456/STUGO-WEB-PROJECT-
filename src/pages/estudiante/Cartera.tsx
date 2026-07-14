@@ -34,7 +34,7 @@ export default function EstudianteCartera() {
       </div>
 
       {/* Big stat */}
-      <div className="p-6 rounded-[var(--radius-xl)] mb-6" style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #1839B8 100%)' }}>
+      <div className="p-6 rounded-[var(--radius-xl)] mb-6" style={{ background: 'var(--brand-primary)' }}>
         <div className="text-white/70 text-sm mb-1">Has ganado en 2026</div>
         <div className="text-4xl font-black text-white mb-1">{totalAnual.toFixed(2).replace('.', ',')} €</div>
         <div className="text-white/70 text-sm">netos después de comisión STUGO</div>

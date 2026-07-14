@@ -137,7 +137,7 @@ export default function Valoraciones() {
         <div className="space-y-4">
           {PENDIENTES.filter((p) => !submitted.has(p.id)).length === 0 ? (
             <div className="py-12 text-center text-[var(--text-secondary)] text-sm">
-              ¡Todas las valoraciones al día! 🎉
+              Todas las valoraciones al día.
             </div>
           ) : (
             PENDIENTES.filter((p) => !submitted.has(p.id)).map((p) => {
@@ -247,7 +247,7 @@ function ValoracionCard({
       </div>
       {val.comment && (
         <p className="text-sm text-[var(--text-primary)] leading-relaxed border-l-2 pl-3" style={{ borderLeftColor: 'var(--border)' }}>
-          "{val.comment}"
+ "{val.comment}"
         </p>
       )}
       {received && (

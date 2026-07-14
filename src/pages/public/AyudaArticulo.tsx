@@ -70,7 +70,7 @@ export default function AyudaArticulo() {
           <p className="text-sm font-medium mb-1" style={{ color: 'var(--text-primary)' }}>¿Sigues necesitando ayuda?</p>
           <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>Nuestro equipo responde en menos de 4 horas laborables.</p>
           <Link to="/contacto">
-            <button className="px-4 py-2 rounded-[var(--radius-md)] text-sm font-medium text-white" style={{ background: 'var(--brand-primary)' }}>
+            <button className="px-4 py-2 rounded-[var(--radius-md)] text-sm font-medium text-[var(--on-primary)]" style={{ background: 'var(--brand-primary)' }}>
               Contactar con soporte
             </button>
           </Link>

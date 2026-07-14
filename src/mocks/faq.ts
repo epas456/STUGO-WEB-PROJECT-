@@ -8,13 +8,13 @@ export interface FaqItem {
 }
 
 export const categoriasFaq = [
-  { id: 'general', label: 'General', emoji: '💡' },
-  { id: 'estudiantes', label: 'Para Estudiantes', emoji: '🎓' },
-  { id: 'empresas', label: 'Para Empresas', emoji: '🏢' },
-  { id: 'pagos', label: 'Pagos y Facturación', emoji: '💳' },
-  { id: 'seguridad', label: 'Seguridad y Privacidad', emoji: '🔒' },
-  { id: 'legal', label: 'Legal y Contratos', emoji: '⚖️' },
-  { id: 'tecnico', label: 'Soporte Técnico', emoji: '🛠️' },
+  { id: 'general', label: 'General', emoji: '' },
+  { id: 'estudiantes', label: 'Para Estudiantes', emoji: '' },
+  { id: 'empresas', label: 'Para Empresas', emoji: '' },
+  { id: 'pagos', label: 'Pagos y Facturación', emoji: '' },
+  { id: 'seguridad', label: 'Seguridad y Privacidad', emoji: '' },
+  { id: 'legal', label: 'Legal y Contratos', emoji: '' },
+  { id: 'tecnico', label: 'Soporte Técnico', emoji: '' },
 ]
 
 export const faq: FaqItem[] = [

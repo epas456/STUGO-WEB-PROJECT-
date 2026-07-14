@@ -132,7 +132,7 @@ export default function Login() {
                   type="checkbox"
                   checked={remember}
                   onChange={(e) => setRemember(e.target.checked)}
-                  className="w-4 h-4 rounded accent-blue-600"
+                  className="w-4 h-4 rounded accent-[var(--brand-primary)]"
                 />
                 <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>Recordarme</span>
               </label>

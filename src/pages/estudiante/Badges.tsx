@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { badges as badgesData } from '@/mocks/badges'
 import { toast } from 'sonner'
+import { BadgeIcon } from '@/components/BadgeIcon'
 
 const CONSEGUIDOS = ['badge-001', 'badge-002', 'badge-003', 'badge-005', 'badge-009', 'badge-015']
 const PROGRESO: Record<string, { actual: number; total: number }> = {
-  'badge-004': { actual: 7, total: 10 },
-  'badge-006': { actual: 3, total: 25 },
-  'badge-007': { actual: 1.8, total: 4.8 },
+ 'badge-004': { actual: 7, total: 10 },
+ 'badge-006': { actual: 3, total: 25 },
+ 'badge-007': { actual: 1.8, total: 4.8 },
 }
 
-const rarityColor: Record<string, string> = { bronce: '#CD7F32', plata: '#C0C0C0', oro: '#FFD63D' }
+const rarityColor: Record<string, string> = { bronce: '#CD7F32', plata: '#C0C0C0', oro: '#D6F84A' }
 const rarityBg: Record<string, string> = { bronce: '#FDF6EE', plata: '#F8F8F8', oro: '#FFFBEA' }
 
 export default function EstudianteBadges() {
@@ -48,7 +49,7 @@ export default function EstudianteBadges() {
             <button key={b.id} onClick={() => got ? toast.success(`${b.nombre} — ${b.descripcion}`) : toast.info(`Necesitas: ${b.criterio || 'Completar más turnos.'}`)}
               className="p-4 rounded-[var(--radius-lg)] text-center transition-all hover:scale-105 active:scale-95"
               style={{ background: got ? rarityBg[rarity] : 'var(--bg-subtle)', border: `1px solid ${got ? rarityColor[rarity] : 'var(--border)'}`, opacity: got ? 1 : 0.55 }}>
-              <div className="text-3xl mb-2">{(b as any).emoji || '🏆'}</div>
+              <div className="mb-2 flex justify-center"><BadgeIcon name={(b as any).icon} size={28} color={got ? rarityColor[rarity] : 'var(--text-tertiary)'} /></div>
               <div className="text-xs font-semibold mb-1 leading-tight" style={{ color: got ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>{b.nombre}</div>
               {got
                 ? <div className="text-xs px-2 py-0.5 rounded-full inline-block font-medium" style={{ background: rarityColor[rarity] + '33', color: rarityColor[rarity] }}>{rarity}</div>

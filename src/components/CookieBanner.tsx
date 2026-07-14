@@ -148,7 +148,7 @@ export function CookieBanner() {
                             disabled={category.required}
                             onClick={() => toggleCategory(category.id)}
                             className={cn(
-                              'shrink-0 w-10 h-6 rounded-full transition-all duration-200 relative',
+ 'shrink-0 w-10 h-6 rounded-full transition-all duration-200 relative',
                               category.enabled
                                 ? 'bg-[var(--brand-primary)]'
                                 : 'bg-[var(--border-strong)]',
@@ -157,7 +157,7 @@ export function CookieBanner() {
                           >
                             <span
                               className={cn(
-                                'absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-all duration-200',
+ 'absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-all duration-200',
                                 category.enabled ? 'left-5' : 'left-1'
                               )}
                             />

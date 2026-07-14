@@ -20,42 +20,42 @@ interface Flow {
 const flows: Flow[] = [
   {
     trigger: ['hola', 'buenas', 'hello', 'hi', 'hey', 'buenos días', 'buenas tardes'],
-    response: '¡Hola! Soy el asistente virtual de STUGO 👋 ¿En qué puedo ayudarte hoy?',
+    response: '¡Hola! Soy el asistente virtual de STUGO  ¿En qué puedo ayudarte hoy?',
     options: ['¿Cómo me registro?', '¿Cómo funciona?', 'Tengo un problema', 'Preguntas sobre pagos', 'Soy empresa', 'Hablar con soporte'],
   },
   {
     trigger: ['cómo me registro', 'registrarse', 'crear cuenta', 'alta', 'registro'],
-    response: 'Registrarte en STUGO es gratis y tarda menos de 2 minutos 🚀\n\n1. Haz clic en "Empezar gratis"\n2. Elige si eres estudiante o empresa\n3. Introduce tu email y crea contraseña\n4. Verifica tu email\n5. ¡Listo! Completa tu perfil para aparecer ante las empresas.\n\n¿Necesitas ayuda con algún paso concreto?',
+    response: 'Registrarte en STUGO es gratis y tarda menos de 2 minutos \n\n1. Haz clic en "Empezar gratis"\n2. Elige si eres estudiante o empresa\n3. Introduce tu email y crea contraseña\n4. Verifica tu email\n5. ¡Listo! Completa tu perfil para aparecer ante las empresas.\n\n¿Necesitas ayuda con algún paso concreto?',
     options: ['¿Qué documentos necesito?', '¿Es realmente gratis?', 'Volver al inicio'],
   },
   {
     trigger: ['cómo funciona', 'funcionamiento', 'qué es stugo', 'para qué sirve'],
-    response: 'STUGO conecta a estudiantes universitarios con empresas que necesitan personal para turnos flexibles 🎯\n\n**Para estudiantes**: crea tu perfil, indica tu disponibilidad y aplica a turnos en hostelería, eventos, retail y más. Cobras semanalmente por transferencia.\n\n**Para empresas**: publica turnos en minutos y recibe candidatos cualificados automáticamente gracias a nuestro algoritmo de matching.\n\n¿Eres estudiante o empresa?',
+    response: 'STUGO conecta a estudiantes universitarios con empresas que necesitan personal para turnos flexibles \n\n**Para estudiantes**: crea tu perfil, indica tu disponibilidad y aplica a turnos en hostelería, eventos, retail y más. Cobras semanalmente por transferencia.\n\n**Para empresas**: publica turnos en minutos y recibe candidatos cualificados automáticamente gracias a nuestro algoritmo de matching.\n\n¿Eres estudiante o empresa?',
     options: ['Soy estudiante', 'Soy empresa', '¿Cuánto se gana?', 'Volver al inicio'],
   },
   {
     trigger: ['cuánto se gana', 'salario', 'ingresos', 'dinero', 'sueldo'],
-    response: 'Los salarios en STUGO varían según el sector y tipo de trabajo 💰\n\n• **Retail**: 9-10€/h\n• **Hostelería**: 10-14€/h\n• **Eventos/Azafatos**: 10-13€/h\n• **Logística**: 11-13€/h\n• **Marketing/Promotor**: 10-12€/h\n• **Coordinadores/Intérpretes**: 14-20€/h\n\nUn estudiante con disponibilidad de fin de semana puede ganar entre 300€ y 800€/mes. Los pagos se hacen cada viernes.',
+    response: 'Los salarios en STUGO varían según el sector y tipo de trabajo \n\n• **Retail**: 9-10€/h\n• **Hostelería**: 10-14€/h\n• **Eventos/Azafatos**: 10-13€/h\n• **Logística**: 11-13€/h\n• **Marketing/Promotor**: 10-12€/h\n• **Coordinadores/Intérpretes**: 14-20€/h\n\nUn estudiante con disponibilidad de fin de semana puede ganar entre 300€ y 800€/mes. Los pagos se hacen cada viernes.',
     options: ['¿Cuándo cobro?', '¿Hay comisiones?', 'Volver al inicio'],
   },
   {
     trigger: ['cuándo cobro', 'cuándo pagan', 'pago', 'transferencia', 'cobrar'],
-    response: 'Los pagos se realizan cada viernes 📅\n\nUna vez que completas un turno y la empresa lo confirma, el pago se procesa en 3-5 días laborables. Los viernes recibes todos los pagos de la semana anterior en tu cuenta bancaria.\n\nPuedes ver el estado de tus pagos en "Mi Cartera" en tu panel.',
+    response: 'Los pagos se realizan cada viernes \n\nUna vez que completas un turno y la empresa lo confirma, el pago se procesa en 3-5 días laborables. Los viernes recibes todos los pagos de la semana anterior en tu cuenta bancaria.\n\nPuedes ver el estado de tus pagos en "Mi Cartera" en tu panel.',
     options: ['Tengo un problema con un pago', 'Volver al inicio'],
   },
   {
     trigger: ['soy empresa', 'contratar', 'empresa', 'publicar turno', 'busco personal'],
-    response: 'Perfecto, STUGO es ideal para empresas que necesitan personal flexible 🏢\n\n• Publica turnos en menos de 5 minutos\n• Recibe candidatos cualificados en horas\n• Sin permanencia: paga solo por los turnos completados\n• Plan gratuito disponible\n• Soporte dedicado para empresas\n\n¿Quieres más información o registrarte como empresa?',
+    response: 'Perfecto, STUGO es ideal para empresas que necesitan personal flexible \n\n• Publica turnos en menos de 5 minutos\n• Recibe candidatos cualificados en horas\n• Sin permanencia: paga solo por los turnos completados\n• Plan gratuito disponible\n• Soporte dedicado para empresas\n\n¿Quieres más información o registrarte como empresa?',
     options: ['¿Cuánto cuesta para empresas?', '¿Cómo funciona el matching?', 'Quiero registrar mi empresa', 'Volver al inicio'],
   },
   {
     trigger: ['cuánto cuesta para empresas', 'comisión empresa', 'precio empresa', 'planes'],
-    response: 'STUGO ofrece tres planes para empresas 💼\n\n**Gratuito**: hasta 3 turnos simultáneos, comisión 20%\n\n**Pro (49€/mes)**: hasta 20 turnos, comisión 17%, equipos favoritos\n\n**Enterprise**: turnos ilimitados, comisión desde 15%, API, gestor dedicado\n\nLa comisión se aplica sobre el salario bruto del turno completado.',
+    response: 'STUGO ofrece tres planes para empresas \n\n**Gratuito**: hasta 3 turnos simultáneos, comisión 20%\n\n**Pro (49€/mes)**: hasta 20 turnos, comisión 17%, equipos favoritos\n\n**Enterprise**: turnos ilimitados, comisión desde 15%, API, gestor dedicado\n\nLa comisión se aplica sobre el salario bruto del turno completado.',
     options: ['Quiero el Plan Pro', 'Hablar con ventas', 'Volver al inicio'],
   },
   {
     trigger: ['tengo un problema', 'problema', 'error', 'fallo', 'no funciona', 'issue'],
-    response: 'Lo siento, estoy aquí para ayudarte a resolver el problema 🔧\n\n¿De qué tipo de problema se trata?',
+    response: 'Lo siento, estoy aquí para ayudarte a resolver el problema \n\n¿De qué tipo de problema se trata?',
     options: ['Problema con un pago', 'No puedo iniciar sesión', 'Un turno con incidencias', 'Problema técnico', 'Otro problema'],
   },
   {
@@ -65,12 +65,12 @@ const flows: Flow[] = [
   },
   {
     trigger: ['hablar con soporte', 'hablar con persona', 'agente humano', 'persona real'],
-    response: 'Puedo conectarte con nuestro equipo de soporte humano 👨‍💼\n\n**Chat en vivo**: disponible L-V 9h-20h y sábados 10h-14h\n\n**Email**: hola@stugo.es (respuesta en <24h laborables)\n\n**Teléfono**: 900 123 456 (gratuito, L-V 9h-18h)\n\n¿Quieres que abra el chat en vivo para ti?',
+    response: 'Puedo conectarte con nuestro equipo de soporte humano ‍\n\n**Chat en vivo**: disponible L-V 9h-20h y sábados 10h-14h\n\n**Email**: hola@stugo.es (respuesta en <24h laborables)\n\n**Teléfono**: 900 123 456 (gratuito, L-V 9h-18h)\n\n¿Quieres que abra el chat en vivo para ti?',
     options: ['Sí, abrir chat en vivo', 'Volver al inicio'],
   },
   {
     trigger: ['soy estudiante', 'busco trabajo', 'busco turnos'],
-    response: '¡Genial! STUGO es perfecto para estudiantes 🎓\n\nPuedes encontrar trabajo en hostelería, eventos, retail, logística y mucho más. Los turnos se adaptan a tu horario de estudios.\n\n¿Ya tienes cuenta en STUGO?',
+    response: '¡Genial! STUGO es perfecto para estudiantes \n\nPuedes encontrar trabajo en hostelería, eventos, retail, logística y mucho más. Los turnos se adaptan a tu horario de estudios.\n\n¿Ya tienes cuenta en STUGO?',
     options: ['No tengo cuenta, quiero registrarme', 'Ya tengo cuenta, necesito ayuda', 'Volver al inicio'],
   },
 ]
@@ -78,7 +78,7 @@ const flows: Flow[] = [
 const defaultMessage: Message = {
   id: 'welcome',
   role: 'bot',
-  content: '¡Hola! Soy el asistente de STUGO 🤖 ¿En qué puedo ayudarte?',
+  content: '¡Hola! Soy el asistente de STUGO  ¿En qué puedo ayudarte?',
   options: ['¿Cómo me registro?', '¿Cómo funciona?', 'Tengo un problema', 'Preguntas sobre pagos', 'Soy empresa', 'Hablar con soporte'],
   timestamp: new Date(),
 }
@@ -148,12 +148,12 @@ export function Chatbot() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[var(--brand-primary)] text-white rounded-full shadow-[var(--shadow-lg)] flex items-center justify-center hover:bg-[var(--brand-primary-hover)] transition-colors"
+            className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[var(--brand-primary)] text-[var(--on-primary)] rounded-full shadow-[var(--shadow-lg)] flex items-center justify-center hover:bg-[var(--brand-primary-hover)] transition-colors"
             aria-label="Abrir chat de soporte"
           >
             <MessageSquare size={22} />
             {/* Notification dot */}
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--brand-accent)] rounded-full flex items-center justify-center text-[9px] font-bold text-[var(--text-primary)]">
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--brand-accent)] rounded-full flex items-center justify-center text-[9px] font-bold text-[#0E0F12]">
               1
             </span>
           </motion.button>
@@ -206,10 +206,10 @@ export function Chatbot() {
                   <div className={cn('max-w-[85%] space-y-2', msg.role === 'user' && 'items-end')}>
                     <div
                       className={cn(
-                        'px-3.5 py-2.5 rounded-[var(--radius-lg)] text-sm leading-relaxed',
+ 'px-3.5 py-2.5 rounded-[var(--radius-lg)] text-sm leading-relaxed',
                         msg.role === 'bot'
                           ? 'bg-[var(--bg-subtle)] text-[var(--text-primary)] rounded-tl-[var(--radius-xs)]'
-                          : 'bg-[var(--brand-primary)] text-white rounded-tr-[var(--radius-xs)]'
+                          : 'bg-[var(--brand-primary)] text-[var(--on-primary)] rounded-tr-[var(--radius-xs)]'
                       )}
                     >
                       {msg.content.split('\n').map((line, i) => (
@@ -231,7 +231,7 @@ export function Chatbot() {
                                 sendMessage(opt)
                               }
                             }}
-                            className="flex items-center gap-2 text-left px-3 py-2 rounded-[var(--radius-md)] text-xs border border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white transition-all duration-150 bg-white"
+                            className="flex items-center gap-2 text-left px-3 py-2 rounded-[var(--radius-md)] text-xs border border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--on-primary)] transition-all duration-150 bg-white"
                           >
                             <ChevronRight size={12} className="shrink-0" />
                             {opt}
@@ -281,7 +281,7 @@ export function Chatbot() {
                 <button
                   type="submit"
                   disabled={!input.trim()}
-                  className="w-9 h-9 bg-[var(--brand-primary)] text-white rounded-[var(--radius-md)] flex items-center justify-center hover:bg-[var(--brand-primary-hover)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                  className="w-9 h-9 bg-[var(--brand-primary)] text-[var(--on-primary)] rounded-[var(--radius-md)] flex items-center justify-center hover:bg-[var(--brand-primary-hover)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
                   aria-label="Enviar mensaje"
                 >
                   <Send size={15} />

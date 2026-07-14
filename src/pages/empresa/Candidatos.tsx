@@ -97,7 +97,7 @@ export default function Candidatos() {
                   className="px-2.5 py-1 rounded-full border text-xs font-medium transition-all"
                   style={{
                     borderColor: selectedSectores.includes(s) ? 'var(--brand-primary)' : 'var(--border)',
-                    backgroundColor: selectedSectores.includes(s) ? '#EEF2FF' : 'transparent',
+                    backgroundColor: selectedSectores.includes(s) ? 'var(--bg-subtle)' : 'transparent',
                     color: selectedSectores.includes(s) ? 'var(--brand-primary)' : 'var(--text-secondary)',
                   }}
                 >
@@ -108,7 +108,7 @@ export default function Candidatos() {
           </div>
           <div>
             <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">
-              Valoración mínima: {minRating > 0 ? `${minRating}★` : 'Todas'}
+              Valoración mínima: {minRating > 0 ? `${minRating}` : 'Todas'}
             </label>
             <input
               type="range"
@@ -117,11 +117,11 @@ export default function Candidatos() {
               step={0.5}
               value={minRating}
               onChange={(e) => setMinRating(parseFloat(e.target.value))}
-              className="w-full accent-[#2D5BFF]"
+              className="w-full accent-[var(--brand-primary)]"
             />
             <div className="flex justify-between text-xs text-[var(--text-secondary)] mt-1">
               <span>Todas</span>
-              <span>5★</span>
+              <span>5</span>
             </div>
           </div>
           <div>

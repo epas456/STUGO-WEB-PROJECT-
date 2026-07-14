@@ -2,7 +2,7 @@ import { Shield, Star, Zap, Target } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 
 const equipo = [
-  { initials: 'EM', name: 'Elena Martínez', role: 'CEO & Co-fundadora', quote: 'Empecé a los 16 sirviendo mesas. Sé lo que necesitas.', color: '#2D5BFF' },
+  { initials: 'EM', name: 'Elena Martínez', role: 'CEO & Co-fundadora', quote: 'Empecé a los 16 sirviendo mesas. Sé lo que necesitas.', color: '#1B2A4E' },
   { initials: 'CL', name: 'Carlos López', role: 'CTO', quote: 'Construimos tecnología que de verdad funciona.', color: '#7C3AED' },
   { initials: 'AR', name: 'Ana Ruiz', role: 'Head of Operations', quote: 'Cada turno cubierto es una historia real.', color: '#059669' },
   { initials: 'IS', name: 'Iñigo Sainz', role: 'Growth', quote: 'Los datos no mienten.', color: '#D97706' },
@@ -23,7 +23,7 @@ const cifras = [
   { value: '12.000+', label: 'estudiantes activos' },
   { value: '850+', label: 'empresas registradas' },
   { value: '284.560', label: 'horas trabajadas' },
-  { value: '4,8★', label: 'valoración media' },
+  { value: '4,8', label: 'valoración media' },
 ]
 
 export default function Nosotros() {
@@ -32,7 +32,7 @@ export default function Nosotros() {
       {/* MANIFESTO */}
       <section className="max-w-4xl mx-auto px-4 pt-20 pb-16 text-center">
         <blockquote className="text-2xl md:text-3xl font-bold leading-snug mb-8" style={{ color: 'var(--text-primary)' }}>
-          "Creemos que estudiar no debería significar elegir entre clases o dinero. Y que cubrir un turno no debería costar 3 días de papeleo."
+ "Creemos que estudiar no debería significar elegir entre clases o dinero. Y que cubrir un turno no debería costar 3 días de papeleo."
         </blockquote>
         <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
           STUGO nació en 2022 con una misión sencilla: conectar a estudiantes que quieren trabajar con empresas que necesitan personal de confianza, de forma rápida, transparente y sin intermediarios innecesarios. Hoy somos más de 12.000 estudiantes y 850 empresas que lo han comprobado.

@@ -39,12 +39,12 @@ function MatchCircle({ score }: { score: number }) {
 }
 
 const BADGE_COLORS: Record<string, { bg: string; text: string }> = {
-  'top-rated': { bg: '#FEF3C7', text: '#92400E' },
+ 'top-rated': { bg: '#FEF3C7', text: '#92400E' },
   puntual: { bg: '#D1FAE5', text: '#065F46' },
-  'hosteleria-pro': { bg: '#FEE2E2', text: '#991B1B' },
+ 'hosteleria-pro': { bg: '#FEE2E2', text: '#991B1B' },
   verificado: { bg: '#DBEAFE', text: '#1E40AF' },
-  'eventos-experto': { bg: '#F3E8FF', text: '#6B21A8' },
-  'nueva-estrella': { bg: '#FFF7ED', text: '#9A3412' },
+ 'eventos-experto': { bg: '#F3E8FF', text: '#6B21A8' },
+ 'nueva-estrella': { bg: '#FFF7ED', text: '#9A3412' },
 }
 
 const DIAS_SEMANA = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']

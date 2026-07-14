@@ -16,51 +16,43 @@ const sidebarLinks = [
     label: 'Dashboard',
     href: '/empresa/dashboard',
     icon: LayoutDashboard,
-    emoji: '📊',
   },
   {
     label: 'Mis Turnos',
     href: '/empresa/turnos',
     icon: Briefcase,
-    emoji: '📋',
     badge: 3,
   },
   {
     label: 'Candidatos',
     href: '/empresa/candidatos',
     icon: Users,
-    emoji: '👥',
   },
   {
     label: 'Mensajes',
     href: '/empresa/mensajes',
     icon: MessageSquare,
-    emoji: '💬',
     badge: 5,
   },
   {
     label: 'Analíticas',
     href: '/empresa/analiticas',
     icon: BarChart2,
-    emoji: '📈',
   },
   {
     label: 'Facturación',
     href: '/empresa/facturacion',
     icon: CreditCard,
-    emoji: '💳',
   },
   {
     label: 'Documentos',
     href: '/empresa/documentos',
     icon: FileText,
-    emoji: '📄',
   },
   {
     label: 'Configuración',
     href: '/empresa/configuracion',
     icon: Settings,
-    emoji: '⚙️',
   },
 ]
 
@@ -68,7 +60,7 @@ function Logo({ collapsed }: { collapsed: boolean }) {
   return (
     <Link to="/empresa/dashboard" className="flex items-center gap-2 font-bold text-lg shrink-0">
       {collapsed ? (
-        <span className="w-8 h-8 bg-[var(--brand-primary)] rounded-[var(--radius-sm)] flex items-center justify-center text-white text-sm font-bold">
+        <span className="w-8 h-8 bg-[var(--brand-primary)] rounded-[var(--radius-sm)] flex items-center justify-center text-[var(--on-primary)] text-sm font-bold">
           S
         </span>
       ) : (
@@ -153,7 +145,7 @@ export default function EmpresaLayout() {
       {/* Sidebar - Desktop */}
       <aside
         className={cn(
-          'hidden lg:flex flex-col fixed left-0 top-0 bottom-0 z-30 bg-[var(--bg-base)] border-r border-[var(--border)] transition-all duration-300',
+ 'hidden lg:flex flex-col fixed left-0 top-0 bottom-0 z-30 bg-[var(--bg-base)] border-r border-[var(--border)] transition-all duration-300',
           collapsed ? 'w-16' : 'w-60'
         )}
       >
@@ -161,7 +153,7 @@ export default function EmpresaLayout() {
         <div className={cn('flex items-center h-16 px-4 border-b border-[var(--border)]', collapsed ? 'justify-center' : 'justify-between')}>
           <Logo collapsed={collapsed} />
           {!collapsed && (
-            <span className="text-[10px] font-semibold text-[var(--brand-primary)] bg-blue-50 px-1.5 py-0.5 rounded">
+            <span className="text-[10px] font-semibold text-[var(--brand-primary)] bg-[var(--bg-subtle)] px-1.5 py-0.5 rounded">
               EMPRESA
             </span>
           )}
@@ -176,22 +168,22 @@ export default function EmpresaLayout() {
               title={collapsed ? link.label : undefined}
               className={({ isActive }) =>
                 cn(
-                  'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-all duration-150 relative group',
+ 'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-all duration-150 relative group',
                   collapsed ? 'justify-center' : '',
                   isActive
-                    ? 'bg-[var(--brand-primary)] text-white shadow-[var(--shadow-sm)]'
+                    ? 'bg-[var(--brand-primary)] text-[var(--on-primary)] shadow-[var(--shadow-sm)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]'
                 )
               }
             >
               {({ isActive }) => (
                 <>
-                  <span className="shrink-0 text-base">{link.emoji}</span>
+                  <link.icon size={18} className="shrink-0" strokeWidth={2} aria-hidden="true" />
                   {!collapsed && <span className="flex-1">{link.label}</span>}
                   {!collapsed && link.badge && (
                     <span className={cn(
-                      'text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center',
-                      isActive ? 'bg-white/20 text-white' : 'bg-[var(--brand-primary)] text-white'
+ 'text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center',
+                      isActive ? 'bg-white/20 text-[var(--on-primary)]' : 'bg-[var(--brand-primary)] text-[var(--on-primary)]'
                     )}>
                       {link.badge}
                     </span>
@@ -213,7 +205,7 @@ export default function EmpresaLayout() {
           <div className="px-2 pb-3">
             <Link
               to="/empresa/turnos/nuevo"
-              className="flex items-center gap-2 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium bg-[var(--brand-accent)] text-[var(--text-primary)] hover:bg-[var(--brand-accent-hover)] transition-colors"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium bg-[var(--brand-accent)] text-[#0E0F12] hover:bg-[var(--brand-accent-hover)] transition-colors"
             >
               <Zap size={16} />
               Publicar turno
@@ -226,7 +218,7 @@ export default function EmpresaLayout() {
           <button
             onClick={() => setCollapsed(!collapsed)}
             className={cn(
-              'w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius-md)] text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] transition-colors',
+ 'w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius-md)] text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] transition-colors',
               collapsed ? 'justify-center' : ''
             )}
             aria-label={collapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
@@ -267,17 +259,17 @@ export default function EmpresaLayout() {
                     to={link.href}
                     className={({ isActive }) =>
                       cn(
-                        'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-colors',
+ 'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-colors',
                         isActive
-                          ? 'bg-[var(--brand-primary)] text-white'
+                          ? 'bg-[var(--brand-primary)] text-[var(--on-primary)]'
                           : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]'
                       )
                     }
                   >
-                    <span className="text-base">{link.emoji}</span>
+                    <link.icon size={18} strokeWidth={2} aria-hidden="true" />
                     <span>{link.label}</span>
                     {link.badge && (
-                      <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--brand-primary)] text-white min-w-[18px] text-center">
+                      <span className="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--brand-primary)] text-[var(--on-primary)] min-w-[18px] text-center">
                         {link.badge}
                       </span>
                     )}
@@ -292,8 +284,8 @@ export default function EmpresaLayout() {
       {/* Main content */}
       <div
         className={cn(
-          'flex-1 flex flex-col min-h-screen transition-all duration-300',
-          'lg:ml-60',
+ 'flex-1 flex flex-col min-h-screen transition-all duration-300',
+ 'lg:ml-60',
           collapsed && 'lg:ml-16'
         )}
       >
@@ -360,8 +352,8 @@ export default function EmpresaLayout() {
                         <div
                           key={n.id}
                           className={cn(
-                            'px-4 py-3 border-b border-[var(--border)] last:border-0 hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer',
-                            !n.read && 'bg-blue-50/50'
+ 'px-4 py-3 border-b border-[var(--border)] last:border-0 hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer',
+                            !n.read && 'bg-[var(--bg-subtle)]'
                           )}
                         >
                           <p className={cn('text-sm', !n.read ? 'font-medium text-[var(--text-primary)]' : 'text-[var(--text-secondary)]')}>
@@ -383,7 +375,7 @@ export default function EmpresaLayout() {
               onClick={() => { setProfileOpen(!profileOpen); setNotifOpen(false) }}
               className="flex items-center gap-2 px-2 py-1.5 rounded-[var(--radius-md)] hover:bg-[var(--bg-subtle)] transition-colors"
             >
-              <div className="w-8 h-8 bg-[var(--brand-primary)] rounded-full flex items-center justify-center text-white text-sm font-semibold">
+              <div className="w-8 h-8 bg-[var(--brand-primary)] rounded-full flex items-center justify-center text-[var(--on-primary)] text-sm font-semibold">
                 {user?.name ? user.name[0].toUpperCase() : 'E'}
               </div>
               <div className="hidden sm:block text-left">

@@ -18,10 +18,10 @@ const rows: CompRow[] = [
   {
     label: 'Pago al estudiante',
     tooltip: 'Tiempo que tarda el trabajador en recibir su pago tras completar el turno.',
-    stugo: '✅ <24 h',
-    jobandtalent: '⚠️ Semanal',
-    coople: '⚠️ Semanal',
-    temper: '⚠️ 2 semanas',
+    stugo: '<24 h',
+    jobandtalent: 'Semanal',
+    coople: 'Semanal',
+    temper: '2 semanas',
   },
   {
     label: 'Sin CV requerido',
@@ -159,7 +159,7 @@ export default function Comparador() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Header */}
-      <div className="py-16 text-center px-4" style={{ background: 'linear-gradient(180deg, rgba(45,91,255,0.05) 0%, transparent 100%)' }}>
+      <div className="py-16 text-center px-4" style={{ background: 'transparent' }}>
         <span className="text-xs font-bold uppercase tracking-widest mb-4 block" style={{ color: 'var(--brand-primary)' }}>
           Comparativa
         </span>
@@ -198,7 +198,7 @@ export default function Comparador() {
                     }}
                   >
                     {p === 'stugo' && (
-                      <div className="text-xs font-normal mb-1 opacity-70">⭐ Recomendado</div>
+                      <div className="text-xs font-normal mb-1 opacity-70">Recomendado</div>
                     )}
                     {platformNames[p]}
                   </th>
@@ -284,7 +284,7 @@ export default function Comparador() {
         {/* CTA */}
         <div className="mt-16 grid md:grid-cols-2 gap-6">
           <div className="p-8 rounded-[var(--radius-xl)]"
-            style={{ background: 'linear-gradient(135deg, var(--brand-primary), #1a3db8)', color: 'white' }}>
+            style={{ background: 'var(--brand-primary)', color: 'white' }}>
             <h3 className="text-xl font-bold mb-2">¿Convencido?</h3>
             <p style={{ color: 'rgba(255,255,255,0.8)' }} className="text-sm mb-6 leading-relaxed">
               Únete a las más de 2.400 empresas y 12.000 estudiantes que ya confían en STUGO.

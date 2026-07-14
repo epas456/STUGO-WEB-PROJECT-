@@ -22,7 +22,7 @@ export default function RecuperarPassword() {
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: '#EEF2FF' }}>
+          <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: 'var(--bg-subtle)' }}>
             <Mail size={26} style={{ color: 'var(--brand-primary)' }} />
           </div>
           <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Recuperar contraseña</h1>

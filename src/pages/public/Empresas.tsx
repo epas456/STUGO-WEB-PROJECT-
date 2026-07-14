@@ -4,11 +4,11 @@ import { CheckCircle2, XCircle, Building2, Clock, FileX, UserX, AlertTriangle, D
 import { Button } from '@/components/ui/Button'
 
 const painPoints = [
-  'Llamar a 20 candidatos para cubrir un sábado',
-  'Papeleo eterno con la ETT tradicional',
-  'Candidatos que no se presentan',
-  'Perfiles desactualizados y sin verificar',
-  'Costes imprevisibles mes a mes',
+ 'Llamar a 20 candidatos para cubrir un sábado',
+ 'Papeleo eterno con la ETT tradicional',
+ 'Candidatos que no se presentan',
+ 'Perfiles desactualizados y sin verificar',
+ 'Costes imprevisibles mes a mes',
 ]
 
 const solutions = [
@@ -35,7 +35,7 @@ export default function Empresas() {
   return (
     <div style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <section className="py-24 px-4" style={{ background: 'linear-gradient(135deg, #EEF2FF 0%, #F5F6FA 100%)' }}>
+      <section className="py-24 px-4" style={{ background: 'var(--bg-subtle)' }}>
         <div className="max-w-5xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6" style={{ background: 'var(--brand-primary)', color: 'white' }}>Para empresas</span>
@@ -79,7 +79,7 @@ export default function Empresas() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {solutions.map((s, i) => (
               <div key={i} className="p-6 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-base)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-md)' }}>
-                <div className="w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center mb-4" style={{ background: '#EEF2FF' }}>
+                <div className="w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center mb-4" style={{ background: 'var(--bg-subtle)' }}>
                   <s.icon size={20} style={{ color: 'var(--brand-primary)' }} />
                 </div>
                 <h3 className="font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{s.title}</h3>
@@ -119,7 +119,7 @@ export default function Empresas() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div key={i} className="p-6 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-base)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
-                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="#FFD63D" stroke="#FFD63D" />)}</div>
+                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="#D6F84A" stroke="#D6F84A" />)}</div>
                 <p className="text-sm mb-4 italic" style={{ color: 'var(--text-secondary)' }}>"{t.text}"</p>
                 <div>
                   <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t.name}</div>

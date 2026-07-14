@@ -35,13 +35,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             id={inputId}
             className={cn(
-              'w-full h-10 rounded-[var(--radius-md)] border bg-[var(--bg-base)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-all duration-150 outline-none',
-              'border-[var(--border)] hover:border-[var(--border-strong)]',
-              'focus:border-[var(--brand-primary)] focus:shadow-[var(--shadow-glow-primary)]',
+ 'w-full h-10 rounded-[var(--radius-md)] border bg-[var(--bg-base)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-all duration-150 outline-none',
+ 'border-[var(--border)] hover:border-[var(--border-strong)]',
+ 'focus:border-[var(--brand-primary)] focus:shadow-[var(--shadow-glow-primary)]',
               error && 'border-[var(--danger)] focus:border-[var(--danger)] focus:shadow-[0_0_0_4px_rgba(239,68,68,0.15)]',
               leftIcon ? 'pl-10' : 'pl-3',
               rightIcon ? 'pr-10' : 'pr-3',
-              'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--bg-subtle)]',
+ 'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--bg-subtle)]',
               className
             )}
             aria-invalid={error ? 'true' : undefined}
@@ -98,11 +98,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={textareaId}
           className={cn(
-            'w-full min-h-[100px] rounded-[var(--radius-md)] border bg-[var(--bg-base)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-all duration-150 outline-none resize-y px-3 py-2.5',
-            'border-[var(--border)] hover:border-[var(--border-strong)]',
-            'focus:border-[var(--brand-primary)] focus:shadow-[var(--shadow-glow-primary)]',
+ 'w-full min-h-[100px] rounded-[var(--radius-md)] border bg-[var(--bg-base)] text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-all duration-150 outline-none resize-y px-3 py-2.5',
+ 'border-[var(--border)] hover:border-[var(--border-strong)]',
+ 'focus:border-[var(--brand-primary)] focus:shadow-[var(--shadow-glow-primary)]',
             error && 'border-[var(--danger)] focus:border-[var(--danger)]',
-            'disabled:opacity-50 disabled:cursor-not-allowed',
+ 'disabled:opacity-50 disabled:cursor-not-allowed',
             className
           )}
           aria-invalid={error ? 'true' : undefined}

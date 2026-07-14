@@ -12,12 +12,12 @@ export interface ArticuloAyuda {
 }
 
 export const categoriasAyuda = [
-  { id: 'primeros-pasos', label: 'Primeros Pasos', emoji: '🚀', descripcion: 'Cómo empezar en STUGO' },
-  { id: 'cuenta-perfil', label: 'Cuenta y Perfil', emoji: '👤', descripcion: 'Gestiona tu información personal' },
-  { id: 'turnos', label: 'Turnos y Trabajo', emoji: '📅', descripcion: 'Todo sobre los turnos en STUGO' },
-  { id: 'pagos', label: 'Pagos y Cartera', emoji: '💰', descripcion: 'Cobros, transferencias y fiscalidad' },
-  { id: 'mensajes', label: 'Mensajería', emoji: '💬', descripcion: 'Comunicación con empresas' },
-  { id: 'seguridad', label: 'Seguridad', emoji: '🔒', descripcion: 'Protege tu cuenta' },
+  { id: 'primeros-pasos', label: 'Primeros Pasos', emoji: '', descripcion: 'Cómo empezar en STUGO' },
+  { id: 'cuenta-perfil', label: 'Cuenta y Perfil', emoji: '', descripcion: 'Gestiona tu información personal' },
+  { id: 'turnos', label: 'Turnos y Trabajo', emoji: '', descripcion: 'Todo sobre los turnos en STUGO' },
+  { id: 'pagos', label: 'Pagos y Cartera', emoji: '', descripcion: 'Cobros, transferencias y fiscalidad' },
+  { id: 'mensajes', label: 'Mensajería', emoji: '', descripcion: 'Comunicación con empresas' },
+  { id: 'seguridad', label: 'Seguridad', emoji: '', descripcion: 'Protege tu cuenta' },
 ]
 
 export const articulosAyuda: ArticuloAyuda[] = [
@@ -350,7 +350,7 @@ export const articulosAyuda: ArticuloAyuda[] = [
     id: 'ayuda-028',
     titulo: 'Eliminar tu cuenta de STUGO',
     slug: 'eliminar-cuenta-stugo',
-    contenido: `## Antes de eliminar tu cuenta\n\n⚠️ La eliminación de cuenta es permanente e irreversible. Antes de proceder:\n\n- Asegúrate de no tener turnos pendientes de realizar\n- Verifica que has recibido todos los pagos (espera la próxima liquidación)\n- Descarga tu historial y datos si los quieres conservar\n- Si eres empresa, asegúrate de haber liquidado todos los pagos pendientes\n\n## Cómo eliminar tu cuenta\n\n1. Perfil → Configuración → Cuenta → Eliminar cuenta\n2. Introduce tu contraseña para confirmar\n3. Selecciona el motivo (opcional pero nos ayuda a mejorar)\n4. Confirma la eliminación\n\n## Qué pasa con tus datos\n\n- Tus datos personales se eliminan en 30 días\n- Las valoraciones que dejaste en empresas se mantienen (en anonimato)\n- Los datos fiscales se conservan 7 años por obligación legal\n- No podrás volver a registrarte con el mismo DNI en 6 meses\n\n## Alternativa: desactivar la cuenta\n\nSi solo quieres pausar tu actividad temporalmente, puedes desactivar la cuenta en lugar de eliminarla. Tu perfil será invisible pero tus datos se conservan.`,
+    contenido: `## Antes de eliminar tu cuenta\n\n La eliminación de cuenta es permanente e irreversible. Antes de proceder:\n\n- Asegúrate de no tener turnos pendientes de realizar\n- Verifica que has recibido todos los pagos (espera la próxima liquidación)\n- Descarga tu historial y datos si los quieres conservar\n- Si eres empresa, asegúrate de haber liquidado todos los pagos pendientes\n\n## Cómo eliminar tu cuenta\n\n1. Perfil → Configuración → Cuenta → Eliminar cuenta\n2. Introduce tu contraseña para confirmar\n3. Selecciona el motivo (opcional pero nos ayuda a mejorar)\n4. Confirma la eliminación\n\n## Qué pasa con tus datos\n\n- Tus datos personales se eliminan en 30 días\n- Las valoraciones que dejaste en empresas se mantienen (en anonimato)\n- Los datos fiscales se conservan 7 años por obligación legal\n- No podrás volver a registrarte con el mismo DNI en 6 meses\n\n## Alternativa: desactivar la cuenta\n\nSi solo quieres pausar tu actividad temporalmente, puedes desactivar la cuenta en lugar de eliminarla. Tu perfil será invisible pero tus datos se conservan.`,
     categoria: 'cuenta-perfil',
     subcategoria: 'Gestión de cuenta',
     tags: ['eliminar cuenta', 'baja', 'desactivar', 'datos', 'RGPD'],
@@ -370,16 +370,4 @@ export const articulosAyuda: ArticuloAyuda[] = [
     ultimaActualizacion: '2026-05-01',
     relacionados: ['ayuda-022', 'ayuda-024'],
   },
-  {
-    id: 'ayuda-030',
-    titulo: 'STUGO Academy: formaciones gratuitas para estudiantes',
-    slug: 'stugo-academy-formaciones-estudiantes',
-    contenido: `## Qué es STUGO Academy\n\nSTUGO Academy es el centro de formación gratuita de STUGO para estudiantes registrados. Más de 25 formaciones online disponibles para mejorar tu empleabilidad y salario por hora.\n\n## Cómo acceder\n\nPanel de estudiante → Academy → Catálogo de formaciones\n\n## Catálogo actual\n\n**Hostelería**: Servicio de sala básico (3h) · Protocolo en hostelería de lujo (4h) · Coctelería y mixología (5h) · Inglés para hostelería (6h) · Vinos y sumillería (4h)\n\n**Eventos**: Azafatos/as de congreso (3h) · Protocolo empresarial (4h) · Gestión de crisis en eventos (2h)\n\n**Retail**: Técnicas de venta (3h) · Gestión del cliente difícil (2h) · Visual merchandising (2h)\n\n**Logística**: Seguridad en almacén (3h) · Carretillas elevadoras (6h, online + práctico)\n\n**Transversal**: Primeros auxilios (4h) · Inglés profesional (8h) · Herramientas digitales (2h)\n\n## Formato de las formaciones\n\n- 100% online y a tu ritmo\n- Vídeos + material descargable + test de evaluación\n- Certificado PDF al superar el test\n- Badge en tu perfil STUGO\n\n## Formaciones con módulo presencial\n\nAlgunas formaciones tienen módulo práctico en Madrid, Barcelona y Valencia. Plazas limitadas: reserva con antelación en la sección Academy.`,
-    categoria: 'primeros-pasos',
-    subcategoria: 'Formación',
-    tags: ['academy', 'formación', 'cursos', 'certificado', 'gratuito'],
-    util: 567,
-    ultimaActualizacion: '2026-04-20',
-    relacionados: ['ayuda-002', 'ayuda-013'],
-  },
-]
+  ]

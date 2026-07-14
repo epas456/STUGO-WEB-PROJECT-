@@ -40,7 +40,6 @@ const estudianteItems: CommandItem[] = [
   { id: 'est-perfil', label: 'Mi perfil', icon: <Users size={16} />, path: '/estudiante/perfil', group: 'Mi cuenta' },
   { id: 'est-cartera', label: 'Mi cartera', icon: <CreditCard size={16} />, path: '/estudiante/cartera', group: 'Pagos' },
   { id: 'est-valoraciones', label: 'Mis valoraciones', icon: <Star size={16} />, path: '/estudiante/valoraciones', group: 'Mi cuenta' },
-  { id: 'est-academy', label: 'STUGO Academy', icon: <BookOpen size={16} />, path: '/estudiante/academy', group: 'Formación' },
   { id: 'est-config', label: 'Configuración', icon: <Settings size={16} />, path: '/estudiante/configuracion', group: 'Mi cuenta' },
 ]
 
@@ -172,10 +171,10 @@ export function CommandPalette() {
                       value={item.label}
                       onSelect={() => handleSelect(item.path)}
                       className={cn(
-                        'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] cursor-pointer',
-                        'text-sm text-[var(--text-primary)]',
-                        'data-[selected=true]:bg-[var(--bg-subtle)] data-[selected=true]:text-[var(--brand-primary)]',
-                        'transition-colors'
+ 'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] cursor-pointer',
+ 'text-sm text-[var(--text-primary)]',
+ 'data-[selected=true]:bg-[var(--bg-subtle)] data-[selected=true]:text-[var(--brand-primary)]',
+ 'transition-colors'
                       )}
                     >
                       <span className="text-[var(--text-tertiary)] data-[selected=true]:text-[var(--brand-primary)]">

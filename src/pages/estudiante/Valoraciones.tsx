@@ -23,7 +23,7 @@ export default function EstudianteValoraciones() {
         <Tabs.List className="flex gap-1 mb-6 p-1 rounded-[var(--radius-md)] w-fit" style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
           {[['recibidas', 'Recibidas'], ['pendientes', `Pendientes (${pendientes.length})`]].map(([v, label]) => (
             <Tabs.Trigger key={v} value={v}
-              className="px-4 py-2 rounded-[var(--radius-sm)] text-sm font-medium transition-all data-[state=active]:bg-[var(--brand-primary)] data-[state=active]:text-white"
+              className="px-4 py-2 rounded-[var(--radius-sm)] text-sm font-medium transition-all data-[state=active]:bg-[var(--brand-primary)] data-[state=active]:text-[var(--on-primary)]"
               style={{ color: 'var(--text-secondary)' }}>{label}</Tabs.Trigger>
           ))}
         </Tabs.List>
@@ -36,7 +36,7 @@ export default function EstudianteValoraciones() {
                 <span className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{r.empresa}</span>
               </div>
               <div className="text-xs mb-3" style={{ color: 'var(--text-tertiary)' }}>{r.turno}</div>
-              <div className="flex mb-2">{[1,2,3,4,5].map(s => <Star key={s} size={16} fill={s <= r.estrellas ? '#FFD63D' : 'none'} stroke={s <= r.estrellas ? '#FFD63D' : 'var(--border-strong)'} />)}</div>
+              <div className="flex mb-2">{[1,2,3,4,5].map(s => <Star key={s} size={16} fill={s <= r.estrellas ? '#D6F84A' : 'none'} stroke={s <= r.estrellas ? '#D6F84A' : 'var(--border-strong)'} />)}</div>
               <p className="text-sm italic" style={{ color: 'var(--text-secondary)' }}>"{r.comentario}"</p>
             </div>
           ))}
@@ -51,7 +51,7 @@ export default function EstudianteValoraciones() {
               <div className="flex gap-1 mb-4">
                 {[1,2,3,4,5].map(s => (
                   <button key={s} onClick={() => setPendStars(prev => ({ ...prev, [i]: s }))} className="cursor-pointer">
-                    <Star size={24} fill={s <= (pendStars[i] || 0) ? '#FFD63D' : 'none'} stroke={s <= (pendStars[i] || 0) ? '#FFD63D' : 'var(--border-strong)'} />
+                    <Star size={24} fill={s <= (pendStars[i] || 0) ? '#D6F84A' : 'none'} stroke={s <= (pendStars[i] || 0) ? '#D6F84A' : 'var(--border-strong)'} />
                   </button>
                 ))}
               </div>

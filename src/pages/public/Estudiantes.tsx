@@ -11,8 +11,8 @@ const steps = [
 
 const sectors = [
   { icon: ChefHat, name: 'Hostelería', desc: 'Camarero/a, barista, ayudante de cocina, hostess', color: '#FF6B35' },
-  { icon: ShoppingBag, name: 'Retail', desc: 'Reponedor/a, dependiente/a, cajero/a, visual merchandiser', color: '#2D5BFF' },
-  { icon: Music, name: 'Eventos', desc: 'Personal de sala, azafatas/os, taquilla, logística', color: '#8B5CF6' },
+  { icon: ShoppingBag, name: 'Retail', desc: 'Reponedor/a, dependiente/a, cajero/a, visual merchandiser', color: '#1B2A4E' },
+  { icon: Music, name: 'Eventos', desc: 'Personal de sala, azafatas/os, taquilla, logística', color: '#1B2A4E' },
   { icon: Package, name: 'Logística', desc: 'Almacén, reparto, picking, inventario', color: '#10B981' },
 ]
 
@@ -26,7 +26,7 @@ export default function Estudiantes() {
   return (
     <div style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <section className="py-24 px-4 text-center" style={{ background: 'linear-gradient(135deg, #FFF9E6 0%, #F5F6FA 100%)' }}>
+      <section className="py-24 px-4 text-center" style={{ background: 'var(--bg-subtle)' }}>
         <motion.div className="max-w-4xl mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6" style={{ background: 'var(--brand-accent)', color: 'var(--text-primary)' }}>Para estudiantes</span>
           <h1 className="text-5xl font-bold mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
@@ -101,7 +101,7 @@ export default function Estudiantes() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div key={i} className="p-6 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-base)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
-                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="#FFD63D" stroke="#FFD63D" />)}</div>
+                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="#D6F84A" stroke="#D6F84A" />)}</div>
                 <p className="text-sm mb-4 italic" style={{ color: 'var(--text-secondary)' }}>"{t.text}"</p>
                 <div>
                   <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t.name}, {t.age} años</div>

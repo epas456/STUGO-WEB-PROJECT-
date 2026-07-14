@@ -40,12 +40,12 @@ export function Modal({
         />
         <Dialog.Content
           className={cn(
-            'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50',
-            'bg-[var(--bg-base)] rounded-[var(--radius-xl)] shadow-[var(--shadow-xl)]',
-            'border border-[var(--border)]',
-            'w-full mx-4 p-6',
-            'focus:outline-none',
-            'data-[state=open]:animate-scale-in',
+ 'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50',
+ 'bg-[var(--bg-base)] rounded-[var(--radius-xl)] shadow-[var(--shadow-xl)]',
+ 'border border-[var(--border)]',
+ 'w-full mx-4 p-6',
+ 'focus:outline-none',
+ 'data-[state=open]:animate-scale-in',
             sizeClasses[size],
             className
           )}

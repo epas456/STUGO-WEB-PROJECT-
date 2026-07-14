@@ -16,22 +16,22 @@ import {
 
 const SECTORES = ['Hostelería', 'Retail', 'Eventos', 'Logística']
 const REQUISITOS_OPCIONES = [
-  'Experiencia previa',
-  'Inglés B2+',
-  'Carné de conducir',
-  'Certificado manipulador alimentos',
-  'Disponibilidad inmediata',
-  'Uniforme propio',
-  'Vehículo propio',
-  'Trabajo en equipo',
+ 'Experiencia previa',
+ 'Inglés B2+',
+ 'Carné de conducir',
+ 'Certificado manipulador alimentos',
+ 'Disponibilidad inmediata',
+ 'Uniforme propio',
+ 'Vehículo propio',
+ 'Trabajo en equipo',
 ]
 
 const ADDRESS_SUGGESTIONS = [
-  'Calle Mayor 1, Madrid',
-  'Gran Vía 45, Madrid',
-  'Paseo de la Castellana 12, Madrid',
-  'Calle Serrano 30, Madrid',
-  'Avenida de América 10, Madrid',
+ 'Calle Mayor 1, Madrid',
+ 'Gran Vía 45, Madrid',
+ 'Paseo de la Castellana 12, Madrid',
+ 'Calle Serrano 30, Madrid',
+ 'Avenida de América 10, Madrid',
 ]
 
 interface StepData {
@@ -233,7 +233,7 @@ export default function NuevoTurno() {
                           borderColor:
                             data.sector === s ? 'var(--brand-primary)' : 'var(--border)',
                           backgroundColor:
-                            data.sector === s ? '#EEF2FF' : 'var(--bg-base)',
+                            data.sector === s ? 'var(--bg-subtle)' : 'var(--bg-base)',
                           color:
                             data.sector === s
                               ? 'var(--brand-primary)'
@@ -443,7 +443,7 @@ export default function NuevoTurno() {
                     step={0.5}
                     value={data.salarioHora}
                     onChange={(e) => update('salarioHora', parseFloat(e.target.value))}
-                    className="w-full accent-[#2D5BFF]"
+                    className="w-full accent-[var(--brand-primary)]"
                   />
                   <div className="flex justify-between text-xs text-[var(--text-secondary)] mt-1">
                     <span>8€/h</span>
@@ -492,7 +492,7 @@ export default function NuevoTurno() {
                           className="px-3 py-1.5 rounded-full border text-sm font-medium transition-all"
                           style={{
                             borderColor: active ? 'var(--brand-primary)' : 'var(--border)',
-                            backgroundColor: active ? '#EEF2FF' : 'var(--bg-base)',
+                            backgroundColor: active ? 'var(--bg-subtle)' : 'var(--bg-base)',
                             color: active ? 'var(--brand-primary)' : 'var(--text-secondary)',
                           }}
                         >
@@ -546,7 +546,7 @@ export default function NuevoTurno() {
                 </div>
                 <div
                   className="rounded-[var(--radius-md)] p-4 border"
-                  style={{ backgroundColor: '#EEF2FF', borderColor: 'var(--brand-primary)' }}
+                  style={{ backgroundColor: 'var(--bg-subtle)', borderColor: 'var(--brand-primary)' }}
                 >
                   <p className="text-sm text-[var(--text-secondary)] mb-1">Coste total estimado</p>
                   <p className="text-2xl font-bold" style={{ color: 'var(--brand-primary)' }}>

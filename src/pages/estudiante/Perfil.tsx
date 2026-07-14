@@ -5,6 +5,7 @@ import { badges } from '@/mocks/badges'
 import { estudiantes } from '@/mocks/estudiantes'
 import { StarRating } from '@/components/StarRating'
 import { AvatarCircle } from '@/components/AvatarCircle'
+import { BadgeIcon } from '@/components/BadgeIcon'
 
 const TABS = ['Datos personales', 'Documentos', 'Mi reputación', 'Mis badges', 'Sectores y disponibilidad']
 
@@ -66,12 +67,12 @@ const RATING_BREAKDOWN = [
 
 // Student has unlocked first 6 badges, rest are locked
 const UNLOCKED_IDS = [
-  'badge-top-rated',
-  'badge-puntual',
-  'badge-hosteleria-pro',
-  'badge-verificado',
-  'badge-primero-turno',
-  'badge-responde-rapido',
+ 'badge-top-rated',
+ 'badge-puntual',
+ 'badge-hosteleria-pro',
+ 'badge-verificado',
+ 'badge-primero-turno',
+ 'badge-responde-rapido',
 ]
 
 export default function Perfil() {
@@ -319,7 +320,7 @@ export default function Perfil() {
                   </div>
                 </div>
                 <p className="text-sm text-[var(--text-primary)] leading-relaxed border-l-2 pl-3" style={{ borderLeftColor: 'var(--border)' }}>
-                  "{rev.comment}"
+ "{rev.comment}"
                 </p>
               </div>
             ))}
@@ -357,7 +358,7 @@ export default function Perfil() {
                     border: `2px solid ${unlocked ? badge.color : 'var(--border)'}`,
                   }}
                 >
-                  {badge.emoji}
+                  <BadgeIcon name={badge.icon} color={badge.color} />
                 </div>
                 <p className="text-xs font-semibold text-[var(--text-primary)]">{badge.nombre}</p>
                 <p className="text-[10px] text-[var(--text-secondary)] leading-snug">{badge.descripcion}</p>
@@ -407,7 +408,7 @@ export default function Perfil() {
                     className="px-4 py-2 rounded-full border text-sm font-medium transition-all"
                     style={{
                       borderColor: active ? 'var(--brand-primary)' : 'var(--border)',
-                      backgroundColor: active ? '#EEF2FF' : 'transparent',
+                      backgroundColor: active ? 'var(--bg-subtle)' : 'transparent',
                       color: active ? 'var(--brand-primary)' : 'var(--text-secondary)',
                     }}
                   >
@@ -457,7 +458,7 @@ export default function Perfil() {
                     className="flex items-center gap-3 p-3 rounded-[var(--radius-md)] border text-sm font-medium transition-all text-left"
                     style={{
                       borderColor: active ? 'var(--brand-primary)' : 'var(--border)',
-                      backgroundColor: active ? '#EEF2FF' : 'transparent',
+                      backgroundColor: active ? 'var(--bg-subtle)' : 'transparent',
                       color: active ? 'var(--brand-primary)' : 'var(--text-secondary)',
                     }}
                   >

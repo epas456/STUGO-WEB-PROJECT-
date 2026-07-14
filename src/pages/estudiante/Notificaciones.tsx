@@ -5,14 +5,14 @@ import { toast } from 'sonner'
 const NOTIFS_MOCK = [
   { id: '1', type: 'pago', title: 'Pago recibido', message: 'Hemos enviado 84,50€ a tu cuenta IBAN. Llegará en 1-24h.', time: 'Hace 2 horas', read: false, group: 'Hoy' },
   { id: '2', type: 'turno', title: 'Turno confirmado', message: 'Tu turno del viernes 17 en Restaurante Casa Pepe está confirmado.', time: 'Hace 5 horas', read: false, group: 'Hoy' },
-  { id: '3', type: 'badge', title: '¡Nuevo badge!', message: 'Has desbloqueado: Maestro hostelero 🥇', time: 'Hace 1 día', read: false, group: 'Ayer' },
+  { id: '3', type: 'badge', title: 'Nueva insignia', message: 'Has desbloqueado: Maestro hostelero', time: 'Hace 1 día', read: false, group: 'Ayer' },
   { id: '4', type: 'mensaje', title: 'Nuevo mensaje', message: 'Cafetería Origen te ha enviado un mensaje.', time: 'Hace 1 día', read: true, group: 'Ayer' },
   { id: '5', type: 'turno', title: 'Recordatorio de turno', message: 'Mañana tienes turno en Hotel Atlántico a las 10:00.', time: 'Hace 2 días', read: true, group: 'Esta semana' },
-  { id: '6', type: 'valoracion', title: 'Valoración recibida', message: 'Restaurante Casa Pepe te ha valorado con 5★.', time: 'Hace 3 días', read: true, group: 'Esta semana' },
+  { id: '6', type: 'valoracion', title: 'Valoración recibida', message: 'Restaurante Casa Pepe te ha valorado con 5.', time: 'Hace 3 días', read: true, group: 'Esta semana' },
 ]
 
 const ICONS: Record<string, React.ElementType> = { pago: CreditCard, turno: Calendar, badge: Award, mensaje: MessageSquare, valoracion: Star, oportunidad: Zap }
-const COLORS: Record<string, string> = { pago: '#10B981', turno: '#2D5BFF', badge: '#F59E0B', mensaje: '#8B5CF6', valoracion: '#F59E0B', oportunidad: '#EF4444' }
+const COLORS: Record<string, string> = { pago: '#10B981', turno: '#1B2A4E', badge: '#F59E0B', mensaje: '#1B2A4E', valoracion: '#F59E0B', oportunidad: '#EF4444' }
 
 export default function EstudianteNotificaciones() {
   const [notifs, setNotifs] = useState(NOTIFS_MOCK)

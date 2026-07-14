@@ -3,24 +3,24 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 font-medium rounded-[var(--radius-md)] transition-all duration-150 cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-[var(--brand-primary)] focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] whitespace-nowrap',
+ 'inline-flex items-center justify-center gap-2 font-medium rounded-[var(--radius-md)] transition-all duration-150 cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-[var(--brand-accent)] focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] whitespace-nowrap',
   {
     variants: {
       variant: {
         primary:
-          'bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary-hover)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]',
+ 'bg-[var(--brand-primary)] text-[var(--on-primary)] hover:bg-[var(--brand-primary-hover)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]',
         secondary:
-          'bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:bg-[var(--bg-muted)] border border-[var(--border)]',
+ 'bg-[var(--bg-subtle)] text-[var(--text-primary)] hover:bg-[var(--bg-muted)] border border-[var(--border)]',
         outline:
-          'bg-transparent text-[var(--brand-primary)] border border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white',
+ 'bg-transparent text-[var(--brand-primary)] border border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--on-primary)]',
         ghost:
-          'bg-transparent text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)] hover:text-[var(--text-primary)]',
+ 'bg-transparent text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)] hover:text-[var(--text-primary)]',
         danger:
-          'bg-[var(--danger)] text-white hover:bg-red-600 shadow-[var(--shadow-sm)]',
+ 'bg-[var(--danger)] text-white hover:bg-red-600 shadow-[var(--shadow-sm)]',
         accent:
-          'bg-[var(--brand-accent)] text-[var(--text-primary)] hover:bg-[var(--brand-accent-hover)] shadow-[var(--shadow-sm)]',
+ 'bg-[var(--brand-accent)] text-[#0E0F12] hover:bg-[var(--brand-accent-hover)] shadow-[var(--shadow-sm)]',
         link:
-          'bg-transparent text-[var(--brand-primary)] hover:underline p-0 h-auto',
+ 'bg-transparent text-[var(--brand-primary)] hover:underline p-0 h-auto',
       },
       size: {
         xs: 'text-xs px-2.5 py-1.5 h-7',
@@ -29,8 +29,8 @@ const buttonVariants = cva(
         lg: 'text-base px-5 py-3 h-12',
         xl: 'text-lg px-7 py-4 h-14',
         icon: 'w-10 h-10 p-0',
-        'icon-sm': 'w-8 h-8 p-0',
-        'icon-lg': 'w-12 h-12 p-0',
+ 'icon-sm': 'w-8 h-8 p-0',
+ 'icon-lg': 'w-12 h-12 p-0',
       },
       loading: {
         true: 'relative pointer-events-none',

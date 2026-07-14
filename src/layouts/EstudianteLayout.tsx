@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, Briefcase, MessageSquare, Star, CreditCard,
   Settings, Bell, LogOut, ChevronDown, ChevronLeft, ChevronRight,
-  Menu, X, BookOpen, User, Zap, Home, Award,
+  Menu, X, User, Zap, Home, Award, Search,
 } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
@@ -12,16 +12,15 @@ import { CommandPalette } from '@/components/CommandPalette'
 import { cn } from '@/lib/utils'
 
 const sidebarLinks = [
-  { label: 'Dashboard', href: '/estudiante/dashboard', emoji: '🏠', icon: LayoutDashboard },
-  { label: 'Buscar Turnos', href: '/estudiante/turnos', emoji: '🔍', icon: Briefcase, badge: null },
-  { label: 'Mis Turnos', href: '/estudiante/mis-turnos', emoji: '📋', icon: Briefcase },
-  { label: 'Mensajes', href: '/estudiante/mensajes', emoji: '💬', icon: MessageSquare, badge: 2 },
-  { label: 'Mi Perfil', href: '/estudiante/perfil', emoji: '👤', icon: User },
-  { label: 'Valoraciones', href: '/estudiante/valoraciones', emoji: '⭐', icon: Star },
-  { label: 'Mi Cartera', href: '/estudiante/cartera', emoji: '💰', icon: CreditCard },
-  { label: 'Academy', href: '/estudiante/academy', emoji: '🎓', icon: BookOpen },
-  { label: 'Badges', href: '/estudiante/badges', emoji: '🏆', icon: Award },
-  { label: 'Configuración', href: '/estudiante/configuracion', emoji: '⚙️', icon: Settings },
+  { label: 'Dashboard', href: '/estudiante/dashboard', icon: LayoutDashboard },
+  { label: 'Buscar Turnos', href: '/estudiante/turnos', icon: Search, badge: null },
+  { label: 'Mis Turnos', href: '/estudiante/mis-turnos', icon: Briefcase },
+  { label: 'Mensajes', href: '/estudiante/mensajes', icon: MessageSquare, badge: 2 },
+  { label: 'Mi Perfil', href: '/estudiante/perfil', icon: User },
+  { label: 'Valoraciones', href: '/estudiante/valoraciones', icon: Star },
+  { label: 'Mi Cartera', href: '/estudiante/cartera', icon: CreditCard },
+  { label: 'Badges', href: '/estudiante/badges', icon: Award },
+  { label: 'Configuración', href: '/estudiante/configuracion', icon: Settings },
 ]
 
 // Bottom nav for mobile (5 most important)
@@ -37,7 +36,7 @@ function Logo({ collapsed }: { collapsed: boolean }) {
   return (
     <Link to="/estudiante/dashboard" className="flex items-center gap-2 font-bold text-lg shrink-0">
       {collapsed ? (
-        <span className="w-8 h-8 bg-[var(--brand-primary)] rounded-[var(--radius-sm)] flex items-center justify-center text-white text-sm font-bold">
+        <span className="w-8 h-8 bg-[var(--brand-primary)] rounded-[var(--radius-sm)] flex items-center justify-center text-[var(--on-primary)] text-sm font-bold">
           S
         </span>
       ) : (
@@ -83,7 +82,7 @@ export default function EstudianteLayout() {
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          'hidden lg:flex flex-col fixed left-0 top-0 bottom-0 z-30 bg-[var(--bg-base)] border-r border-[var(--border)] transition-all duration-300',
+ 'hidden lg:flex flex-col fixed left-0 top-0 bottom-0 z-30 bg-[var(--bg-base)] border-r border-[var(--border)] transition-all duration-300',
           collapsed ? 'w-16' : 'w-60'
         )}
       >
@@ -104,22 +103,22 @@ export default function EstudianteLayout() {
               title={collapsed ? link.label : undefined}
               className={({ isActive }) =>
                 cn(
-                  'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-all duration-150 relative group',
+ 'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-all duration-150 relative group',
                   collapsed ? 'justify-center' : '',
                   isActive
-                    ? 'bg-[var(--brand-primary)] text-white shadow-[var(--shadow-sm)]'
+                    ? 'bg-[var(--brand-primary)] text-[var(--on-primary)] shadow-[var(--shadow-sm)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]'
                 )
               }
             >
               {({ isActive }) => (
                 <>
-                  <span className="shrink-0 text-base">{link.emoji}</span>
+                  <link.icon size={18} className="shrink-0" strokeWidth={2} aria-hidden="true" />
                   {!collapsed && <span className="flex-1">{link.label}</span>}
                   {!collapsed && link.badge !== undefined && link.badge !== null && (
                     <span className={cn(
-                      'text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center',
-                      isActive ? 'bg-white/20 text-white' : 'bg-[var(--brand-primary)] text-white'
+ 'text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center',
+                      isActive ? 'bg-white/20 text-[var(--on-primary)]' : 'bg-[var(--brand-primary)] text-[var(--on-primary)]'
                     )}>
                       {link.badge}
                     </span>
@@ -140,7 +139,7 @@ export default function EstudianteLayout() {
           <div className="px-2 pb-3">
             <Link
               to="/estudiante/turnos"
-              className="flex items-center gap-2 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium bg-[var(--brand-accent)] text-[var(--text-primary)] hover:bg-[var(--brand-accent-hover)] transition-colors"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium bg-[var(--brand-accent)] text-[#0E0F12] hover:bg-[var(--brand-accent-hover)] transition-colors"
             >
               <Zap size={16} />
               Buscar turnos
@@ -152,7 +151,7 @@ export default function EstudianteLayout() {
           <button
             onClick={() => setCollapsed(!collapsed)}
             className={cn(
-              'w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius-md)] text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] transition-colors',
+ 'w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius-md)] text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] transition-colors',
               collapsed ? 'justify-center' : ''
             )}
             aria-label={collapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
@@ -193,17 +192,17 @@ export default function EstudianteLayout() {
                     to={link.href}
                     className={({ isActive }) =>
                       cn(
-                        'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-colors',
+ 'flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)] text-sm font-medium transition-colors',
                         isActive
-                          ? 'bg-[var(--brand-primary)] text-white'
+                          ? 'bg-[var(--brand-primary)] text-[var(--on-primary)]'
                           : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]'
                       )
                     }
                   >
-                    <span className="text-base">{link.emoji}</span>
+                    <link.icon size={18} strokeWidth={2} aria-hidden="true" />
                     <span className="flex-1">{link.label}</span>
                     {link.badge !== undefined && link.badge !== null && (
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--brand-primary)] text-white min-w-[18px] text-center">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--brand-primary)] text-[var(--on-primary)] min-w-[18px] text-center">
                         {link.badge}
                       </span>
                     )}
@@ -218,8 +217,8 @@ export default function EstudianteLayout() {
       {/* Main content */}
       <div
         className={cn(
-          'flex-1 flex flex-col min-h-screen transition-all duration-300',
-          'lg:ml-60 pb-16 lg:pb-0',
+ 'flex-1 flex flex-col min-h-screen transition-all duration-300',
+ 'lg:ml-60 pb-16 lg:pb-0',
           collapsed && 'lg:ml-16'
         )}
       >
@@ -287,8 +286,8 @@ export default function EstudianteLayout() {
                         <div
                           key={n.id}
                           className={cn(
-                            'px-4 py-3 border-b border-[var(--border)] last:border-0 hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer',
-                            !n.read && 'bg-blue-50/40'
+ 'px-4 py-3 border-b border-[var(--border)] last:border-0 hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer',
+                            !n.read && 'bg-[var(--bg-subtle)]'
                           )}
                         >
                           {!n.read && (
@@ -322,7 +321,7 @@ export default function EstudianteLayout() {
               onClick={() => { setProfileOpen(!profileOpen); setNotifOpen(false) }}
               className="flex items-center gap-2 px-2 py-1.5 rounded-[var(--radius-md)] hover:bg-[var(--bg-subtle)] transition-colors"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-[var(--brand-primary)] to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+              <div className="w-8 h-8 bg-[var(--brand-primary)] rounded-full flex items-center justify-center text-[var(--on-primary)] text-sm font-semibold">
                 {user?.name ? user.name[0].toUpperCase() : 'E'}
               </div>
               <div className="hidden sm:block text-left">
@@ -393,7 +392,7 @@ export default function EstudianteLayout() {
               to={link.href}
               className={({ isActive }) =>
                 cn(
-                  'flex-1 flex flex-col items-center gap-0.5 py-2.5 px-1 relative transition-colors',
+ 'flex-1 flex flex-col items-center gap-0.5 py-2.5 px-1 relative transition-colors',
                   isActive ? 'text-[var(--brand-primary)]' : 'text-[var(--text-tertiary)]'
                 )
               }

@@ -17,7 +17,7 @@ export default function EmpresaConfiguracion() {
         <Tabs.List className="flex gap-1 mb-8 p-1 rounded-[var(--radius-md)] w-fit" style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
           {['perfil', 'notificaciones', 'integraciones', 'seguridad', 'api'].map(t => (
             <Tabs.Trigger key={t} value={t}
-              className="px-4 py-2 rounded-[var(--radius-sm)] text-sm font-medium capitalize transition-all data-[state=active]:bg-[var(--brand-primary)] data-[state=active]:text-white"
+              className="px-4 py-2 rounded-[var(--radius-sm)] text-sm font-medium capitalize transition-all data-[state=active]:bg-[var(--brand-primary)] data-[state=active]:text-[var(--on-primary)]"
               style={{ color: 'var(--text-secondary)' }}>
               {t === 'api' ? 'API' : t.charAt(0).toUpperCase() + t.slice(1)}
             </Tabs.Trigger>

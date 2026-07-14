@@ -26,7 +26,7 @@ export default function Analiticas() {
           { label: 'Contrataciones (año)', value: '157', trend: '+23%' },
           { label: 'Turnos cubiertos', value: '142', trend: '+18%' },
           { label: 'Tasa de cobertura', value: '90%', trend: '+5pp' },
-          { label: 'Valoración media', value: '4,7★', trend: '+0,2' },
+          { label: 'Valoración media', value: '4,7', trend: '+0,2' },
         ].map((kpi, i) => (
           <div key={i} className="p-5 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
             <div className="text-sm mb-1" style={{ color: 'var(--text-secondary)' }}>{kpi.label}</div>

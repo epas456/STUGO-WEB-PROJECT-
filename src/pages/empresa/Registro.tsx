@@ -102,7 +102,7 @@ export default function EmpresaRegistro() {
             <div className="space-y-2">
               {[['1-10', '1 a 10 contrataciones/mes'], ['10-25', '10 a 25 contrataciones/mes'], ['25-50', '25 a 50 contrataciones/mes'], ['50+', 'Más de 50 contrataciones/mes']].map(([v, label]) => (
                 <label key={v} className="flex items-center gap-3 p-3 rounded-[var(--radius-md)] cursor-pointer"
-                  style={{ border: `1px solid ${form.volumen === v ? 'var(--brand-primary)' : 'var(--border)'}`, background: form.volumen === v ? '#EEF2FF' : 'var(--bg-base)' }}>
+                  style={{ border: `1px solid ${form.volumen === v ? 'var(--brand-primary)' : 'var(--border)'}`, background: form.volumen === v ? 'var(--bg-subtle)' : 'var(--bg-base)' }}>
                   <input type="radio" name="volumen" value={v} checked={form.volumen === v} onChange={() => setForm(p => ({ ...p, volumen: v }))} />
                   <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
                 </label>

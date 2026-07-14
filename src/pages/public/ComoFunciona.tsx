@@ -118,7 +118,7 @@ export default function ComoFunciona() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Header */}
-      <div className="py-20 text-center px-4" style={{ background: 'linear-gradient(180deg, rgba(45,91,255,0.06) 0%, transparent 100%)' }}>
+      <div className="py-20 text-center px-4" style={{ background: 'linear-gradient(180deg, rgba(14,15,18,0.05) 0%, transparent 100%)' }}>
         <span className="text-xs font-bold uppercase tracking-widest mb-4 block" style={{ color: 'var(--brand-primary)' }}>
           Guía paso a paso
         </span>
@@ -191,8 +191,8 @@ export default function ComoFunciona() {
                           <h3 className="font-bold text-base mb-2" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
                           <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>{step.desc}</p>
                           <div className="flex items-start gap-2 p-3 rounded-[var(--radius-sm)]"
-                            style={{ background: 'rgba(45,91,255,0.05)', border: '1px solid rgba(45,91,255,0.1)' }}>
-                            <span className="text-xs" style={{ color: 'var(--brand-primary)' }}>💡</span>
+                            style={{ background: 'rgba(14,15,18,0.04)', border: '1px solid rgba(45,91,255,0.1)' }}>
+                            <span className="text-xs" style={{ color: 'var(--brand-primary)' }}></span>
                             <p className="text-xs" style={{ color: 'var(--brand-primary)' }}>{step.detail}</p>
                           </div>
                         </div>
@@ -224,7 +224,7 @@ export default function ComoFunciona() {
               </p>
               <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
                 <p className="text-xs font-medium" style={{ color: '#059669' }}>
-                  ✅ El estudiante cotiza a la Seguridad Social desde el primer día
+                  El estudiante cotiza a la Seguridad Social desde el primer día
                 </p>
               </div>
             </Card>
@@ -236,9 +236,9 @@ export default function ComoFunciona() {
                 como autónomo, emitiendo factura directamente a la empresa. STUGO facilita herramientas de autofacturación
                 que simplifican este proceso cumpliendo con la normativa española.
               </p>
-              <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(45,91,255,0.06)', border: '1px solid rgba(45,91,255,0.15)' }}>
+              <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(14,15,18,0.05)', border: '1px solid rgba(45,91,255,0.15)' }}>
                 <p className="text-xs font-medium" style={{ color: 'var(--brand-primary)' }}>
-                  ℹ️ Cada oferta indica claramente qué modalidad aplica
+                  ℹ Cada oferta indica claramente qué modalidad aplica
                 </p>
               </div>
             </Card>

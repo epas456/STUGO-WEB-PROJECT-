@@ -54,8 +54,8 @@ const kpis = [
     trend: '+12%',
     up: true,
     icon: Briefcase,
-    color: '#2D5BFF',
-    bg: '#EEF2FF',
+    color: '#1B2A4E',
+    bg: 'var(--bg-subtle)',
   },
   {
     label: 'Candidatos pendientes',
@@ -68,7 +68,7 @@ const kpis = [
   },
   {
     label: 'Valoración media',
-    value: '4.7★',
+    value: '4.7',
     trend: '+0.2',
     up: true,
     icon: Star,
@@ -81,7 +81,7 @@ const kpis = [
     trend: '+18%',
     up: true,
     icon: TrendingUp,
-    color: '#8B5CF6',
+    color: '#1B2A4E',
     bg: '#F5F3FF',
   },
 ]
@@ -252,7 +252,7 @@ export default function Dashboard() {
                   {t.confirmados.map((nombre) => (
                     <div
                       key={nombre}
-                      className="w-7 h-7 rounded-full bg-[var(--brand-primary)] flex items-center justify-center text-white text-[10px] font-bold border-2 border-white"
+                      className="w-7 h-7 rounded-full bg-[var(--brand-primary)] flex items-center justify-center text-[var(--on-primary)] text-[10px] font-bold border-2 border-white"
                       title={nombre}
                     >
                       {nombre.split(' ').map((n) => n[0]).join('')}
@@ -293,7 +293,7 @@ export default function Dashboard() {
                 </div>
                 <MatchScoreCircle score={est.matchScore ?? 80} size={44} />
                 <div className="flex gap-1 shrink-0">
-                  <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-white" style={{ backgroundColor: 'var(--brand-primary)' }}>
+                  <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--on-primary)]" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     Aceptar
                   </button>
                   <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--text-secondary)] bg-[var(--bg-muted)]">

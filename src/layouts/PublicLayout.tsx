@@ -19,7 +19,6 @@ const navLinks = [
     children: [
       { label: 'Buscar turnos', href: '/turnos', icon: <Briefcase size={16} /> },
       { label: 'Directorio de estudiantes', href: '/estudiantes', icon: <Users size={16} /> },
-      { label: 'STUGO Academy', href: '/academy', icon: <Star size={16} /> },
       { label: 'Historias de éxito', href: '/blog?categoria=historias', icon: <BookOpen size={16} /> },
     ],
   },
@@ -51,7 +50,6 @@ const footerColumns = [
     links: [
       { label: 'Cómo funciona', href: '/como-funciona' },
       { label: 'Buscar turnos', href: '/turnos' },
-      { label: 'STUGO Academy', href: '/academy' },
       { label: 'Historias de éxito', href: '/blog' },
       { label: 'Derechos laborales', href: '/blog/derechos-laborales-trabajador-temporal-espana' },
     ],
@@ -163,7 +161,7 @@ export default function PublicLayout() {
       {/* Navbar */}
       <header
         className={cn(
-          'sticky top-0 z-40 transition-all duration-200',
+ 'sticky top-0 z-40 transition-all duration-200',
           scrolled
             ? 'bg-[var(--bg-base)]/95 backdrop-blur-md border-b border-[var(--border)] shadow-[var(--shadow-sm)]'
             : 'bg-[var(--bg-base)]'
@@ -187,9 +185,9 @@ export default function PublicLayout() {
                   to={link.href}
                   className={({ isActive }) =>
                     cn(
-                      'px-3 py-2 text-sm font-medium rounded-[var(--radius-md)] transition-colors',
+ 'px-3 py-2 text-sm font-medium rounded-[var(--radius-md)] transition-colors',
                       isActive
-                        ? 'text-[var(--brand-primary)] bg-blue-50'
+                        ? 'text-[var(--text-primary)] bg-[var(--bg-subtle)]'
                         : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]'
                     )
                   }

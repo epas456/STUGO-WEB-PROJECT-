@@ -4,10 +4,10 @@ import { Search, HelpCircle, Building2, GraduationCap, CreditCard, Star, Shield,
 import { articulosAyuda } from '@/mocks/articulos-ayuda'
 
 const categories = [
-  { slug: 'primeros-pasos', name: 'Primeros pasos', icon: HelpCircle, color: '#2D5BFF' },
+  { slug: 'primeros-pasos', name: 'Primeros pasos', icon: HelpCircle, color: '#1B2A4E' },
   { slug: 'empresas', name: 'Empresas', icon: Building2, color: '#10B981' },
   { slug: 'estudiantes', name: 'Estudiantes', icon: GraduationCap, color: '#F59E0B' },
-  { slug: 'pagos', name: 'Pagos y cobros', icon: CreditCard, color: '#8B5CF6' },
+  { slug: 'pagos', name: 'Pagos y cobros', icon: CreditCard, color: '#1B2A4E' },
   { slug: 'reputacion', name: 'Reputación', icon: Star, color: '#EC4899' },
   { slug: 'verificacion', name: 'Verificación', icon: Shield, color: '#14B8A6' },
   { slug: 'cancelaciones', name: 'Cancelaciones', icon: XCircle, color: '#EF4444' },
@@ -70,7 +70,7 @@ export default function Ayuda() {
           <h3 className="font-bold mb-2" style={{ color: 'var(--text-primary)' }}>¿No encuentras lo que buscas?</h3>
           <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>Nuestro equipo de soporte responde en menos de 4 horas laborables.</p>
           <Link to="/contacto">
-            <button className="px-5 py-2.5 rounded-[var(--radius-md)] text-sm font-medium text-white" style={{ background: 'var(--brand-primary)' }}>
+            <button className="px-5 py-2.5 rounded-[var(--radius-md)] text-sm font-medium text-[var(--on-primary)]" style={{ background: 'var(--brand-primary)' }}>
               Contactar con soporte
             </button>
           </Link>

@@ -14,7 +14,7 @@ const cookies = [
 const typeBadge: Record<string, string> = {
   Necesaria: '#10B981',
   Preferencias: '#F59E0B',
-  Analítica: '#2D5BFF',
+  Analítica: '#1B2A4E',
   Marketing: '#EF4444',
 }
 

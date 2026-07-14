@@ -15,7 +15,7 @@ export default function EstudianteConfiguracion() {
         <Tabs.List className="flex gap-1 mb-8 p-1 rounded-[var(--radius-md)] w-fit flex-wrap" style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
           {['cuenta', 'notificaciones', 'privacidad', 'eliminar'].map(t => (
             <Tabs.Trigger key={t} value={t}
-              className="px-3 py-2 rounded-[var(--radius-sm)] text-sm font-medium capitalize transition-all data-[state=active]:bg-[var(--brand-primary)] data-[state=active]:text-white"
+              className="px-3 py-2 rounded-[var(--radius-sm)] text-sm font-medium capitalize transition-all data-[state=active]:bg-[var(--brand-primary)] data-[state=active]:text-[var(--on-primary)]"
               style={{ color: 'var(--text-secondary)' }}>
               {t === 'eliminar' ? 'Eliminar cuenta' : t.charAt(0).toUpperCase() + t.slice(1)}
             </Tabs.Trigger>

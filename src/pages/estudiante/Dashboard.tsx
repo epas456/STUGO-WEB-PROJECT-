@@ -7,6 +7,7 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import { Euro, CheckCircle, Star, Flame, Clock, ChevronRight } from 'lucide-react'
+import { BadgeIcon } from '@/components/BadgeIcon'
 import { useStore } from '@/store/useStore'
 import { turnos } from '@/mocks/turnos'
 import { badges } from '@/mocks/badges'
@@ -29,8 +30,8 @@ const kpis = [
     trend: '+12%',
     up: true,
     icon: Euro,
-    color: '#2D5BFF',
-    bg: '#EEF2FF',
+    color: '#1B2A4E',
+    bg: 'var(--bg-subtle)',
   },
   {
     label: 'Turnos completados',
@@ -43,7 +44,7 @@ const kpis = [
   },
   {
     label: 'Valoración media',
-    value: '4.9★',
+    value: '4.9',
     trend: '+0.1',
     up: true,
     icon: Star,
@@ -83,7 +84,7 @@ export default function Dashboard() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-[var(--text-primary)]">
-          ¡Hola, {nombre}! 👋
+          Hola, {nombre}
         </h1>
         <p className="text-sm text-[var(--text-secondary)] mt-1">
           Aquí tienes tu resumen de actividad
@@ -251,10 +252,10 @@ export default function Dashboard() {
           {misInsignias.map((badge) => (
             <div key={badge.id} className="flex items-center gap-2.5">
               <div
-                className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center text-2xl"
+                className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center"
                 style={{ backgroundColor: badge.color + '20', border: `2px solid ${badge.color}` }}
               >
-                {badge.emoji}
+                <BadgeIcon name={badge.icon} color={badge.color} />
               </div>
               <div>
                 <p className="text-sm font-semibold text-[var(--text-primary)]">{badge.nombre}</p>
@@ -271,7 +272,7 @@ export default function Dashboard() {
               <div className="w-24 h-1.5 rounded-full bg-[var(--bg-muted)] mt-1.5">
                 <div
                   className="h-full rounded-full"
-                  style={{ width: '87%', backgroundColor: '#8B5CF6' }}
+                  style={{ width: '87%', backgroundColor: '#1B2A4E' }}
                 />
               </div>
               <p className="text-[10px] text-[var(--text-secondary)] mt-0.5">87/100 turnos</p>
