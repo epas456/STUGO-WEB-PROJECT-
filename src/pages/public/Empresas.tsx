@@ -119,7 +119,7 @@ export default function Empresas() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div key={i} className="p-6 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-base)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
-                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="#D6F84A" stroke="#D6F84A" />)}</div>
+                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="var(--brand-accent)" stroke="var(--brand-accent)" />)}</div>
                 <p className="text-sm mb-4 italic" style={{ color: 'var(--text-secondary)' }}>"{t.text}"</p>
                 <div>
                   <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t.name}</div>

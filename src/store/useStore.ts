@@ -12,7 +12,7 @@ export interface AuthUser {
 
 export interface Notification {
   id: string
-  type: 'turno' | 'mensaje' | 'valoracion' | 'badge' | 'pago' | 'oportunidad'
+  type: 'turno' | 'mensaje' | 'valoracion' | 'pago' | 'oportunidad'
   title: string
   message: string
   read: boolean

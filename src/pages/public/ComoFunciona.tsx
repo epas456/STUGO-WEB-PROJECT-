@@ -224,7 +224,7 @@ export default function ComoFunciona() {
                 retenciones y la PRL. STUGO orquesta; la ETT ejecuta.
               </p>
               <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
-                <p className="text-xs font-medium" style={{ color: '#059669' }}>
+                <p className="text-xs font-medium" style={{ color: 'var(--success)' }}>
                   Contrato real y cotización a la Seguridad Social desde el primer minuto
                 </p>
               </div>

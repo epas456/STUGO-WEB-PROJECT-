@@ -23,9 +23,10 @@ const EstudiantePublico = lazy(() => import('@/pages/public/EstudiantePublico'))
 const Empresas = lazy(() => import('@/pages/public/Empresas'))
 const EmpresaPublica = lazy(() => import('@/pages/public/EmpresaPublica'))
 const Precios = lazy(() => import('@/pages/public/Precios'))
+const ComoFunciona = lazy(() => import('@/pages/public/ComoFunciona'))
+const Calculadora = lazy(() => import('@/pages/public/Calculadora'))
 const Blog = lazy(() => import('@/pages/public/Blog'))
 const BlogArticulo = lazy(() => import('@/pages/public/BlogArticulo'))
-const Faq = lazy(() => import('@/pages/public/Faq'))
 const Ayuda = lazy(() => import('@/pages/public/Ayuda'))
 const AyudaArticulo = lazy(() => import('@/pages/public/AyudaArticulo'))
 const Contacto = lazy(() => import('@/pages/public/Contacto'))
@@ -61,7 +62,6 @@ const EstudianteMensajes = lazy(() => import('@/pages/estudiante/Mensajes'))
 const EstudiantePerfil = lazy(() => import('@/pages/estudiante/Perfil'))
 const EstudianteValoraciones = lazy(() => import('@/pages/estudiante/Valoraciones'))
 const EstudianteCartera = lazy(() => import('@/pages/estudiante/Cartera'))
-const EstudianteBadges = lazy(() => import('@/pages/estudiante/Badges'))
 const EstudianteConfiguracion = lazy(() => import('@/pages/estudiante/Configuracion'))
 const EstudianteNotificaciones = lazy(() => import('@/pages/estudiante/Notificaciones'))
 
@@ -139,9 +139,11 @@ export default function App() {
             <Route path="empresas" element={<Empresas />} />
             <Route path="empresas/:id" element={<EmpresaPublica />} />
             <Route path="precios" element={<Precios />} />
+            <Route path="como-funciona" element={<ComoFunciona />} />
+            <Route path="calculadora" element={<Calculadora />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogArticulo />} />
-            <Route path="faq" element={<Faq />} />
+            <Route path="faq" element={<Navigate to="/ayuda" replace />} />
             <Route path="ayuda" element={<Ayuda />} />
             <Route path="ayuda/:slug" element={<AyudaArticulo />} />
             <Route path="contacto" element={<Contacto />} />
@@ -203,7 +205,6 @@ export default function App() {
             <Route path="valoraciones" element={<EstudianteValoraciones />} />
             <Route path="valoraciones/pendientes" element={<EstudianteValoraciones />} />
             <Route path="cartera" element={<EstudianteCartera />} />
-            <Route path="badges" element={<EstudianteBadges />} />
             <Route path="configuracion" element={<EstudianteConfiguracion />} />
             <Route path="notificaciones" element={<EstudianteNotificaciones />} />
           </Route>

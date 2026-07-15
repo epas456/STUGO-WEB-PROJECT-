@@ -1,22 +1,25 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Search, HelpCircle, Building2, GraduationCap, CreditCard, Star, Shield, XCircle, Lock, ChevronRight } from 'lucide-react'
+import { Search, ChevronRight, ChevronDown } from 'lucide-react'
 import { articulosAyuda } from '@/mocks/articulos-ayuda'
-
-const categories = [
-  { slug: 'primeros-pasos', name: 'Primeros pasos', icon: HelpCircle, color: '#1B2A4E' },
-  { slug: 'empresas', name: 'Empresas', icon: Building2, color: '#10B981' },
-  { slug: 'estudiantes', name: 'Estudiantes', icon: GraduationCap, color: '#F59E0B' },
-  { slug: 'pagos', name: 'Pagos y cobros', icon: CreditCard, color: '#1B2A4E' },
-  { slug: 'reputacion', name: 'Reputación', icon: Star, color: '#EC4899' },
-  { slug: 'verificacion', name: 'Verificación', icon: Shield, color: '#14B8A6' },
-  { slug: 'cancelaciones', name: 'Cancelaciones', icon: XCircle, color: '#EF4444' },
-  { slug: 'privacidad', name: 'Cuenta y privacidad', icon: Lock, color: '#6366F1' },
-]
+import { faq, categoriasFaq } from '@/mocks/faq'
 
 export default function Ayuda() {
   const [search, setSearch] = useState('')
-  const popular = articulosAyuda.slice(0, 5)
+  const [categoria, setCategoria] = useState('todas')
+  const [openId, setOpenId] = useState<string | null>(null)
+
+  const q = search.trim().toLowerCase()
+
+  const articulos = q
+    ? articulosAyuda.filter(a => a.titulo.toLowerCase().includes(q))
+    : articulosAyuda.slice(0, 5)
+
+  const preguntas = faq.filter(f => {
+    if (categoria !== 'todas' && f.categoria !== categoria) return false
+    if (q && !f.pregunta.toLowerCase().includes(q) && !f.respuesta.toLowerCase().includes(q)) return false
+    return true
+  })
 
   return (
     <div style={{ background: 'var(--bg-base)' }}>
@@ -32,37 +35,67 @@ export default function Ayuda() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 py-16">
-        {/* Categories */}
-        <h2 className="text-2xl font-bold mb-8" style={{ color: 'var(--text-primary)' }}>Explorar por categoría</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {categories.map(cat => (
-            <Link key={cat.slug} to={`/centro-de-ayuda/${cat.slug}`}
-              className="p-5 rounded-[var(--radius-lg)] text-center hover:scale-105 transition-transform"
-              style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
-              <div className="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: cat.color + '22' }}>
-                <cat.icon size={20} style={{ color: cat.color }} />
-              </div>
-              <div className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{cat.name}</div>
-              <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
-                {articulosAyuda.filter(a => a.categoria.toLowerCase().includes(cat.slug.replace('-', ' '))).length || Math.floor(Math.random() * 5) + 3} artículos
-              </div>
-            </Link>
-          ))}
+      <div className="max-w-3xl mx-auto px-4 py-16">
+        {/* Guías */}
+        <div className="mb-14">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+            {q ? 'Guías relacionadas' : 'Guías más consultadas'}
+          </h2>
+          {articulos.length === 0 ? (
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>No hay guías que coincidan con tu búsqueda.</p>
+          ) : (
+            <div className="rounded-[var(--radius-lg)] overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+              {articulos.map(art => (
+                <Link key={art.id} to={`/ayuda/${art.slug}`}
+                  className="flex items-center justify-between p-4 hover:bg-[var(--bg-subtle)] transition-colors"
+                  style={{ borderBottom: '1px solid var(--border)' }}>
+                  <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{art.titulo}</span>
+                  <ChevronRight size={16} style={{ color: 'var(--text-tertiary)' }} />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Popular articles */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>Artículos populares</h2>
-          <div className="rounded-[var(--radius-lg)] overflow-hidden" style={{ border: '1px solid var(--border)' }}>
-            {popular.map(art => (
-              <Link key={art.id} to={`/centro-de-ayuda/${art.categoria.toLowerCase()}/${art.slug}`}
-                className="flex items-center justify-between p-4 hover:bg-[var(--bg-subtle)] transition-colors">
-                <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{art.titulo}</span>
-                <ChevronRight size={16} style={{ color: 'var(--text-tertiary)' }} />
-              </Link>
+        {/* Preguntas frecuentes */}
+        <div className="mb-14">
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>Preguntas frecuentes</h2>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {[{ id: 'todas', label: 'Todas' }, ...categoriasFaq].map(cat => (
+              <button key={cat.id} onClick={() => setCategoria(cat.id)}
+                className="px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
+                style={{
+                  background: categoria === cat.id ? 'var(--brand-primary)' : 'var(--bg-subtle)',
+                  color: categoria === cat.id ? 'var(--on-primary)' : 'var(--text-secondary)',
+                  border: '1px solid var(--border)',
+                }}>
+                {cat.label}
+              </button>
             ))}
           </div>
+          {preguntas.length === 0 ? (
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>No hay preguntas que coincidan con tu búsqueda.</p>
+          ) : (
+            <div className="rounded-[var(--radius-lg)] overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+              {preguntas.map(item => {
+                const open = openId === item.id
+                return (
+                  <div key={item.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                    <button onClick={() => setOpenId(open ? null : item.id)}
+                      className="w-full flex items-center justify-between gap-4 p-4 text-left hover:bg-[var(--bg-subtle)] transition-colors">
+                      <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{item.pregunta}</span>
+                      <ChevronDown size={16} className="shrink-0 transition-transform" style={{ color: 'var(--text-tertiary)', transform: open ? 'rotate(180deg)' : 'none' }} />
+                    </button>
+                    {open && (
+                      <p className="px-4 pb-4 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                        {item.respuesta}
+                      </p>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
 
         {/* Contact CTA */}

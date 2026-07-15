@@ -213,7 +213,7 @@ export default function Candidatos() {
                     {est.verificado && (
                       <span
                         className="inline-block mt-0.5 px-2 py-0.5 rounded-full text-[10px] font-medium"
-                        style={{ backgroundColor: '#DBEAFE', color: '#1D4ED8' }}
+                        style={{ backgroundColor: 'var(--info-bg)', color: 'var(--info-text)' }}
                       >
                         ✓ Verificado
                       </span>
@@ -230,26 +230,6 @@ export default function Candidatos() {
                 <span className="text-xs text-[var(--text-secondary)]">·</span>
                 <span className="text-xs text-[var(--text-secondary)]">{est.nTurnos} turnos</span>
               </div>
-
-              {/* Badges */}
-              {est.badges.length > 0 && (
-                <div className="flex flex-wrap gap-1">
-                  {est.badges.slice(0, 3).map((b) => (
-                    <span
-                      key={b}
-                      className="px-2 py-0.5 rounded-full text-[10px] font-medium"
-                      style={{ backgroundColor: 'var(--bg-muted)', color: 'var(--text-secondary)' }}
-                    >
-                      {b}
-                    </span>
-                  ))}
-                  {est.badges.length > 3 && (
-                    <span className="text-[10px] text-[var(--text-secondary)]">
-                      +{est.badges.length - 3}
-                    </span>
-                  )}
-                </div>
-              )}
 
               {/* Sectors */}
               <div className="flex flex-wrap gap-1">

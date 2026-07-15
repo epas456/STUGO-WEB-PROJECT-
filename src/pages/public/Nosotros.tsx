@@ -2,11 +2,11 @@ import { Shield, Star, Zap, Target } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 
 const equipo = [
-  { initials: 'EM', name: 'Elena Martínez', role: 'CEO & Co-fundadora', quote: 'Empecé a los 16 sirviendo mesas. Sé lo que necesitas.', color: '#1B2A4E' },
+  { initials: 'EM', name: 'Elena Martínez', role: 'CEO & Co-fundadora', quote: 'Empecé a los 16 sirviendo mesas. Sé lo que necesitas.', color: 'var(--info)' },
   { initials: 'CL', name: 'Carlos López', role: 'CTO', quote: 'Construimos tecnología que de verdad funciona.', color: '#7C3AED' },
-  { initials: 'AR', name: 'Ana Ruiz', role: 'Head of Operations', quote: 'Cada turno cubierto es una historia real.', color: '#059669' },
-  { initials: 'IS', name: 'Iñigo Sainz', role: 'Growth', quote: 'Los datos no mienten.', color: '#D97706' },
-  { initials: 'MF', name: 'María Fernández', role: 'Legal & Compliance', quote: 'La transparencia no es opcional, es la base.', color: '#DC2626' },
+  { initials: 'AR', name: 'Ana Ruiz', role: 'Head of Operations', quote: 'Cada turno cubierto es una historia real.', color: 'var(--success)' },
+  { initials: 'IS', name: 'Iñigo Sainz', role: 'Growth', quote: 'Los datos no mienten.', color: 'var(--warning)' },
+  { initials: 'MF', name: 'María Fernández', role: 'Legal & Compliance', quote: 'La transparencia no es opcional, es la base.', color: 'var(--danger)' },
   { initials: 'TG', name: 'Tomás Gil', role: 'Product', quote: 'Diseño para personas, no para pantallas.', color: '#0891B2' },
   { initials: 'NV', name: 'Noa Vidal', role: 'Customer Success', quote: 'Resuelvo problemas reales en tiempo real.', color: '#BE185D' },
   { initials: 'PS', name: 'Pedro Sanz', role: 'Data', quote: 'Hago que el matching sea cada vez más preciso.', color: '#65A30D' },
@@ -19,12 +19,6 @@ const valores = [
   { icon: Target, title: 'Sin paja', desc: 'Cada función que construimos tiene un propósito real. Lo inútil, fuera.' },
 ]
 
-const cifras = [
-  { value: '12.000+', label: 'estudiantes activos' },
-  { value: '850+', label: 'empresas registradas' },
-  { value: '284.560', label: 'horas trabajadas' },
-  { value: '4,8', label: 'valoración media' },
-]
 
 export default function Nosotros() {
   return (
@@ -111,24 +105,6 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* CIFRAS */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">STUGO en números</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {cifras.map((c) => (
-              <div
-                key={c.label}
-                className="text-center p-6 rounded-[var(--radius-lg)] border"
-                style={{ background: 'var(--bg-subtle)', borderColor: 'var(--border)' }}
-              >
-                <p className="text-3xl font-bold mb-1" style={{ color: 'var(--brand-primary)' }}>{c.value}</p>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{c.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

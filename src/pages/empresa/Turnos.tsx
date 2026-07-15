@@ -11,10 +11,10 @@ const TABS: { label: string; key: Turno['estado'] | 'todos' }[] = [
 ]
 
 const ESTADO_COLORS: Record<Turno['estado'], { bg: string; text: string }> = {
-  abierto: { bg: '#DCFCE7', text: '#15803D' },
-  cubierto: { bg: '#DBEAFE', text: '#1D4ED8' },
-  completado: { bg: '#F3F4F6', text: '#374151' },
-  cancelado: { bg: '#FEE2E2', text: '#B91C1C' },
+  abierto: { bg: 'var(--success-bg)', text: 'var(--success-text)' },
+  cubierto: { bg: 'var(--info-bg)', text: 'var(--info-text)' },
+  completado: { bg: 'var(--neutral-bg)', text: 'var(--neutral-text)' },
+  cancelado: { bg: 'var(--danger-bg)', text: 'var(--danger-text)' },
 }
 
 const ESTADO_LABELS: Record<Turno['estado'], string> = {
@@ -195,7 +195,7 @@ export default function Turnos() {
                         {turno.urgente && (
                           <span
                             className="ml-1 px-2 py-0.5 rounded-full text-xs font-semibold"
-                            style={{ backgroundColor: '#FEF9C3', color: '#A16207' }}
+                            style={{ backgroundColor: 'var(--warning-bg)', color: 'var(--warning-text)' }}
                           >
                             Urgente
                           </span>
@@ -247,9 +247,9 @@ export default function Turnos() {
           >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: '#FEE2E2' }}
+              style={{ backgroundColor: 'var(--danger-bg)' }}
             >
-              <AlertTriangle size={20} style={{ color: '#B91C1C' }} />
+              <AlertTriangle size={20} style={{ color: 'var(--danger-text)' }} />
             </div>
             <div>
               <h3 className="font-semibold text-[var(--text-primary)]">¿Cancelar este turno?</h3>
@@ -267,7 +267,7 @@ export default function Turnos() {
               <button
                 onClick={() => handleCancel(confirmCancel)}
                 className="flex-1 px-4 py-2.5 rounded-[var(--radius-md)] text-sm font-semibold text-white"
-                style={{ backgroundColor: '#DC2626' }}
+                style={{ backgroundColor: 'var(--danger)' }}
               >
                 Sí, cancelar
               </button>

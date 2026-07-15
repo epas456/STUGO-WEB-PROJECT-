@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, Briefcase, MessageSquare, Star, CreditCard,
   Settings, Bell, LogOut, ChevronDown, ChevronLeft, ChevronRight,
-  Menu, X, User, Zap, Home, Award, Search,
+  Menu, X, User, Zap, Home, Search,
 } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
@@ -19,7 +19,6 @@ const sidebarLinks = [
   { label: 'Mi Perfil', href: '/estudiante/perfil', icon: User },
   { label: 'Valoraciones', href: '/estudiante/valoraciones', icon: Star },
   { label: 'Mi Cartera', href: '/estudiante/cartera', icon: CreditCard },
-  { label: 'Badges', href: '/estudiante/badges', icon: Award },
   { label: 'Configuración', href: '/estudiante/configuracion', icon: Settings },
 ]
 

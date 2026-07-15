@@ -10,10 +10,10 @@ const steps = [
 ]
 
 const sectors = [
-  { icon: ChefHat, name: 'Hostelería', desc: 'Camarero/a, barista, ayudante de cocina, hostess', color: '#FF6B35' },
-  { icon: ShoppingBag, name: 'Retail', desc: 'Reponedor/a, dependiente/a, cajero/a, visual merchandiser', color: '#1B2A4E' },
-  { icon: Music, name: 'Eventos', desc: 'Personal de sala, azafatas/os, taquilla, logística', color: '#1B2A4E' },
-  { icon: Package, name: 'Logística', desc: 'Almacén, reparto, picking, inventario', color: '#10B981' },
+  { icon: ChefHat, name: 'Hostelería', desc: 'Camarero/a, barista, ayudante de cocina, hostess', color: 'var(--brand-coral)' },
+  { icon: ShoppingBag, name: 'Retail', desc: 'Reponedor/a, dependiente/a, cajero/a, visual merchandiser', color: 'var(--info)' },
+  { icon: Music, name: 'Eventos', desc: 'Personal de sala, azafatas/os, taquilla, logística', color: 'var(--info)' },
+  { icon: Package, name: 'Logística', desc: 'Almacén, reparto, picking, inventario', color: 'var(--success)' },
 ]
 
 const testimonials = [
@@ -101,7 +101,7 @@ export default function Estudiantes() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div key={i} className="p-6 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-base)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
-                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="#D6F84A" stroke="#D6F84A" />)}</div>
+                <div className="flex mb-3">{[1,2,3,4,5].map(s => <Star key={s} size={14} fill="var(--brand-accent)" stroke="var(--brand-accent)" />)}</div>
                 <p className="text-sm mb-4 italic" style={{ color: 'var(--text-secondary)' }}>"{t.text}"</p>
                 <div>
                   <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t.name}, {t.age} años</div>

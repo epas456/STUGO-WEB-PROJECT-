@@ -29,7 +29,7 @@ export default function EstudianteTurnoDetalle() {
             <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{turno.titulo}</h1>
             <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>{turno.descripcion}</p>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold text-white" style={{ background: turno.estado === 'abierto' ? '#10B981' : '#F59E0B' }}>
+          <span className="px-3 py-1 rounded-full text-xs font-semibold text-white" style={{ background: turno.estado === 'abierto' ? 'var(--success)' : 'var(--warning)' }}>
             {turno.estado}
           </span>
         </div>
@@ -57,9 +57,9 @@ export default function EstudianteTurnoDetalle() {
           <Button variant="outline" onClick={() => toast.info('Formulario de reporte abierto.')} className="flex-1">Reportar problema</Button>
           {!showConfirm
             ? <Button variant="danger" onClick={() => setShowConfirm(true)} className="flex-1">Cancelar turno</Button>
-            : <div className="flex-1 p-3 rounded-[var(--radius-md)] text-sm" style={{ background: '#FEF2F2', border: '1px solid var(--danger)' }}>
+            : <div className="flex-1 p-3 rounded-[var(--radius-md)] text-sm" style={{ background: 'var(--danger-bg)', border: '1px solid var(--danger)' }}>
                 <div className="flex items-start gap-2 mb-2"><AlertTriangle size={15} style={{ color: 'var(--danger)' }} />
-                  <span style={{ color: '#991B1B' }}>Cancelar ahora afectará a tu reputación.</span></div>
+                  <span style={{ color: 'var(--danger-text)' }}>Cancelar ahora afectará a tu reputación.</span></div>
                 <div className="flex gap-2">
                   <button onClick={() => setShowConfirm(false)} className="px-3 py-1.5 rounded-[var(--radius-sm)] text-xs" style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>No, mantener</button>
                   <button onClick={() => { setCancelled(true); toast.error('Turno cancelado. Tu reputación se ha visto afectada.') }}

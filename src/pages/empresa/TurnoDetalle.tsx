@@ -20,10 +20,10 @@ import { StarRating } from '@/components/StarRating'
 const TABS = ['Candidatos', 'Confirmados', 'Detalles', 'Histórico']
 
 const ESTADO_COLORS = {
-  abierto: { bg: '#DCFCE7', text: '#15803D' },
-  cubierto: { bg: '#DBEAFE', text: '#1D4ED8' },
-  completado: { bg: '#F3F4F6', text: '#374151' },
-  cancelado: { bg: '#FEE2E2', text: '#B91C1C' },
+  abierto: { bg: 'var(--success-bg)', text: 'var(--success-text)' },
+  cubierto: { bg: 'var(--info-bg)', text: 'var(--info-text)' },
+  completado: { bg: 'var(--neutral-bg)', text: 'var(--neutral-text)' },
+  cancelado: { bg: 'var(--danger-bg)', text: 'var(--danger-text)' },
 }
 
 const HISTORICO = [
@@ -70,7 +70,7 @@ export default function TurnoDetalle() {
             {turno.urgente && (
               <span
                 className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
-                style={{ backgroundColor: '#FEF9C3', color: '#A16207' }}
+                style={{ backgroundColor: 'var(--warning-bg)', color: 'var(--warning-text)' }}
               >
                 Urgente
               </span>
@@ -125,7 +125,7 @@ export default function TurnoDetalle() {
             {tab === 'Confirmados' && (
               <span
                 className="ml-2 px-1.5 py-0.5 rounded-full text-xs"
-                style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+                style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
               >
                 {candidatos.filter((c) => c.confirmado).length}
               </span>
@@ -287,7 +287,7 @@ function CandidatoCard({
           {est.verificado && (
             <span
               className="px-2 py-0.5 rounded-full text-xs font-medium"
-              style={{ backgroundColor: '#DBEAFE', color: '#1D4ED8' }}
+              style={{ backgroundColor: 'var(--info-bg)', color: 'var(--info-text)' }}
             >
               Verificado
             </span>
@@ -295,7 +295,7 @@ function CandidatoCard({
           {isConfirmed && (
             <span
               className="px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1"
-              style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+              style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
             >
               <CheckCircle size={10} />
               Confirmado

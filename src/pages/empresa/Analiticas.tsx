@@ -7,9 +7,9 @@ const sectorData = [
   { sector: 'Eventos', turnos: 9 }, { sector: 'Logística', turnos: 6 },
 ]
 const pieData = [
-  { name: 'Aceptados', value: 45, color: '#10B981' },
-  { name: 'Pendientes', value: 12, color: '#F59E0B' },
-  { name: 'Rechazados', value: 8, color: '#EF4444' },
+  { name: 'Aceptados', value: 45, color: 'var(--success)' },
+  { name: 'Pendientes', value: 12, color: 'var(--warning)' },
+  { name: 'Rechazados', value: 8, color: 'var(--danger)' },
 ]
 
 export default function Analiticas() {

@@ -32,9 +32,9 @@ export default function RecuperarPassword() {
         </div>
 
         {sent ? (
-          <div className="text-center p-6 rounded-[var(--radius-lg)]" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
-            <p className="text-sm font-medium mb-1" style={{ color: '#166534' }}>¡Listo!</p>
-            <p className="text-sm" style={{ color: '#166534' }}>
+          <div className="text-center p-6 rounded-[var(--radius-lg)]" style={{ background: 'var(--success-bg)', border: '1px solid var(--success-bg)' }}>
+            <p className="text-sm font-medium mb-1" style={{ color: 'var(--success-text)' }}>¡Listo!</p>
+            <p className="text-sm" style={{ color: 'var(--success-text)' }}>
               Si ese email está registrado en STUGO, recibirás las instrucciones en menos de 5 minutos. Revisa también tu carpeta de spam.
             </p>
           </div>

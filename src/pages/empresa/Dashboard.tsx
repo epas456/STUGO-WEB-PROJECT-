@@ -54,7 +54,7 @@ const kpis = [
     trend: '+12%',
     up: true,
     icon: Briefcase,
-    color: '#1B2A4E',
+    color: 'var(--info)',
     bg: 'var(--bg-subtle)',
   },
   {
@@ -63,8 +63,8 @@ const kpis = [
     trend: '-5%',
     up: false,
     icon: Users,
-    color: '#F59E0B',
-    bg: '#FEF9EE',
+    color: 'var(--warning)',
+    bg: 'var(--warning-bg)',
   },
   {
     label: 'Valoración media',
@@ -72,8 +72,8 @@ const kpis = [
     trend: '+0.2',
     up: true,
     icon: Star,
-    color: '#10B981',
-    bg: '#ECFDF5',
+    color: 'var(--success)',
+    bg: 'var(--success-bg)',
   },
   {
     label: 'Ahorro vs ETT',
@@ -81,8 +81,8 @@ const kpis = [
     trend: '+18%',
     up: true,
     icon: TrendingUp,
-    color: '#1B2A4E',
-    bg: '#F5F3FF',
+    color: 'var(--info)',
+    bg: 'var(--info-bg)',
   },
 ]
 
@@ -309,7 +309,7 @@ export default function Dashboard() {
       {/* Tip box */}
       <div
         className="rounded-[var(--radius-lg)] border p-4 flex items-start gap-3"
-        style={{ backgroundColor: '#FFFBEA', borderColor: 'var(--brand-accent)' }}
+        style={{ backgroundColor: 'var(--warning-bg)', borderColor: 'var(--brand-accent)' }}
       >
         <Lightbulb size={20} style={{ color: 'var(--brand-accent)', flexShrink: 0 }} />
         <div>

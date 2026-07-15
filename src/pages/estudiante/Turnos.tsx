@@ -24,10 +24,10 @@ const ESTADO_MAP: Record<string, string> = {
 }
 
 const ESTADO_COLORS: Record<string, { bg: string; text: string }> = {
-  proximo: { bg: '#DBEAFE', text: '#1D4ED8' },
-  en_curso: { bg: '#DCFCE7', text: '#15803D' },
-  pasado: { bg: '#F3F4F6', text: '#374151' },
-  cancelado: { bg: '#FEE2E2', text: '#B91C1C' },
+  proximo: { bg: 'var(--info-bg)', text: 'var(--info-text)' },
+  en_curso: { bg: 'var(--success-bg)', text: 'var(--success-text)' },
+  pasado: { bg: 'var(--neutral-bg)', text: 'var(--neutral-text)' },
+  cancelado: { bg: 'var(--danger-bg)', text: 'var(--danger-text)' },
 }
 
 interface RatingModalState {

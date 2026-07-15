@@ -10,9 +10,9 @@ const docs = [
 ]
 
 const STATUS = {
-  verified: { icon: CheckCircle2, color: '#10B981', label: 'Verificado' },
-  pending: { icon: Clock, color: '#F59E0B', label: 'En revisión' },
-  missing: { icon: AlertCircle, color: '#EF4444', label: 'Pendiente' },
+  verified: { icon: CheckCircle2, color: 'var(--success)', label: 'Verificado' },
+  pending: { icon: Clock, color: 'var(--warning)', label: 'En revisión' },
+  missing: { icon: AlertCircle, color: 'var(--danger)', label: 'Pendiente' },
 }
 
 export default function EmpresaDocumentos() {
@@ -22,7 +22,7 @@ export default function EmpresaDocumentos() {
       <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Documentación</h1>
       <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>Mantén tus documentos actualizados para publicar turnos sin interrupciones.</p>
       {allOk && (
-        <div className="flex items-center gap-2 p-4 rounded-[var(--radius-md)] mb-6 text-sm font-medium" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', color: '#166534' }}>
+        <div className="flex items-center gap-2 p-4 rounded-[var(--radius-md)] mb-6 text-sm font-medium" style={{ background: 'var(--success-bg)', border: '1px solid var(--success-bg)', color: 'var(--success-text)' }}>
           <CheckCircle2 size={18} /> Todos tus documentos están verificados y al día.
         </div>
       )}

@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import {
-  Building2, GraduationCap, ArrowRight, CheckCircle2, Clock, Star, Shield, Zap,
-  Users, TrendingUp, MapPin, ChefHat, ShoppingBag, Music, Package, Euro,
-  Briefcase, ThumbsUp, ChevronLeft, ChevronRight
+  Building2, GraduationCap, ArrowRight, CheckCircle2, Star,
+  MapPin, ChefHat, ShoppingBag, Music, Package, Euro, Briefcase,
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -55,27 +54,17 @@ const stepsData = {
   ],
 }
 
-const features = [
-  { icon: <Zap size={28} />, title: 'Matching inteligente', desc: 'Nuestro algoritmo analiza más de 40 variables para conectar el perfil perfecto con cada oferta. Menos búsqueda, más acierto.', color: '#1B2A4E' },
-  { icon: <Shield size={28} />, title: 'Verificación rigurosa', desc: 'Todos los estudiantes pasan por verificación de identidad y titulación. Todas las empresas tienen CIF validado y contrato legal.', color: '#10B981' },
-  { icon: <Clock size={28} />, title: 'Pago en menos de 24 h', desc: 'No esperes semanas. Los estudiantes cobran antes de 24 horas de completar el turno. Las empresas reciben factura consolidada semanal.', color: '#F59E0B' },
-  { icon: <Star size={28} />, title: 'Reputación bidireccional', desc: 'Empresa y estudiante se valoran mutuamente. Un sistema transparente que premia la seriedad y penaliza los no-shows.', color: '#1B2A4E' },
-]
-
 const sectores = [
-  { icon: <ChefHat size={32} />, label: 'Hostelería & Restauración', desc: 'Camareros, ayudantes de cocina, bartenders y más.', turnos: 1240, color: '#FF6B35' },
-  { icon: <ShoppingBag size={32} />, label: 'Retail & Comercio', desc: 'Dependientes, promotores, cajeros y reponedores.', turnos: 890, color: '#1B2A4E' },
-  { icon: <Music size={32} />, label: 'Eventos & Entretenimiento', desc: 'Azafatas, logística de eventos, taquilleros.', turnos: 640, color: '#1B2A4E' },
-  { icon: <Package size={32} />, label: 'Logística & Almacén', desc: 'Picking, packing, carga/descarga y reparto.', turnos: 530, color: '#10B981' },
+  { icon: <ChefHat size={32} />, label: 'Hostelería & Restauración', desc: 'Camareros, ayudantes de cocina, bartenders y más.', turnos: 1240, color: 'var(--brand-coral)' },
+  { icon: <ShoppingBag size={32} />, label: 'Retail & Comercio', desc: 'Dependientes, promotores, cajeros y reponedores.', turnos: 890, color: 'var(--info)' },
+  { icon: <Music size={32} />, label: 'Eventos & Entretenimiento', desc: 'Azafatas, logística de eventos, taquilleros.', turnos: 640, color: 'var(--info)' },
+  { icon: <Package size={32} />, label: 'Logística & Almacén', desc: 'Picking, packing, carga/descarga y reparto.', turnos: 530, color: 'var(--success)' },
 ]
 
 const testimonials = [
-  { name: 'María G.', role: 'Estudiante de Psicología, Madrid', quote: 'Gracias a STUGO pago mi alquiler sin faltar ni una clase. Antes tardaba semanas en cobrar con otras apps. Aquí cobré en el mismo día.', rating: 5, avatar: 'MG', color: '#1B2A4E' },
-  { name: 'Carlos R.', role: 'RRHH, Restaurante La Pepita · Barcelona', quote: 'En 20 minutos teníamos camarero para el sábado. El perfil llegó con historial verificado y valoraciones reales. No pediremos personal de otra manera.', rating: 5, avatar: 'CR', color: '#10B981' },
-  { name: 'Lucía M.', role: 'Estudiante de ADE, Sevilla', quote: 'Llevo 6 meses en STUGO y ya tengo 4,9 estrellas. Las empresas me contactan directamente. Es la mejor forma de ganar experiencia real.', rating: 5, avatar: 'LM', color: '#1B2A4E' },
-  { name: 'Andrés T.', role: 'Gerente, Cadena retail SportLine · Valencia', quote: 'El sistema de matching es brutal. Nos manda justo el perfil que buscamos: serios, puntuales y con experiencia en retail. Sin filtros manuales.', rating: 5, avatar: 'AT', color: '#F59E0B' },
-  { name: 'Sara P.', role: 'Estudiante de Comunicación, Bilbao', quote: 'Con STUGO compaginé 4 turnos de eventos el mismo fin de semana y gané 280 €. Mis compañeras de piso ya se han apuntado todas.', rating: 5, avatar: 'SP', color: '#EF4444' },
-  { name: 'Ramón V.', role: 'Director de Operaciones, CateringPro · Madrid', quote: 'La plataforma es limpia, sin burocracia y el soporte por WhatsApp es inmediato. Hemos reducido costes de contratación eventual un 40 %.', rating: 5, avatar: 'RV', color: '#14B8A6' },
+  { name: 'María G.', role: 'Estudiante de Psicología, Madrid', quote: 'Gracias a STUGO pago mi alquiler sin faltar ni una clase. Antes tardaba semanas en cobrar con otras apps. Aquí cobré en el mismo día.', rating: 5, avatar: 'MG', color: 'var(--info)' },
+  { name: 'Carlos R.', role: 'RRHH, Restaurante La Pepita · Barcelona', quote: 'En 20 minutos teníamos camarero para el sábado. El perfil llegó con historial verificado y valoraciones reales. No pediremos personal de otra manera.', rating: 5, avatar: 'CR', color: 'var(--success)' },
+  { name: 'Lucía M.', role: 'Estudiante de ADE, Sevilla', quote: 'Llevo 6 meses en STUGO y ya tengo 4,9 estrellas. Las empresas me contactan directamente. Es la mejor forma de ganar experiencia real.', rating: 5, avatar: 'LM', color: 'var(--info)' },
 ]
 
 const trustNumbers = [
@@ -142,15 +131,8 @@ function MiniCalculator() {
 
 export default function Home() {
   const [audience, setAudience] = useState<Audience>('estudiante')
-  const [testimonialIdx, setTestimonialIdx] = useState(0)
   const content = heroContent[audience]
   const steps = stepsData[audience]
-
-  const visible = [
-    testimonials[testimonialIdx % testimonials.length],
-    testimonials[(testimonialIdx + 1) % testimonials.length],
-    testimonials[(testimonialIdx + 2) % testimonials.length],
-  ]
 
   return (
     <div style={{ overflowX: 'hidden' }}>
@@ -252,9 +234,9 @@ export default function Home() {
                     </div>
                     <div className="space-y-3">
                       {[
-                        { name: 'Ana López', score: 98, stars: '4.9', avatar: 'AL', color: '#1B2A4E' },
-                        { name: 'Carlos Ruiz', score: 95, stars: '4.8', avatar: 'CR', color: '#10B981' },
-                        { name: 'Sara Martín', score: 92, stars: '4.7', avatar: 'SM', color: '#1B2A4E' },
+                        { name: 'Ana López', score: 98, stars: '4.9', avatar: 'AL', color: 'var(--info)' },
+                        { name: 'Carlos Ruiz', score: 95, stars: '4.8', avatar: 'CR', color: 'var(--success)' },
+                        { name: 'Sara Martín', score: 92, stars: '4.7', avatar: 'SM', color: 'var(--info)' },
                       ].map((c) => (
                         <div key={c.name} className="flex items-center gap-3 p-3"
                           style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-subtle)' }}>
@@ -272,7 +254,7 @@ export default function Home() {
                       ))}
                     </div>
                     <div className="mt-5 p-3 text-center text-xs"
-                      style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 'var(--radius-md)', color: '#059669' }}>
+                      style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 'var(--radius-md)', color: 'var(--success)' }}>
                       Turno cubierto en <strong>23 minutos</strong>
                     </div>
                   </motion.div>
@@ -336,29 +318,6 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
-      {/* ── POR QUÉ STUGO ── */}
-      <section className="py-24" style={{ background: 'var(--bg-subtle)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest mb-4 block" style={{ color: 'var(--brand-primary)' }}>Ventajas</span>
-            <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Por qué elegir STUGO</h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>La plataforma líder de trabajo flexible para estudiantes en España.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((f) => (
-              <Card key={f.title} hover className="text-center group">
-                <div className="w-14 h-14 flex items-center justify-center mx-auto mb-5 transition-transform group-hover:scale-110"
-                  style={{ background: `${f.color}18`, color: f.color, borderRadius: 'var(--radius-lg)' }}>
-                  {f.icon}
-                </div>
-                <h3 className="text-base font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{f.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{f.desc}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── SECTORES ── */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
@@ -399,7 +358,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Lo que dicen los que ya están dentro</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {visible.map((t, i) => (
+            {testimonials.map((t, i) => (
               <Card key={`${t.name}-${i}`} className="flex flex-col gap-4">
                 <div className="flex">
                   {Array.from({ length: t.rating }).map((_, j) => (
@@ -417,23 +376,6 @@ export default function Home() {
                 </div>
               </Card>
             ))}
-          </div>
-          <div className="flex justify-center items-center gap-3 mt-8">
-            <button onClick={() => setTestimonialIdx(i => (i - 1 + testimonials.length) % testimonials.length)}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
-              <ChevronLeft size={16} />
-            </button>
-            {testimonials.map((_, i) => (
-              <button key={i} onClick={() => setTestimonialIdx(i)}
-                className="w-2 h-2 rounded-full transition-all"
-                style={{ background: i === testimonialIdx % testimonials.length ? 'var(--brand-primary)' : 'var(--border)' }} />
-            ))}
-            <button onClick={() => setTestimonialIdx(i => (i + 1) % testimonials.length)}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
-              <ChevronRight size={16} />
-            </button>
           </div>
         </div>
       </section>
@@ -495,29 +437,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BOTTOM STATS ── */}
-      <section className="py-16" style={{ background: 'var(--text-primary)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-white mb-2">España confía en STUGO</h2>
-            <p style={{ color: 'rgba(255,255,255,0.5)' }}>Números reales, actualizados a mayo 2026</p>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { v: '16', label: 'Ciudades activas', icon: <MapPin size={20} /> },
-              { v: '4,7', label: 'Valoración en App Store', icon: <Star size={20} /> },
-              { v: '<23 min', label: 'Tiempo medio de cobertura', icon: <Clock size={20} /> },
-              { v: '98%', label: 'Turnos sin incidencias', icon: <ThumbsUp size={20} /> },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="flex justify-center mb-3" style={{ color: 'var(--brand-accent)' }}>{s.icon}</div>
-                <p className="text-3xl font-black text-white mb-1">{s.v}</p>
-                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

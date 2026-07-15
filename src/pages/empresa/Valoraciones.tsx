@@ -253,7 +253,7 @@ function ValoracionCard({
       {received && (
         <span
           className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium"
-          style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+          style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
         >
           Recibida de trabajador
         </span>

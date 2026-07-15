@@ -76,7 +76,7 @@ export default function Registro() {
                 className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
                 style={{ background: 'rgba(214,248,74,0.15)' }}
               >
-                <GraduationCap size={40} style={{ color: '#B8860B' }} />
+                <GraduationCap size={40} style={{ color: 'var(--brand-primary)' }} />
               </div>
               <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
                 Soy estudiante
@@ -86,7 +86,7 @@ export default function Registro() {
               </p>
               <div
                 className="flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all"
-                style={{ color: '#B8860B' }}
+                style={{ color: 'var(--brand-primary)' }}
               >
                 Empezar como estudiante <ArrowRight size={16} />
               </div>

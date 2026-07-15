@@ -5,8 +5,8 @@ import { articulosBlog } from '@/mocks/articulos-blog'
 
 const CATEGORIES = ['Todos', 'Empleo joven', 'Gestión de turnos', 'Hostelería', 'Retail', 'Eventos', 'Sector educativo']
 const CAT_COLORS: Record<string, string> = {
- 'Empleo joven': '#1B2A4E', 'Gestión de turnos': '#10B981', 'Hostelería': '#F59E0B',
- 'Retail': '#EF4444', 'Eventos': '#1B2A4E', 'Sector educativo': '#EC4899',
+ 'Empleo joven': 'var(--info)', 'Gestión de turnos': 'var(--success)', 'Hostelería': 'var(--warning)',
+ 'Retail': 'var(--danger)', 'Eventos': 'var(--info)', 'Sector educativo': '#EC4899',
 }
 
 export default function Blog() {

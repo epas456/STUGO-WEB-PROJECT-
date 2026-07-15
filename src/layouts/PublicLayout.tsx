@@ -38,7 +38,7 @@ const navLinks = [
     href: '/ayuda',
     children: [
       { label: 'Centro de ayuda', href: '/ayuda', icon: <HelpCircle size={16} /> },
-      { label: 'Preguntas frecuentes', href: '/faq', icon: <FileText size={16} /> },
+      { label: 'Cómo funciona', href: '/como-funciona', icon: <FileText size={16} /> },
       { label: 'Contacto', href: '/contacto', icon: <Mail size={16} /> },
     ],
   },
@@ -59,9 +59,7 @@ const footerColumns = [
     links: [
       { label: 'Publicar turnos', href: '/empresa/registro' },
       { label: 'Planes y precios', href: '/precios' },
-      { label: 'Integraciones API', href: '/api' },
       { label: 'Casos de uso', href: '/empresas' },
-      { label: 'Blog para empresas', href: '/blog?categoria=empresas' },
     ],
   },
   {
@@ -69,8 +67,6 @@ const footerColumns = [
     links: [
       { label: 'Quiénes somos', href: '/nosotros' },
       { label: 'Blog', href: '/blog' },
-      { label: 'Trabaja con nosotros', href: '/empleo' },
-      { label: 'Prensa', href: '/prensa' },
       { label: 'Contacto', href: '/contacto' },
     ],
   },
