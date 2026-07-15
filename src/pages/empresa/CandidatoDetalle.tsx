@@ -6,13 +6,13 @@ import { AvatarCircle } from '@/components/AvatarCircle'
 import { StarRating } from '@/components/StarRating'
 import { toast } from 'sonner'
 
-function MatchCircle({ score }: { score: number }) {
+function MatchCircle({ score, title }: { score: number; title?: string }) {
   const color = score >= 85 ? 'var(--success)' : score >= 70 ? 'var(--warning)' : 'var(--text-tertiary)'
   const r = 36
   const circ = 2 * Math.PI * r
   const offset = circ - (score / 100) * circ
   return (
-    <div className="relative" style={{ width: 88, height: 88 }}>
+    <div className="relative" style={{ width: 88, height: 88 }} title={title}>
       <svg width={88} height={88} className="-rotate-90">
         <circle cx={44} cy={44} r={r} fill="none" stroke="var(--bg-muted)" strokeWidth={6} />
         <circle
@@ -95,20 +95,52 @@ export default function CandidatoDetalle() {
                   Verificado
                 </span>
               )}
+              {est.nTurnos === 0 && (
+                <span
+                  className="text-xs font-semibold px-2 py-0.5 rounded-full"
+                  style={{ backgroundColor: 'var(--neutral-bg)', color: 'var(--neutral-text)' }}
+                >
+                  Nuevo en STUGO
+                </span>
+              )}
             </div>
             <div className="flex flex-wrap gap-3 text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
               <span className="flex items-center gap-1"><MapPin size={13} />{est.ciudad}</span>
               <span className="flex items-center gap-1"><Clock size={13} />{est.edad} años</span>
               <span className="flex items-center gap-1"><Briefcase size={13} />{est.nTurnos} turnos</span>
             </div>
-            <StarRating value={est.valoracion} readonly size={18} />
-            <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-              {est.valoracion.toFixed(1)} de media
-            </p>
+            {est.nTurnos === 0 ? (
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Sin valoraciones todavía: busca su primer turno.
+              </p>
+            ) : (
+              <>
+                <StarRating value={est.valoracion} readonly size={18} />
+                <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+                  {est.valoracion.toFixed(1)} de media
+                </p>
+              </>
+            )}
           </div>
 
-          <MatchCircle score={est.matchScore ?? 75} />
+          <MatchCircle
+            score={est.matchScore ?? 75}
+            title={
+              est.nTurnos === 0
+                ? 'Perfil nuevo: el score se calcula con disponibilidad, distancia y datos del perfil, no con historial. Sube en cuanto complete su primer turno.'
+                : undefined
+            }
+          />
         </div>
+
+        {est.nTurnos === 0 && (
+          <p className="mt-4 text-xs leading-relaxed p-3 rounded-[var(--radius-md)]"
+            style={{ backgroundColor: 'var(--bg-subtle)', color: 'var(--text-secondary)' }}>
+            El match score de un perfil nuevo se calcula con su disponibilidad, distancia y datos del
+            perfil, no con un historial que aún no existe. Sube en cuanto complete su primer turno.
+            Si tu turno está abierto a candidatos sin experiencia, aplica la cobertura primer turno.
+          </p>
+        )}
 
         {/* Bio */}
         {est.bio && (

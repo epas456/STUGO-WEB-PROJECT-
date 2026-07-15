@@ -93,6 +93,14 @@ export default function TurnoDetalle() {
                 Urgente
               </span>
             )}
+            {turno.abiertoSinExperiencia && (
+              <span
+                className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                style={{ backgroundColor: 'var(--neutral-bg)', color: 'var(--neutral-text)' }}
+              >
+                Abierto a sin experiencia
+              </span>
+            )}
           </div>
           <h1 className="text-2xl font-bold text-[var(--text-primary)]">{turno.titulo}</h1>
           <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-[var(--text-secondary)]">
@@ -236,6 +244,19 @@ export default function TurnoDetalle() {
               ))}
             </div>
           </div>
+          {turno.abiertoSinExperiencia && (
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+                Cobertura primer turno
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Este turno está abierto a candidatos sin experiencia previa y prioriza en el matching
+                a estudiantes que buscan su primer turno. Si el primer turno de un candidato nuevo
+                acaba en no-show o incidencia grave, no se cobra la comisión de ese turno y se ayuda
+                a recubrirlo con prioridad. Condiciones gestionadas con la ETT partner.
+              </p>
+            </div>
+          )}
           <div>
             <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
               Ficha del turno

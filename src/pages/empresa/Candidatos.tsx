@@ -210,26 +210,48 @@ export default function Candidatos() {
                     <p className="text-xs text-[var(--text-secondary)]">
                       {est.edad} años · {est.ciudad}
                     </p>
-                    {est.verificado && (
-                      <span
-                        className="inline-block mt-0.5 px-2 py-0.5 rounded-full text-[10px] font-medium"
-                        style={{ backgroundColor: 'var(--info-bg)', color: 'var(--info-text)' }}
-                      >
-                        ✓ Verificado
-                      </span>
-                    )}
+                    <div className="flex flex-wrap gap-1 mt-0.5">
+                      {est.verificado && (
+                        <span
+                          className="inline-block px-2 py-0.5 rounded-full text-[10px] font-medium"
+                          style={{ backgroundColor: 'var(--info-bg)', color: 'var(--info-text)' }}
+                        >
+                          ✓ Verificado
+                        </span>
+                      )}
+                      {est.nTurnos === 0 && (
+                        <span
+                          className="inline-block px-2 py-0.5 rounded-full text-[10px] font-medium"
+                          style={{ backgroundColor: 'var(--neutral-bg)', color: 'var(--neutral-text)' }}
+                        >
+                          Nuevo en STUGO
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <MatchScoreCircle score={est.matchScore ?? 80} size={48} />
+                <MatchScoreCircle
+                  score={est.matchScore ?? 80}
+                  size={48}
+                  title={
+                    est.nTurnos === 0
+                      ? 'Perfil nuevo: el score se calcula con disponibilidad, distancia y datos del perfil, no con historial. Sube en cuanto complete su primer turno.'
+                      : undefined
+                  }
+                />
               </div>
 
               {/* Rating + turnos */}
-              <div className="flex items-center gap-2">
-                <StarRating value={Math.round(est.valoracion)} size={13} />
-                <span className="text-xs text-[var(--text-secondary)]">{est.valoracion}</span>
-                <span className="text-xs text-[var(--text-secondary)]">·</span>
-                <span className="text-xs text-[var(--text-secondary)]">{est.nTurnos} turnos</span>
-              </div>
+              {est.nTurnos === 0 ? (
+                <p className="text-xs text-[var(--text-secondary)]">Sin turnos todavía — busca su primer turno</p>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <StarRating value={Math.round(est.valoracion)} size={13} />
+                  <span className="text-xs text-[var(--text-secondary)]">{est.valoracion}</span>
+                  <span className="text-xs text-[var(--text-secondary)]">·</span>
+                  <span className="text-xs text-[var(--text-secondary)]">{est.nTurnos} turnos</span>
+                </div>
+              )}
 
               {/* Sectors */}
               <div className="flex flex-wrap gap-1">

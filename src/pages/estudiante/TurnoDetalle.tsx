@@ -36,9 +36,16 @@ export default function EstudianteTurnoDetalle() {
             <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{turno.titulo}</h1>
             <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>{turno.descripcion}</p>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold text-white" style={{ background: turno.estado === 'abierto' ? 'var(--success)' : 'var(--warning)' }}>
-            {turno.estado}
-          </span>
+          <div className="flex flex-col items-end gap-1.5 shrink-0">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold text-white" style={{ background: turno.estado === 'abierto' ? 'var(--success)' : 'var(--warning)' }}>
+              {turno.estado}
+            </span>
+            {turno.abiertoSinExperiencia && (
+              <span className="px-3 py-1 rounded-full text-xs font-medium" style={{ background: 'var(--neutral-bg)', color: 'var(--neutral-text)' }}>
+                Sin experiencia previa
+              </span>
+            )}
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>

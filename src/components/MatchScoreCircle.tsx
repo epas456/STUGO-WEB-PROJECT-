@@ -1,9 +1,11 @@
 interface Props {
   score: number
   size?: number
+  /** Texto del tooltip nativo; útil para explicar cómo se calcula el score. */
+  title?: string
 }
 
-export function MatchScoreCircle({ score, size = 56 }: Props) {
+export function MatchScoreCircle({ score, size = 56, title }: Props) {
   const color =
     score >= 85
       ? 'var(--success)'
@@ -17,6 +19,7 @@ export function MatchScoreCircle({ score, size = 56 }: Props) {
     <div
       className="relative inline-flex items-center justify-center"
       style={{ width: size, height: size }}
+      title={title}
     >
       <svg width={size} height={size} className="-rotate-90">
         <circle

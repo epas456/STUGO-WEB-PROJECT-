@@ -48,6 +48,7 @@ interface StepData {
   salarioHora: number
   personas: number
   requisitos: string[]
+  sinExperiencia: boolean
   fichaPresentarse: string
   fichaContacto: string
   fichaVestimenta: string
@@ -67,6 +68,7 @@ const INITIAL_DATA: StepData = {
   salarioHora: 11,
   personas: 1,
   requisitos: [],
+  sinExperiencia: false,
   fichaPresentarse: '',
   fichaContacto: '',
   fichaVestimenta: '',
@@ -508,6 +510,37 @@ export default function NuevoTurno() {
                     })}
                   </div>
                 </div>
+                <div className="py-3 px-4 rounded-[var(--radius-md)] bg-[var(--bg-subtle)] border border-[var(--border)]">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-[var(--text-primary)]">
+                        Abierto a candidatos sin experiencia previa
+                      </p>
+                      <p className="text-xs text-[var(--text-secondary)]">
+                        El turno priorizará en el matching a estudiantes que buscan su primer turno.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => update('sinExperiencia', !data.sinExperiencia)}
+                      className="relative w-11 h-6 rounded-full transition-colors shrink-0 ml-3"
+                      style={{ backgroundColor: data.sinExperiencia ? 'var(--brand-primary)' : 'var(--border)' }}
+                    >
+                      <span
+                        className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"
+                        style={{ transform: data.sinExperiencia ? 'translateX(20px)' : 'translateX(0)' }}
+                      />
+                    </button>
+                  </div>
+                  {data.sinExperiencia && (
+                    <p className="text-xs mt-3 pt-3 border-t border-[var(--border)] text-[var(--text-secondary)]">
+                      <strong className="text-[var(--text-primary)]">Cobertura primer turno:</strong>{' '}
+                      si el primer turno de un candidato nuevo acaba en no-show o incidencia grave,
+                      no se te cobra la comisión de ese turno y te ayudamos a recubrirlo con
+                      prioridad. Condiciones gestionadas con la ETT partner.
+                    </p>
+                  )}
+                </div>
               </div>
             )}
 
@@ -591,6 +624,12 @@ export default function NuevoTurno() {
                       label: 'Requisitos',
                       value:
                         data.requisitos.length > 0 ? data.requisitos.join(', ') : 'Sin requisitos específicos',
+                    },
+                    {
+                      label: 'Sin experiencia',
+                      value: data.sinExperiencia
+                        ? 'Abierto a candidatos sin experiencia (con cobertura primer turno)'
+                        : 'No',
                     },
                   ].map(({ label, value }) => (
                     <div

@@ -35,6 +35,7 @@ export interface Turno {
   matchScore?: number
   tags: string[]
   createdAt: string
+  abiertoSinExperiencia?: boolean
   ficha?: FichaTurno
 }
 
@@ -155,6 +156,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 72,
     tags: ['almacén', 'nocturno', 'logística', 'picking'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-09',
   },
   {
@@ -211,6 +213,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 79,
     tags: ['retail', 'moda', 'dependiente', 'reposición'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-11',
   },
   {
@@ -298,6 +301,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 76,
     tags: ['control accesos', 'congreso', 'castellana'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-14',
   },
   {
@@ -412,6 +416,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 65,
     tags: ['cajero', 'supermercado', 'finde', 'lleida'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-12',
   },
   {
@@ -525,6 +530,7 @@ export const turnos: Turno[] = [
     destacado: true,
     matchScore: 93,
     tags: ['coordinador', 'gala', 'lujo', 'noche'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-08',
   },
   {
@@ -639,6 +645,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 72,
     tags: ['reposición', 'nocturno', 'rebajas', 'retail'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-12',
   },
   {
