@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
-import { CheckCircle, Clock, XCircle, Upload } from 'lucide-react'
+import { CheckCircle, Clock, XCircle, Upload, BookOpen, ChevronRight } from 'lucide-react'
 import { estudiantes } from '@/mocks/estudiantes'
 import { StarRating } from '@/components/StarRating'
 import { AvatarCircle } from '@/components/AvatarCircle'
@@ -116,6 +117,20 @@ export default function Perfil() {
           </div>
         </div>
       </div>
+
+      {/* Básicos del sector */}
+      <Link
+        to="/estudiante/basicos"
+        className="flex items-center gap-3 p-3.5 rounded-[var(--radius-md)] border transition-colors hover:bg-[var(--bg-subtle)]"
+        style={{ borderColor: 'var(--border)', background: 'var(--bg-base)' }}
+      >
+        <BookOpen size={16} className="shrink-0" style={{ color: 'var(--brand-primary)' }} />
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Básicos del sector</p>
+          <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>Lo mínimo antes de tu primer turno en hostelería, retail, eventos o logística. 2 min por sector.</p>
+        </div>
+        <ChevronRight size={16} className="shrink-0" style={{ color: 'var(--text-tertiary)' }} />
+      </Link>
 
       {/* Tabs */}
       <div className="flex gap-0.5 border-b border-[var(--border)] overflow-x-auto">

@@ -12,6 +12,8 @@ import {
   Users,
   Briefcase,
   RotateCcw,
+  ClipboardList,
+  Info,
 } from 'lucide-react'
 
 const SECTORES = ['Hostelería', 'Retail', 'Eventos', 'Logística']
@@ -43,10 +45,14 @@ interface StepData {
   horaFin: string
   recurrente: boolean
   direccion: string
-  instrucciones: string
   salarioHora: number
   personas: number
   requisitos: string[]
+  fichaPresentarse: string
+  fichaContacto: string
+  fichaVestimenta: string
+  fichaTareas: string
+  fichaNoHacer: string
 }
 
 const INITIAL_DATA: StepData = {
@@ -58,10 +64,14 @@ const INITIAL_DATA: StepData = {
   horaFin: '',
   recurrente: false,
   direccion: '',
-  instrucciones: '',
   salarioHora: 11,
   personas: 1,
   requisitos: [],
+  fichaPresentarse: '',
+  fichaContacto: '',
+  fichaVestimenta: '',
+  fichaTareas: '',
+  fichaNoHacer: '',
 }
 
 const STEPS = [
@@ -69,7 +79,16 @@ const STEPS = [
   { title: 'Cuándo', icon: Calendar },
   { title: 'Dónde', icon: MapPin },
   { title: 'Requisitos y salario', icon: DollarSign },
+  { title: 'Ficha del turno', icon: ClipboardList },
   { title: 'Revisión', icon: CheckCircle },
+]
+
+const FICHA_FIELDS: { key: keyof StepData; label: string; placeholder: string; textarea?: boolean }[] = [
+  { key: 'fichaPresentarse', label: 'Dónde presentarse al llegar', placeholder: 'Ej: puerta de personal, C/ Mayor 1, timbre 2' },
+  { key: 'fichaContacto', label: 'Persona de contacto en el local', placeholder: 'Ej: María, encargada. Delantal rojo, suele estar en caja' },
+  { key: 'fichaVestimenta', label: 'Uniforme o vestimenta', placeholder: 'Ej: pantalón negro y zapato cerrado; la camiseta se entrega allí' },
+  { key: 'fichaTareas', label: 'Tareas de los primeros 15 minutos (3-5, una por línea)', placeholder: 'Fichar en el sistema\nRevisar el plano de mesas\nPreparar tu estación', textarea: true },
+  { key: 'fichaNoHacer', label: 'Qué NO hacer / errores comunes en tu local (una por línea)', placeholder: 'No usar el ascensor de clientes\nNo prometer cambios de plato sin consultar', textarea: true },
 ]
 
 export default function NuevoTurno() {
@@ -393,19 +412,6 @@ export default function NuevoTurno() {
                     </div>
                   )}
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                    Instrucciones de llegada
-                  </label>
-                  <textarea
-                    value={data.instrucciones}
-                    onChange={(e) => update('instrucciones', e.target.value)}
-                    placeholder="Ej: Entra por la puerta trasera, pregunta por María en recepción..."
-                    rows={3}
-                    className="w-full px-4 py-2.5 rounded-[var(--radius-md)] border border-[var(--border)] text-sm outline-none focus:border-[var(--brand-primary)] resize-none"
-                    style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-primary)' }}
-                  />
-                </div>
                 <div
                   className="h-32 rounded-[var(--radius-md)] flex items-center justify-center border border-[var(--border)]"
                   style={{ backgroundColor: 'var(--bg-muted)' }}
@@ -505,8 +511,52 @@ export default function NuevoTurno() {
               </div>
             )}
 
-            {/* Step 5: Revisión */}
+            {/* Step 5: Ficha del turno */}
             {step === 4 && (
+              <div className="space-y-5">
+                <div
+                  className="flex gap-3 p-4 rounded-[var(--radius-md)] border"
+                  style={{ backgroundColor: 'var(--bg-subtle)', borderColor: 'var(--border)' }}
+                >
+                  <Info size={16} className="shrink-0 mt-0.5" style={{ color: 'var(--info)' }} />
+                  <p className="text-sm text-[var(--text-secondary)]">
+                    <strong className="text-[var(--text-primary)]">Instrucciones para quien llegue.</strong>{' '}
+                    Este paso es opcional, pero los turnos con ficha completa registran en torno a un
+                    30 % menos de cancelaciones y no-shows. Quien acepte el turno la verá antes de ir
+                    — solo se muestra a la persona asignada, nunca en la oferta pública.
+                  </p>
+                </div>
+                {FICHA_FIELDS.map((f) => (
+                  <div key={f.key}>
+                    <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                      {f.label}
+                    </label>
+                    {f.textarea ? (
+                      <textarea
+                        value={data[f.key] as string}
+                        onChange={(e) => update(f.key, e.target.value)}
+                        placeholder={f.placeholder}
+                        rows={3}
+                        className="w-full px-4 py-2.5 rounded-[var(--radius-md)] border border-[var(--border)] text-sm outline-none focus:border-[var(--brand-primary)] resize-none"
+                        style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-primary)' }}
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        value={data[f.key] as string}
+                        onChange={(e) => update(f.key, e.target.value)}
+                        placeholder={f.placeholder}
+                        className="w-full px-4 py-2.5 rounded-[var(--radius-md)] border border-[var(--border)] text-sm outline-none focus:border-[var(--brand-primary)]"
+                        style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-primary)' }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Step 6: Revisión */}
+            {step === 5 && (
               <div className="space-y-5">
                 <h2 className="text-lg font-semibold text-[var(--text-primary)]">
                   Resumen del turno
@@ -526,7 +576,15 @@ export default function NuevoTurno() {
                     },
                     { label: 'Recurrente', value: data.recurrente ? 'Sí, semanal' : 'No' },
                     { label: 'Dirección', value: data.direccion || '—' },
-                    { label: 'Instrucciones', value: data.instrucciones || '—' },
+                    {
+                      label: 'Ficha del turno',
+                      value: (() => {
+                        const rellenos = FICHA_FIELDS.filter((f) => (data[f.key] as string).trim() !== '').length
+                        if (rellenos === FICHA_FIELDS.length) return 'Completa'
+                        if (rellenos === 0) return 'Sin rellenar — recomendamos completarla'
+                        return `${rellenos} de ${FICHA_FIELDS.length} campos — recomendamos completarla`
+                      })(),
+                    },
                     { label: 'Salario/hora', value: `${data.salarioHora}€` },
                     { label: 'Personas', value: `${data.personas}` },
                     {

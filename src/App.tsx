@@ -62,6 +62,7 @@ const EstudianteMensajes = lazy(() => import('@/pages/estudiante/Mensajes'))
 const EstudiantePerfil = lazy(() => import('@/pages/estudiante/Perfil'))
 const EstudianteValoraciones = lazy(() => import('@/pages/estudiante/Valoraciones'))
 const EstudianteCartera = lazy(() => import('@/pages/estudiante/Cartera'))
+const EstudianteBasicos = lazy(() => import('@/pages/estudiante/Basicos'))
 const EstudianteConfiguracion = lazy(() => import('@/pages/estudiante/Configuracion'))
 const EstudianteNotificaciones = lazy(() => import('@/pages/estudiante/Notificaciones'))
 
@@ -205,6 +206,8 @@ export default function App() {
             <Route path="valoraciones" element={<EstudianteValoraciones />} />
             <Route path="valoraciones/pendientes" element={<EstudianteValoraciones />} />
             <Route path="cartera" element={<EstudianteCartera />} />
+            <Route path="basicos" element={<EstudianteBasicos />} />
+            <Route path="basicos/:sector" element={<EstudianteBasicos />} />
             <Route path="configuracion" element={<EstudianteConfiguracion />} />
             <Route path="notificaciones" element={<EstudianteNotificaciones />} />
           </Route>

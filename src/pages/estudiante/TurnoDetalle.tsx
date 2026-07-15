@@ -1,15 +1,22 @@
-import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, MapPin, Clock, Euro, AlertTriangle } from 'lucide-react'
+import { useParams, Link, useLocation } from 'react-router-dom'
+import { ArrowLeft, MapPin, Clock, Euro, AlertTriangle, ClipboardList, BookOpen } from 'lucide-react'
 import { turnos } from '@/mocks/turnos'
+import { sectorSlug } from '@/mocks/basicos-sector'
+import { FichaTurnoCard } from '@/components/FichaTurnoCard'
 import { Button } from '@/components/ui/Button'
 import { toast } from 'sonner'
 import { useState } from 'react'
 
 export default function EstudianteTurnoDetalle() {
   const { id } = useParams()
+  const { pathname } = useLocation()
   const turno = turnos.find(t => t.id === id) || turnos[0]
   const [cancelled, setCancelled] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
+
+  // La ficha del turno solo se muestra cuando el turno ya es tuyo (vía Mis Turnos),
+  // nunca en la vista de oferta: contiene información operativa del local.
+  const esMio = pathname.includes('mis-turnos')
 
   if (cancelled) return (
     <div className="p-6 text-center">
@@ -20,8 +27,8 @@ export default function EstudianteTurnoDetalle() {
 
   return (
     <div className="p-6 max-w-2xl">
-      <Link to="/estudiante/turnos" className="flex items-center gap-2 text-sm mb-6" style={{ color: 'var(--brand-primary)' }}>
-        <ArrowLeft size={14} /> Mis turnos
+      <Link to={esMio ? '/estudiante/mis-turnos' : '/estudiante/turnos'} className="flex items-center gap-2 text-sm mb-6" style={{ color: 'var(--brand-primary)' }}>
+        <ArrowLeft size={14} /> {esMio ? 'Mis turnos' : 'Buscar turnos'}
       </Link>
       <div className="p-6 rounded-[var(--radius-xl)]" style={{ border: '1px solid var(--border)', background: 'var(--bg-subtle)' }}>
         <div className="flex items-start justify-between mb-6">
@@ -53,6 +60,35 @@ export default function EstudianteTurnoDetalle() {
             <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>{turno.ciudad}</div>
           </div>
         </div>
+
+        {esMio ? (
+          <div className="rounded-[var(--radius-lg)] border p-5 mb-6" style={{ borderColor: 'var(--border)', background: 'var(--bg-base)' }}>
+            <div className="flex items-center gap-2 mb-4">
+              <ClipboardList size={16} style={{ color: 'var(--brand-primary)' }} />
+              <h2 className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Ficha del turno</h2>
+            </div>
+            {turno.ficha ? (
+              <FichaTurnoCard ficha={turno.ficha} />
+            ) : (
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                La empresa aún no ha añadido instrucciones para este turno. Llega 10-15 minutos antes,
+                pregunta por el responsable y repasa los básicos del sector.
+              </p>
+            )}
+            <Link
+              to={`/estudiante/basicos/${sectorSlug(turno.sector)}`}
+              className="inline-flex items-center gap-2 text-sm font-medium mt-4"
+              style={{ color: 'var(--brand-primary)' }}
+            >
+              <BookOpen size={14} /> Básicos de {turno.sector}
+            </Link>
+          </div>
+        ) : (
+          <p className="text-xs mb-6" style={{ color: 'var(--text-tertiary)' }}>
+            Las instrucciones del local (dónde presentarte, contacto, primeras tareas) se muestran al aceptar el turno.
+          </p>
+        )}
+
         <div className="flex gap-3">
           <Button variant="outline" onClick={() => toast.info('Formulario de reporte abierto.')} className="flex-1">Reportar problema</Button>
           {!showConfirm
