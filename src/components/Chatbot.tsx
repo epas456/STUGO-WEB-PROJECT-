@@ -20,42 +20,42 @@ interface Flow {
 const flows: Flow[] = [
   {
     trigger: ['hola', 'buenas', 'hello', 'hi', 'hey', 'buenos días', 'buenas tardes'],
-    response: '¡Hola! Soy el asistente virtual de STUGO  ¿En qué puedo ayudarte hoy?',
+    response: '¡Hola! Soy el asistente virtual de STUGO. ¿En qué puedo ayudarte hoy?',
     options: ['¿Cómo me registro?', '¿Cómo funciona?', 'Tengo un problema', 'Preguntas sobre pagos', 'Soy empresa', 'Hablar con soporte'],
   },
   {
     trigger: ['cómo me registro', 'registrarse', 'crear cuenta', 'alta', 'registro'],
-    response: 'Registrarte en STUGO es gratis y tarda menos de 2 minutos \n\n1. Haz clic en "Empezar gratis"\n2. Elige si eres estudiante o empresa\n3. Introduce tu email y crea contraseña\n4. Verifica tu email\n5. ¡Listo! Completa tu perfil para aparecer ante las empresas.\n\n¿Necesitas ayuda con algún paso concreto?',
+    response: 'Registrarte en STUGO es gratis y tarda menos de 2 minutos\n\n1. Haz clic en "Empezar gratis"\n2. Elige si eres estudiante o empresa\n3. Introduce tu email y crea contraseña\n4. Verifica tu email\n5. ¡Listo! Completa tu perfil para aparecer ante las empresas.\n\n¿Necesitas ayuda con algún paso concreto?',
     options: ['¿Qué documentos necesito?', '¿Es realmente gratis?', 'Volver al inicio'],
   },
   {
     trigger: ['cómo funciona', 'funcionamiento', 'qué es stugo', 'para qué sirve'],
-    response: 'STUGO conecta a estudiantes universitarios con empresas que necesitan personal para turnos flexibles \n\n**Para estudiantes**: crea tu perfil, indica tu disponibilidad y aplica a turnos en hostelería, eventos, retail y más. Cobras semanalmente por transferencia.\n\n**Para empresas**: publica turnos en minutos y recibe candidatos cualificados automáticamente gracias a nuestro algoritmo de matching.\n\n¿Eres estudiante o empresa?',
+    response: 'STUGO conecta a estudiantes universitarios con empresas que necesitan personal para turnos flexibles\n\n**Para estudiantes**: crea tu perfil, indica tu disponibilidad y aplica a turnos en hostelería, eventos, retail y más. Cobras en menos de 24 h por transferencia.\n\n**Para empresas**: publica turnos en minutos y recibe candidatos cualificados automáticamente gracias a nuestro algoritmo de matching.\n\n¿Eres estudiante o empresa?',
     options: ['Soy estudiante', 'Soy empresa', '¿Cuánto se gana?', 'Volver al inicio'],
   },
   {
     trigger: ['cuánto se gana', 'salario', 'ingresos', 'dinero', 'sueldo'],
-    response: 'Los salarios en STUGO varían según el sector y tipo de trabajo \n\n• **Retail**: 9-10€/h\n• **Hostelería**: 10-14€/h\n• **Eventos/Azafatos**: 10-13€/h\n• **Logística**: 11-13€/h\n• **Marketing/Promotor**: 10-12€/h\n• **Coordinadores/Intérpretes**: 14-20€/h\n\nUn estudiante con disponibilidad de fin de semana puede ganar entre 300€ y 800€/mes. Los pagos se hacen cada viernes.',
+    response: 'Los salarios en STUGO varían según el sector y tipo de trabajo\n\n• **Retail**: 9-10€/h\n• **Hostelería**: 10-14€/h\n• **Eventos/Azafatos**: 10-13€/h\n• **Logística**: 11-13€/h\n• **Marketing/Promotor**: 10-12€/h\n• **Coordinadores/Intérpretes**: 14-20€/h\n\nUn estudiante con disponibilidad de fin de semana puede ganar entre 300€ y 800€/mes. Cobras en menos de 24 h tras completar cada turno.',
     options: ['¿Cuándo cobro?', '¿Hay comisiones?', 'Volver al inicio'],
   },
   {
     trigger: ['cuándo cobro', 'cuándo pagan', 'pago', 'transferencia', 'cobrar'],
-    response: 'Los pagos se realizan cada viernes \n\nUna vez que completas un turno y la empresa lo confirma, el pago se procesa en 3-5 días laborables. Los viernes recibes todos los pagos de la semana anterior en tu cuenta bancaria.\n\nPuedes ver el estado de tus pagos en "Mi Cartera" en tu panel.',
+    response: 'Cobras en menos de 24 horas\n\nUna vez que completas un turno y la empresa confirma tu asistencia, STUGO adelanta el pago y lo recibes en tu cuenta en menos de 24 horas. La ETT partner emite tu nómina con contrato real y alta en Seguridad Social.\n\nPuedes ver el estado de tus pagos en "Mi Cartera" en tu panel.',
     options: ['Tengo un problema con un pago', 'Volver al inicio'],
   },
   {
     trigger: ['soy empresa', 'contratar', 'empresa', 'publicar turno', 'busco personal'],
-    response: 'Perfecto, STUGO es ideal para empresas que necesitan personal flexible \n\n• Publica turnos en menos de 5 minutos\n• Recibe candidatos cualificados en horas\n• Sin permanencia: paga solo por los turnos completados\n• Plan gratuito disponible\n• Soporte dedicado para empresas\n\n¿Quieres más información o registrarte como empresa?',
+    response: 'Perfecto, STUGO es ideal para empresas que necesitan personal flexible\n\n• Publica turnos en menos de 5 minutos\n• Recibe candidatos cualificados en horas\n• Sin permanencia: paga solo por los turnos completados\n• Plan gratuito disponible\n• Soporte dedicado para empresas\n\n¿Quieres más información o registrarte como empresa?',
     options: ['¿Cuánto cuesta para empresas?', '¿Cómo funciona el matching?', 'Quiero registrar mi empresa', 'Volver al inicio'],
   },
   {
     trigger: ['cuánto cuesta para empresas', 'comisión empresa', 'precio empresa', 'planes'],
-    response: 'STUGO ofrece tres planes para empresas \n\n**Gratuito**: hasta 3 turnos simultáneos, comisión 20%\n\n**Pro (49€/mes)**: hasta 20 turnos, comisión 17%, equipos favoritos\n\n**Enterprise**: turnos ilimitados, comisión desde 15%, API, gestor dedicado\n\nLa comisión se aplica sobre el salario bruto del turno completado.',
+    response: 'STUGO ofrece tres planes para empresas\n\n**Gratuito**: hasta 3 turnos simultáneos, comisión 20%\n\n**Pro (49€/mes)**: hasta 20 turnos, comisión 17%, equipos favoritos\n\n**Enterprise**: turnos ilimitados, comisión desde 15%, API, gestor dedicado\n\nLa comisión se aplica sobre el salario bruto del turno completado.',
     options: ['Quiero el Plan Pro', 'Hablar con ventas', 'Volver al inicio'],
   },
   {
     trigger: ['tengo un problema', 'problema', 'error', 'fallo', 'no funciona', 'issue'],
-    response: 'Lo siento, estoy aquí para ayudarte a resolver el problema \n\n¿De qué tipo de problema se trata?',
+    response: 'Lo siento, estoy aquí para ayudarte a resolver el problema\n\n¿De qué tipo de problema se trata?',
     options: ['Problema con un pago', 'No puedo iniciar sesión', 'Un turno con incidencias', 'Problema técnico', 'Otro problema'],
   },
   {
@@ -70,7 +70,7 @@ const flows: Flow[] = [
   },
   {
     trigger: ['soy estudiante', 'busco trabajo', 'busco turnos'],
-    response: '¡Genial! STUGO es perfecto para estudiantes \n\nPuedes encontrar trabajo en hostelería, eventos, retail, logística y mucho más. Los turnos se adaptan a tu horario de estudios.\n\n¿Ya tienes cuenta en STUGO?',
+    response: '¡Genial! STUGO es perfecto para estudiantes\n\nPuedes encontrar trabajo en hostelería, eventos, retail, logística y mucho más. Los turnos se adaptan a tu horario de estudios.\n\n¿Ya tienes cuenta en STUGO?',
     options: ['No tengo cuenta, quiero registrarme', 'Ya tengo cuenta, necesito ayuda', 'Volver al inicio'],
   },
 ]
@@ -78,7 +78,7 @@ const flows: Flow[] = [
 const defaultMessage: Message = {
   id: 'welcome',
   role: 'bot',
-  content: '¡Hola! Soy el asistente de STUGO  ¿En qué puedo ayudarte?',
+  content: '¡Hola! Soy el asistente de STUGO. ¿En qué puedo ayudarte?',
   options: ['¿Cómo me registro?', '¿Cómo funciona?', 'Tengo un problema', 'Preguntas sobre pagos', 'Soy empresa', 'Hablar con soporte'],
   timestamp: new Date(),
 }

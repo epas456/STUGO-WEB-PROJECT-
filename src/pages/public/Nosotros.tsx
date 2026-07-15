@@ -76,7 +76,7 @@ export default function Nosotros() {
               <Card key={v.title} padding="md" className="text-center">
                 <div
                   className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center mx-auto mb-3"
-                  style={{ background: 'rgba(45,91,255,0.1)' }}
+                  style={{ background: 'rgba(14,15,18,0.1)' }}
                 >
                   <v.icon size={22} style={{ color: 'var(--brand-primary)' }} />
                 </div>

@@ -184,14 +184,14 @@ export default function ComoFunciona() {
                     <Card hover className="flex-1">
                       <div className="flex items-start gap-4">
                         <div className="shrink-0 w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center"
-                          style={{ background: 'rgba(45,91,255,0.1)', color: 'var(--brand-primary)' }}>
+                          style={{ background: 'rgba(14,15,18,0.1)', color: 'var(--brand-primary)' }}>
                           {step.icon}
                         </div>
                         <div className="flex-1">
                           <h3 className="font-bold text-base mb-2" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
                           <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>{step.desc}</p>
                           <div className="flex items-start gap-2 p-3 rounded-[var(--radius-sm)]"
-                            style={{ background: 'rgba(14,15,18,0.04)', border: '1px solid rgba(45,91,255,0.1)' }}>
+                            style={{ background: 'rgba(14,15,18,0.04)', border: '1px solid rgba(14,15,18,0.1)' }}>
                             <span className="text-xs" style={{ color: 'var(--brand-primary)' }}></span>
                             <p className="text-xs" style={{ color: 'var(--brand-primary)' }}>{step.detail}</p>
                           </div>
@@ -216,29 +216,30 @@ export default function ComoFunciona() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <Card padding="lg">
-              <h3 className="font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Modelo ETT (Empresa de Trabajo Temporal)</h3>
+              <h3 className="font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Modelo ETT partner</h3>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Para la mayoría de los turnos, STUGO actúa como intermediaria ETT homologada por el Ministerio de Trabajo.
-                La empresa contratante firma un contrato de puesta a disposición. El estudiante firma un contrato eventual.
-                STUGO gestiona el alta en Seguridad Social, las nóminas y las retenciones.
+                STUGO es la capa de software, marketing y matching. El empleador legal de cada turno es una ETT partner
+                autorizada conforme a la Ley 14/1994: la empresa firma con ella el contrato de puesta a disposición y el
+                estudiante firma su contrato laboral. La ETT gestiona el alta en Seguridad Social, la nómina, las
+                retenciones y la PRL. STUGO orquesta; la ETT ejecuta.
               </p>
               <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
                 <p className="text-xs font-medium" style={{ color: '#059669' }}>
-                  El estudiante cotiza a la Seguridad Social desde el primer día
+                  Contrato real y cotización a la Seguridad Social desde el primer minuto
                 </p>
               </div>
             </Card>
 
             <Card padding="lg">
-              <h3 className="font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Modelo autónomo (para actividades específicas)</h3>
+              <h3 className="font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Lo que no vas a encontrar aquí</h3>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Para algunos perfiles especializados (fotógrafos, DJs, traductores, consultores), el estudiante puede actuar
-                como autónomo, emitiendo factura directamente a la empresa. STUGO facilita herramientas de autofacturación
-                que simplifican este proceso cumpliendo con la normativa española.
+                Ni falsos autónomos, ni trabajo en negro, ni cesión ilegal de trabajadores. Todos los turnos de STUGO
+                pasan por una ETT autorizada, sin excepciones. Es más lento de montar, pero es la única forma de que un
+                turno de 4 horas tenga la misma protección legal que un contrato indefinido.
               </p>
-              <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(14,15,18,0.05)', border: '1px solid rgba(45,91,255,0.15)' }}>
-                <p className="text-xs font-medium" style={{ color: 'var(--brand-primary)' }}>
-                  ℹ Cada oferta indica claramente qué modalidad aplica
+              <div className="mt-4 p-3 rounded-[var(--radius-md)]" style={{ background: 'rgba(214,248,74,0.14)', border: '1px solid var(--brand-accent)' }}>
+                <p className="text-xs font-medium" style={{ color: 'var(--text-primary)' }}>
+                  Cada oferta indica la ETT que actúa como empleador legal
                 </p>
               </div>
             </Card>

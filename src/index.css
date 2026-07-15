@@ -176,7 +176,7 @@ a {
 }
 
 ::selection {
-  background: rgba(45, 91, 255, 0.2);
+  background: rgba(14, 15, 18, 0.2);
   color: var(--text-primary);
 }
 

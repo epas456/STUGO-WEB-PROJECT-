@@ -113,7 +113,7 @@ export const faq: FaqItem[] = [
     id: 'faq-012',
     categoria: 'estudiantes',
     pregunta: '¿Cómo me pagan? ¿Cuándo recibo mi dinero?',
-    respuesta: 'El pago se realiza por transferencia bancaria. Una vez completado y validado el turno (la empresa confirma tu asistencia), el pago se procesa en un plazo de 3-5 días laborables. Los viernes se realizan las liquidaciones semanales. Puedes ver el estado de todos tus pagos pendientes y recibidos en la sección "Mi Cartera" del panel de estudiante.',
+    respuesta: 'El pago se realiza por transferencia bancaria. Una vez completado y validado el turno (la empresa confirma tu asistencia), STUGO adelanta el pago y lo recibes en menos de 24 horas. La ETT partner emite tu nómina con contrato real y alta en Seguridad Social. Puedes ver el estado de todos tus pagos pendientes y recibidos en la sección "Mi Cartera" del panel de estudiante.',
     tags: ['pago', 'transferencia', 'cuándo cobro', 'nómina'],
     util: 523,
   },

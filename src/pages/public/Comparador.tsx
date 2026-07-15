@@ -243,7 +243,7 @@ export default function Comparador() {
                         borderBottom: '1px solid var(--border)',
                         borderLeft: p === 'stugo' ? '2px solid var(--brand-primary)' : '1px solid var(--border)',
                         borderRight: p === 'stugo' ? '2px solid var(--brand-primary)' : 'none',
-                        background: p === 'stugo' ? 'rgba(45,91,255,0.04)' : 'inherit',
+                        background: p === 'stugo' ? 'rgba(14,15,18,0.04)' : 'inherit',
                       }}
                     >
                       <TooltipCell

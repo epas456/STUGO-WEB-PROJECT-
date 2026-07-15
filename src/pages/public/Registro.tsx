@@ -42,7 +42,7 @@ export default function Registro() {
             >
               <div
                 className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-                style={{ background: 'rgba(45,91,255,0.1)' }}
+                style={{ background: 'rgba(14,15,18,0.1)' }}
               >
                 <Building2 size={40} style={{ color: 'var(--brand-primary)' }} />
               </div>
@@ -74,7 +74,7 @@ export default function Registro() {
             >
               <div
                 className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-                style={{ background: 'rgba(255,214,61,0.15)' }}
+                style={{ background: 'rgba(214,248,74,0.15)' }}
               >
                 <GraduationCap size={40} style={{ color: '#B8860B' }} />
               </div>

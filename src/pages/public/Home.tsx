@@ -193,7 +193,7 @@ export default function Home() {
                 className="text-center lg:text-left"
               >
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-6"
-                  style={{ background: 'rgba(45,91,255,0.1)', color: 'var(--brand-primary)' }}>
+                  style={{ background: 'rgba(14,15,18,0.1)', color: 'var(--brand-primary)' }}>
                   {content.badge}
                 </span>
                 <h1 className="text-5xl sm:text-6xl font-bold leading-[1.1] mb-6" style={{ color: 'var(--text-primary)', whiteSpace: 'pre-line' }}>
@@ -244,7 +244,7 @@ export default function Home() {
                   >
                     <div className="text-center mb-6">
                       <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                        style={{ background: 'rgba(45,91,255,0.1)', color: 'var(--brand-primary)' }}>
+                        style={{ background: 'rgba(14,15,18,0.1)', color: 'var(--brand-primary)' }}>
                         <Building2 size={32} />
                       </div>
                       <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Turno publicado</h3>
@@ -324,7 +324,7 @@ export default function Home() {
             {steps.map((step) => (
               <Card key={step.n} hover className="text-center h-full">
                 <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
-                  style={{ background: 'rgba(45,91,255,0.1)', color: 'var(--brand-primary)' }}>
+                  style={{ background: 'rgba(14,15,18,0.1)', color: 'var(--brand-primary)' }}>
                   {step.icon}
                 </div>
                 <span className="text-5xl font-black mb-3 block" style={{ color: 'var(--bg-muted)' }}>{step.n}</span>

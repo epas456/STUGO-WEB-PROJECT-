@@ -89,10 +89,10 @@ const footerColumns = [
 function Logo() {
   return (
     <Link to="/" className="flex items-center gap-1.5 font-bold text-xl shrink-0">
-      <span className="relative">
-        <span className="text-[var(--brand-primary)]">STU</span>
-        <span className="text-[var(--text-primary)]">GO</span>
-        <span className="absolute -top-0.5 -right-2 w-2 h-2 bg-[var(--brand-accent)] rounded-full" />
+      <span className="lowercase tracking-tight">
+        <span className="text-[var(--text-primary)]">stu</span>
+        <span className="text-[var(--brand-accent)]">.</span>
+        <span className="text-[var(--text-primary)]">go</span>
       </span>
     </Link>
   )

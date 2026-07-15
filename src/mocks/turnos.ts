@@ -20,7 +20,7 @@ export interface Turno {
   estado: 'abierto' | 'cubierto' | 'cancelado' | 'completado'
   requisitos: string[]
   uniforme?: string
-  tipoContrato: 'autónomo' | 'eventual' | 'formación'
+  tipoContrato: 'eventual' | 'formación'
   urgente: boolean
   destacado: boolean
   matchScore?: number
@@ -222,7 +222,7 @@ export const turnos: Turno[] = [
     estado: 'abierto',
     requisitos: ['Buena presencia', 'Don de gentes', 'Experiencia como promotor valorable'],
     uniforme: 'Camiseta Coca-Cola (proporcionada)',
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: false,
     matchScore: 83,
@@ -280,7 +280,7 @@ export const turnos: Turno[] = [
     estado: 'abierto',
     requisitos: ['Conocimientos de electrónica', 'Don de ventas', 'Inglés básico'],
     uniforme: 'Polo Samsung (proporcionado)',
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: true,
     matchScore: 87,
@@ -478,7 +478,7 @@ export const turnos: Turno[] = [
     estado: 'abierto',
     requisitos: ['Experiencia en coordinación de equipos', 'Inglés B2', 'Protocolo de lujo'],
     uniforme: 'Traje de gala (propio)',
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: true,
     matchScore: 93,
@@ -507,7 +507,7 @@ export const turnos: Turno[] = [
     estado: 'abierto',
     requisitos: ['Buena presencia', 'Experiencia en perfumería o cosmética valorable', 'Catalán básico'],
     uniforme: 'Bata blanca L\'Oréal (proporcionada)',
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: false,
     matchScore: 85,
@@ -620,7 +620,7 @@ export const turnos: Turno[] = [
     vacantesOcupadas: 2,
     estado: 'abierto',
     requisitos: ['Inglés C2 o nativo', 'Interpretación consecutiva', 'Conocimientos de tecnología'],
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: true,
     matchScore: 96,
@@ -648,7 +648,7 @@ export const turnos: Turno[] = [
     vacantesOcupadas: 0,
     estado: 'abierto',
     requisitos: ['Título de sumiller', 'Experiencia en catas', 'Inglés valorable'],
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: true,
     matchScore: 92,
@@ -704,7 +704,7 @@ export const turnos: Turno[] = [
     vacantesOcupadas: 1,
     estado: 'abierto',
     requisitos: ['Equipo fotográfico propio', 'Experiencia en eventos', 'Entrega en 48h'],
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: false,
     matchScore: 84,
@@ -732,7 +732,7 @@ export const turnos: Turno[] = [
     vacantesOcupadas: 4,
     estado: 'abierto',
     requisitos: ['Carnet de conducir B', 'Conocimiento área valenciana', 'Smartphone propio'],
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: false,
     matchScore: 73,
@@ -761,7 +761,7 @@ export const turnos: Turno[] = [
     estado: 'abierto',
     requisitos: ['Extrovertido/a', 'Conocimientos básicos de finanzas', 'Smartphone con app'],
     uniforme: 'Sudadera marca (proporcionada)',
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: false,
     destacado: false,
     matchScore: 79,
@@ -846,7 +846,7 @@ export const turnos: Turno[] = [
     vacantesOcupadas: 0,
     estado: 'abierto',
     requisitos: ['Experiencia en RRSS', 'Redacción ágil', 'Inglés para comunicados internacionales'],
-    tipoContrato: 'autónomo',
+    tipoContrato: 'eventual',
     urgente: true,
     destacado: true,
     matchScore: 91,

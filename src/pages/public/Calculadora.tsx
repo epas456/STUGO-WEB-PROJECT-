@@ -187,7 +187,7 @@ export default function Calculadora() {
             </Card>
 
             {/* Comparison card */}
-            <Card padding="lg" style={{ border: '2px solid var(--brand-accent)', background: 'rgba(255,214,61,0.04)' }}>
+            <Card padding="lg" style={{ border: '2px solid var(--brand-accent)', background: 'rgba(214,248,74,0.04)' }}>
               <div className="flex items-start gap-3">
                 <GraduationCap size={24} style={{ color: 'var(--brand-primary)', flexShrink: 0 }} />
                 <div>
@@ -292,13 +292,13 @@ export default function Calculadora() {
                     }}
                     formatter={(value: unknown) => [`${value} €`]}
                   />
-                  <Bar dataKey="bruto" fill="rgba(45,91,255,0.2)" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="bruto" fill="rgba(14,15,18,0.2)" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="neto" fill="var(--brand-primary)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
               <div className="flex justify-center gap-6 mt-3">
                 <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-tertiary)' }}>
-                  <div className="w-3 h-3 rounded-sm" style={{ background: 'rgba(45,91,255,0.2)' }} />
+                  <div className="w-3 h-3 rounded-sm" style={{ background: 'rgba(14,15,18,0.2)' }} />
                   Bruto
                 </div>
                 <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-tertiary)' }}>

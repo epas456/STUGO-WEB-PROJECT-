@@ -186,7 +186,7 @@ export default function Precios() {
                     background: plan.highlighted ? 'var(--brand-primary)' : 'var(--bg-base)',
                     border: plan.highlighted ? '2px solid var(--brand-primary)' : '1px solid var(--border)',
                     borderRadius: 'var(--radius-xl)',
-                    boxShadow: plan.highlighted ? '0 12px 40px rgba(45,91,255,0.3)' : 'var(--shadow-md)',
+                    boxShadow: plan.highlighted ? '0 12px 40px rgba(14,15,18,0.3)' : 'var(--shadow-md)',
                     padding: '28px',
                   }}
                 >
@@ -248,7 +248,7 @@ export default function Precios() {
           <motion.div key="estudiante" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
             <div className="flex justify-center mb-16">
               <div className="max-w-lg w-full text-center p-12 relative overflow-hidden"
-                style={{ background: 'var(--bg-base)', borderRadius: 'var(--radius-xl)', border: '2px solid var(--brand-accent)', boxShadow: '0 12px 40px rgba(255,214,61,0.15)' }}>
+                style={{ background: 'var(--bg-base)', borderRadius: 'var(--radius-xl)', border: '2px solid var(--brand-accent)', boxShadow: '0 12px 40px rgba(214,248,74,0.15)' }}>
                 <div className="absolute top-0 left-0 w-32 h-32 rounded-full opacity-10"
                   style={{ background: 'var(--brand-accent)', transform: 'translate(-40%,-40%)' }} />
                 <div className="absolute bottom-0 right-0 w-32 h-32 rounded-full opacity-10"
