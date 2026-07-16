@@ -39,12 +39,7 @@ export default function EstudianteConfiguracion() {
         <Tabs.Content value="notificaciones">
           <div className="space-y-3">
             {['Nuevo turno disponible (match alto)', 'Turno confirmado', 'Pago recibido', 'Valoración recibida', 'Recordatorio de turno (1h antes)'].map(label => (
-              <div key={label} className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid var(--border)' }}>
-                <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
-                <button className="w-10 h-6 rounded-full relative" style={{ background: 'var(--brand-primary)' }}>
-                  <span className="absolute top-1 right-1 w-4 h-4 bg-white rounded-full" />
-                </button>
-              </div>
+              <ToggleRow key={label} label={label} />
             ))}
           </div>
         </Tabs.Content>
@@ -52,12 +47,7 @@ export default function EstudianteConfiguracion() {
         <Tabs.Content value="privacidad">
           <div className="space-y-3">
             {['Mi perfil es visible para empresas', 'Mostrar mi disponibilidad en el mapa', 'Permitir contacto directo de empresas'].map(label => (
-              <div key={label} className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid var(--border)' }}>
-                <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
-                <button className="w-10 h-6 rounded-full relative" style={{ background: 'var(--brand-primary)' }}>
-                  <span className="absolute top-1 right-1 w-4 h-4 bg-white rounded-full" />
-                </button>
-              </div>
+              <ToggleRow key={label} label={label} />
             ))}
           </div>
         </Tabs.Content>
@@ -76,6 +66,23 @@ export default function EstudianteConfiguracion() {
           </div>
         </Tabs.Content>
       </Tabs.Root>
+    </div>
+  )
+}
+
+function ToggleRow({ label }: { label: string }) {
+  const [on, setOn] = useState(true)
+  return (
+    <div className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid var(--border)' }}>
+      <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
+      <button
+        onClick={() => setOn(!on)}
+        className="w-10 h-6 rounded-full relative transition-colors"
+        style={{ background: on ? 'var(--brand-primary)' : 'var(--border)' }}
+        aria-pressed={on}
+      >
+        <span className="absolute top-1 w-4 h-4 bg-white rounded-full transition-all" style={{ left: on ? 'auto' : 4, right: on ? 4 : 'auto' }} />
+      </button>
     </div>
   )
 }

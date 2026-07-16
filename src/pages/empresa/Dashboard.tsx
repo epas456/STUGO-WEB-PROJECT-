@@ -18,6 +18,9 @@ import {
   Lightbulb,
   Clock,
 } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { useStore } from '@/store/useStore'
 import { turnos } from '@/mocks/turnos'
 import { estudiantes } from '@/mocks/estudiantes'
@@ -117,6 +120,7 @@ export default function Dashboard() {
   const hora = new Date().getHours()
   const saludo = hora < 12 ? 'Buenos días' : hora < 20 ? 'Buenas tardes' : 'Buenas noches'
 
+  const [aceptados, setAceptados] = useState<Set<string>>(new Set())
   const candidatosPendientes = estudiantes
     .filter((e) => e.matchScore !== undefined)
     .sort((a, b) => (b.matchScore ?? 0) - (a.matchScore ?? 0))
@@ -293,12 +297,23 @@ export default function Dashboard() {
                 </div>
                 <MatchScoreCircle score={est.matchScore ?? 80} size={44} />
                 <div className="flex gap-1 shrink-0">
-                  <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--on-primary)]" style={{ backgroundColor: 'var(--brand-primary)' }}>
-                    Aceptar
-                  </button>
-                  <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--text-secondary)] bg-[var(--bg-muted)]">
+                  {aceptados.has(est.id) ? (
+                    <span className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)]" style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}>
+                      Aceptado
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        setAceptados((prev) => new Set([...prev, est.id]))
+                        toast.success(`${est.nombre} confirmado para el turno. Le hemos avisado.`)
+                      }}
+                      className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--on-primary)]" style={{ backgroundColor: 'var(--brand-primary)' }}>
+                      Aceptar
+                    </button>
+                  )}
+                  <Link to={`/empresa/candidatos/${est.id}`} className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--text-secondary)] bg-[var(--bg-muted)]">
                     Ver
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

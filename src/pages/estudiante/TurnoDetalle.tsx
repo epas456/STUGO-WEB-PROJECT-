@@ -1,27 +1,40 @@
 import { useParams, Link, useLocation } from 'react-router-dom'
-import { ArrowLeft, MapPin, Clock, Euro, AlertTriangle, ClipboardList, BookOpen } from 'lucide-react'
+import { ArrowLeft, MapPin, Clock, Euro, AlertTriangle, ClipboardList, BookOpen, CheckCircle } from 'lucide-react'
 import { turnos } from '@/mocks/turnos'
 import { sectorSlug } from '@/mocks/basicos-sector'
 import { FichaTurnoCard } from '@/components/FichaTurnoCard'
 import { Button } from '@/components/ui/Button'
+import { useStore } from '@/store/useStore'
 import { toast } from 'sonner'
 import { useState } from 'react'
 
 export default function EstudianteTurnoDetalle() {
   const { id } = useParams()
   const { pathname } = useLocation()
+  const { turnosAceptados, aceptarTurno, cancelarTurno, addNotification } = useStore()
   const turno = turnos.find(t => t.id === id) || turnos[0]
   const [cancelled, setCancelled] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
 
-  // La ficha del turno solo se muestra cuando el turno ya es tuyo (vía Mis Turnos),
+  // La ficha del turno solo se muestra cuando el turno ya es tuyo,
   // nunca en la vista de oferta: contiene información operativa del local.
-  const esMio = pathname.includes('mis-turnos')
+  const esMio = pathname.includes('mis-turnos') || turnosAceptados.includes(turno.id)
+
+  const handleAceptar = () => {
+    aceptarTurno(turno.id)
+    addNotification({
+      type: 'turno',
+      title: 'Turno confirmado',
+      message: `${turno.titulo} · ${turno.fecha}, ${turno.horaInicio}–${turno.horaFin}. Revisa la ficha del turno antes de ir.`,
+      link: `/estudiante/mis-turnos/${turno.id}`,
+    })
+    toast.success('Turno aceptado. Ya puedes ver la ficha con las instrucciones del local.')
+  }
 
   if (cancelled) return (
     <div className="p-6 text-center">
       <p className="text-lg font-medium" style={{ color: 'var(--text-primary)' }}>Turno cancelado.</p>
-      <Link to="/estudiante/turnos" className="mt-4 block text-sm" style={{ color: 'var(--brand-primary)' }}>← Ver mis turnos</Link>
+      <Link to="/estudiante/turnos" className="mt-4 block text-sm" style={{ color: 'var(--brand-primary)' }}>← Buscar turnos</Link>
     </div>
   )
 
@@ -96,23 +109,38 @@ export default function EstudianteTurnoDetalle() {
           </p>
         )}
 
-        <div className="flex gap-3">
-          <Button variant="outline" onClick={() => toast.info('Formulario de reporte abierto.')} className="flex-1">Reportar problema</Button>
-          {!showConfirm
-            ? <Button variant="danger" onClick={() => setShowConfirm(true)} className="flex-1">Cancelar turno</Button>
-            : <div className="flex-1 p-3 rounded-[var(--radius-md)] text-sm" style={{ background: 'var(--danger-bg)', border: '1px solid var(--danger)' }}>
-                <div className="flex items-start gap-2 mb-2"><AlertTriangle size={15} style={{ color: 'var(--danger)' }} />
-                  <span style={{ color: 'var(--danger-text)' }}>Cancelar ahora afectará a tu reputación.</span></div>
-                <div className="flex gap-2">
-                  <button onClick={() => setShowConfirm(false)} className="px-3 py-1.5 rounded-[var(--radius-sm)] text-xs" style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>No, mantener</button>
-                  <button onClick={() => { setCancelled(true); toast.error('Turno cancelado. Tu reputación se ha visto afectada.') }}
-                    className="px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium text-white" style={{ background: 'var(--danger)' }}>
-                    Sí, cancelar
-                  </button>
+        {esMio ? (
+          <div className="flex gap-3">
+            <Button variant="outline" onClick={() => toast.info('Formulario de reporte abierto.')} className="flex-1">Reportar problema</Button>
+            {!showConfirm
+              ? <Button variant="danger" onClick={() => setShowConfirm(true)} className="flex-1">Cancelar turno</Button>
+              : <div className="flex-1 p-3 rounded-[var(--radius-md)] text-sm" style={{ background: 'var(--danger-bg)', border: '1px solid var(--danger)' }}>
+                  <div className="flex items-start gap-2 mb-2"><AlertTriangle size={15} style={{ color: 'var(--danger)' }} />
+                    <span style={{ color: 'var(--danger-text)' }}>Cancelar ahora afectará a tu reputación.</span></div>
+                  <div className="flex gap-2">
+                    <button onClick={() => setShowConfirm(false)} className="px-3 py-1.5 rounded-[var(--radius-sm)] text-xs" style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>No, mantener</button>
+                    <button onClick={() => { cancelarTurno(turno.id); setCancelled(true); toast.error('Turno cancelado. Tu reputación se ha visto afectada.') }}
+                      className="px-3 py-1.5 rounded-[var(--radius-sm)] text-xs font-medium text-white" style={{ background: 'var(--danger)' }}>
+                      Sí, cancelar
+                    </button>
+                  </div>
                 </div>
-              </div>
-          }
-        </div>
+            }
+          </div>
+        ) : turno.estado === 'abierto' ? (
+          <div className="space-y-2">
+            <Button onClick={handleAceptar} className="w-full" size="lg">
+              <CheckCircle size={16} /> Aceptar este turno · {turno.salarioTotal}€
+            </Button>
+            <p className="text-xs text-center" style={{ color: 'var(--text-tertiary)' }}>
+              Al aceptar te comprometes a asistir. La comisión de STUGO es del 1,5 % ({(turno.salarioTotal * 0.015).toFixed(2)}€) y cobras en menos de 24 h tras completarlo.
+            </p>
+          </div>
+        ) : (
+          <p className="text-sm text-center py-2" style={{ color: 'var(--text-secondary)' }}>
+            Este turno ya no admite candidatos.
+          </p>
+        )}
       </div>
     </div>
   )

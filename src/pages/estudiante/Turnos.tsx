@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Search, MapPin, Clock, Euro, Sprout } from 'lucide-react'
 import { turnos } from '@/mocks/turnos'
+import { useStore } from '@/store/useStore'
 import { AvatarCircle } from '@/components/AvatarCircle'
 import { MatchScoreCircle } from '@/components/MatchScoreCircle'
 
@@ -11,6 +12,7 @@ export default function BuscarTurnos() {
   const [search, setSearch] = useState('')
   const [sector, setSector] = useState('')
   const [soloParaEmpezar, setSoloParaEmpezar] = useState(false)
+  const { turnosAceptados } = useStore()
 
   const q = search.trim().toLowerCase()
   const abiertos = turnos.filter(t => t.estado === 'abierto')
@@ -97,6 +99,14 @@ export default function BuscarTurnos() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <p className="font-semibold text-sm text-[var(--text-primary)]">{t.titulo}</p>
+                  {turnosAceptados.includes(t.id) && (
+                    <span
+                      className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+                      style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
+                    >
+                      Aceptado
+                    </span>
+                  )}
                   {t.abiertoSinExperiencia && (
                     <span
                       className="px-2 py-0.5 rounded-full text-[10px] font-medium"

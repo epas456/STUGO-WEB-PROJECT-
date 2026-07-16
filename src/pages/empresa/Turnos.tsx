@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Search, Eye, Copy, XCircle, AlertTriangle } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { turnos, type Turno } from '@/mocks/turnos'
 
 const TABS: { label: string; key: Turno['estado'] | 'todos' }[] = [
@@ -203,14 +205,16 @@ export default function Turnos() {
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-1">
-                          <button
+                          <Link
+                            to={`/empresa/turnos/${turno.id}`}
                             title="Ver detalle"
                             className="p-1.5 rounded-[var(--radius-md)] hover:bg-[var(--bg-muted)] text-[var(--text-secondary)] hover:text-[var(--brand-primary)]"
                           >
                             <Eye size={15} />
-                          </button>
+                          </Link>
                           <button
                             title="Duplicar"
+                            onClick={() => toast.success(`Turno duplicado: ${turno.titulo}. Edítalo desde el listado.`)}
                             className="p-1.5 rounded-[var(--radius-md)] hover:bg-[var(--bg-muted)] text-[var(--text-secondary)]"
                           >
                             <Copy size={15} />

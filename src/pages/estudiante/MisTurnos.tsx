@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { MapPin, Clock, Euro, Star, X } from 'lucide-react'
 import { turnos } from '@/mocks/turnos'
+import { useStore } from '@/store/useStore'
 import { AvatarCircle } from '@/components/AvatarCircle'
 import { StarRating } from '@/components/StarRating'
 
@@ -43,8 +45,21 @@ export default function Turnos() {
   const [ratingComment, setRatingComment] = useState('')
   const [rated, setRated] = useState<Set<string>>(new Set())
 
+  const { turnosAceptados } = useStore()
+
+  // Los turnos aceptados en esta sesión de demo van a "Próximos"
+  // y tienen prioridad sobre el estado del mock.
+  const aceptadosDemo = turnos
+    .filter((t) => turnosAceptados.includes(t.id))
+    .map((t) => ({ ...t, studentEstado: 'proximo' as const }))
+
+  const todos = [
+    ...aceptadosDemo,
+    ...STUDENT_TURNOS.filter((s) => !turnosAceptados.includes(s.id)),
+  ]
+
   const tabKeys = ['proximo', 'en_curso', 'pasado', 'cancelado']
-  const filtered = STUDENT_TURNOS.filter((t) => t.studentEstado === tabKeys[activeTab])
+  const filtered = todos.filter((t) => t.studentEstado === tabKeys[activeTab])
 
   const handleSubmitRating = () => {
     if (!ratingModal || !ratingValue) {
@@ -118,7 +133,9 @@ export default function Turnos() {
                       <div className="flex items-center gap-3">
                         <AvatarCircle name={t.empresaNombre} size={44} />
                         <div>
-                          <p className="font-semibold text-[var(--text-primary)]">{t.titulo}</p>
+                          <Link to={`/estudiante/mis-turnos/${t.id}`} className="font-semibold text-[var(--text-primary)] hover:underline">
+                            {t.titulo}
+                          </Link>
                           <p className="text-sm text-[var(--text-secondary)]">{t.empresaNombre}</p>
                         </div>
                       </div>
