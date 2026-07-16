@@ -236,12 +236,39 @@ export default function Precios() {
               ))}
             </div>
 
-            {/* Comparison table note */}
-            <div className="text-center mb-16">
-              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                ¿Quieres comparar STUGO con otras plataformas?{' '}
-                <Link to="/comparador" style={{ color: 'var(--brand-primary)', fontWeight: 600 }}>Ver comparador →</Link>
-              </p>
+            {/* Comparativa con otras plataformas */}
+            <div className="max-w-3xl mx-auto mb-16">
+              <h3 className="text-lg font-bold text-center mb-4" style={{ color: 'var(--text-primary)' }}>
+                STUGO frente a otras plataformas
+              </h3>
+              <div className="overflow-x-auto rounded-[var(--radius-lg)] border" style={{ borderColor: 'var(--border)' }}>
+                <table className="w-full text-sm" style={{ borderCollapse: 'collapse' }}>
+                  <thead>
+                    <tr style={{ background: 'var(--bg-subtle)' }}>
+                      <th className="text-left p-3 font-semibold" style={{ color: 'var(--text-secondary)' }}></th>
+                      <th className="p-3 font-bold" style={{ color: 'var(--text-primary)' }}>STUGO</th>
+                      <th className="p-3 font-medium" style={{ color: 'var(--text-secondary)' }}>ETT tradicional</th>
+                      <th className="p-3 font-medium" style={{ color: 'var(--text-secondary)' }}>Otras apps</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ['Pago al trabajador', '<24 h', 'Semanal o mensual', 'Semanal'],
+                      ['CV y entrevistas', 'No', 'Sí', 'Depende'],
+                      ['Match score visible', 'Sí', 'No', 'No'],
+                      ['Reputación bidireccional', 'Sí', 'No', 'Parcial'],
+                      ['Coste empresa', 'Desde 50 €/mes', 'Margen variable alto', 'Variable'],
+                    ].map(([label, s, ett, otras]) => (
+                      <tr key={label} style={{ borderTop: '1px solid var(--border)' }}>
+                        <td className="p-3 font-medium" style={{ color: 'var(--text-primary)' }}>{label}</td>
+                        <td className="p-3 text-center font-semibold" style={{ color: 'var(--text-primary)', background: 'var(--bg-subtle)' }}>{s}</td>
+                        <td className="p-3 text-center" style={{ color: 'var(--text-secondary)' }}>{ett}</td>
+                        <td className="p-3 text-center" style={{ color: 'var(--text-secondary)' }}>{otras}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </motion.div>
         ) : (
@@ -309,8 +336,8 @@ export default function Precios() {
           <Link to="/contacto">
             <Button variant="accent" size="lg">Contactar con ventas</Button>
           </Link>
-          <Link to="/faq">
-            <Button variant="ghost" size="lg" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }}>Ver FAQ completa</Button>
+          <Link to="/ayuda">
+            <Button variant="ghost" size="lg" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }}>Ver preguntas frecuentes</Button>
           </Link>
         </div>
       </div>

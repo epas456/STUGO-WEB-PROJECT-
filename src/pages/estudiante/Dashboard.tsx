@@ -6,11 +6,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-import { Euro, CheckCircle, Star, Flame, Clock, ChevronRight } from 'lucide-react'
-import { BadgeIcon } from '@/components/BadgeIcon'
+import { Euro, CheckCircle, Star, CalendarClock, Clock, ChevronRight } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import { turnos } from '@/mocks/turnos'
-import { badges } from '@/mocks/badges'
 import { MatchScoreCircle } from '@/components/MatchScoreCircle'
 import { AvatarCircle } from '@/components/AvatarCircle'
 import { StarRating } from '@/components/StarRating'
@@ -30,7 +28,7 @@ const kpis = [
     trend: '+12%',
     up: true,
     icon: Euro,
-    color: '#1B2A4E',
+    color: 'var(--info)',
     bg: 'var(--bg-subtle)',
   },
   {
@@ -39,8 +37,8 @@ const kpis = [
     trend: '+3 este mes',
     up: true,
     icon: CheckCircle,
-    color: '#10B981',
-    bg: '#ECFDF5',
+    color: 'var(--success)',
+    bg: 'var(--bg-subtle)',
   },
   {
     label: 'Valoración media',
@@ -48,17 +46,17 @@ const kpis = [
     trend: '+0.1',
     up: true,
     icon: Star,
-    color: '#F59E0B',
-    bg: '#FEF9EE',
+    color: 'var(--warning)',
+    bg: 'var(--bg-subtle)',
   },
   {
-    label: 'Racha actual',
-    value: '3 sem.',
-    trend: 'Récord personal',
+    label: 'Puntualidad',
+    value: '98%',
+    trend: 'Últimos 30 días',
     up: true,
-    icon: Flame,
-    color: '#EF4444',
-    bg: '#FEF2F2',
+    icon: CalendarClock,
+    color: 'var(--info)',
+    bg: 'var(--bg-subtle)',
   },
 ]
 
@@ -67,7 +65,6 @@ export default function Dashboard() {
   const nombre = auth.user?.name ?? 'Lucía'
 
   const recomendados = turnos.filter((t) => t.estado === 'abierto' && t.matchScore !== undefined).slice(0, 3)
-  const misInsignias = badges.slice(0, 3)
 
   const proximoTurno = {
     fecha: 'Viernes 17 May',
@@ -95,7 +92,7 @@ export default function Dashboard() {
       <div
         className="rounded-[var(--radius-lg)] border p-5 flex items-center justify-between gap-4"
         style={{
-          backgroundColor: esSoon ? '#FFFBEA' : 'var(--bg-base)',
+          backgroundColor: esSoon ? 'var(--bg-subtle)' : 'var(--bg-base)',
           borderColor: esSoon ? 'var(--brand-accent)' : 'var(--border)',
           boxShadow: 'var(--shadow-md)',
         }}
@@ -105,7 +102,7 @@ export default function Dashboard() {
             className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center shrink-0"
             style={{
               backgroundColor: esSoon ? 'var(--brand-accent)' : 'var(--bg-muted)',
-              color: esSoon ? '#0B0E1A' : 'var(--text-secondary)',
+              color: esSoon ? '#0E0F12' : 'var(--text-secondary)',
             }}
           >
             <Clock size={22} />
@@ -125,7 +122,7 @@ export default function Dashboard() {
         {esSoon && (
           <span
             className="shrink-0 px-3 py-1 rounded-full text-xs font-bold"
-            style={{ backgroundColor: 'var(--brand-accent)', color: '#0B0E1A' }}
+            style={{ backgroundColor: 'var(--brand-accent)', color: '#0E0F12' }}
           >
             ¡Hoy!
           </span>
@@ -237,49 +234,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Badges recientes */}
-      <div
-        className="rounded-[var(--radius-lg)] border border-[var(--border)] p-6"
-        style={{ backgroundColor: 'var(--bg-base)', boxShadow: 'var(--shadow-md)' }}
-      >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-semibold text-[var(--text-primary)]">Tus badges recientes</h2>
-          <button className="text-xs text-[var(--brand-primary)] font-medium flex items-center gap-1">
-            Ver todos <ChevronRight size={14} />
-          </button>
-        </div>
-        <div className="flex gap-4 flex-wrap">
-          {misInsignias.map((badge) => (
-            <div key={badge.id} className="flex items-center gap-2.5">
-              <div
-                className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center"
-                style={{ backgroundColor: badge.color + '20', border: `2px solid ${badge.color}` }}
-              >
-                <BadgeIcon name={badge.icon} color={badge.color} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-[var(--text-primary)]">{badge.nombre}</p>
-                <p className="text-xs text-[var(--text-secondary)]">{badge.categoria}</p>
-              </div>
-            </div>
-          ))}
-          <div
-            className="flex items-center gap-2.5 p-3 rounded-[var(--radius-md)] border-2 border-dashed border-[var(--border)]"
-          >
-            <div className="text-center">
-              <p className="text-xs text-[var(--text-secondary)]">Próximo badge:</p>
-              <p className="text-sm font-semibold text-[var(--text-primary)]">Veterano STUGO</p>
-              <div className="w-24 h-1.5 rounded-full bg-[var(--bg-muted)] mt-1.5">
-                <div
-                  className="h-full rounded-full"
-                  style={{ width: '87%', backgroundColor: '#1B2A4E' }}
-                />
-              </div>
-              <p className="text-[10px] text-[var(--text-secondary)] mt-0.5">87/100 turnos</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

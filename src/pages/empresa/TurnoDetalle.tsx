@@ -11,8 +11,10 @@ import {
   Eye,
   Star,
 } from 'lucide-react'
-import { turnos } from '@/mocks/turnos'
+import { turnos, type FichaTurno } from '@/mocks/turnos'
 import { estudiantes } from '@/mocks/estudiantes'
+import { FichaTurnoCard } from '@/components/FichaTurnoCard'
+import { toast } from 'sonner'
 import { MatchScoreCircle } from '@/components/MatchScoreCircle'
 import { AvatarCircle } from '@/components/AvatarCircle'
 import { StarRating } from '@/components/StarRating'
@@ -20,10 +22,10 @@ import { StarRating } from '@/components/StarRating'
 const TABS = ['Candidatos', 'Confirmados', 'Detalles', 'Histórico']
 
 const ESTADO_COLORS = {
-  abierto: { bg: '#DCFCE7', text: '#15803D' },
-  cubierto: { bg: '#DBEAFE', text: '#1D4ED8' },
-  completado: { bg: '#F3F4F6', text: '#374151' },
-  cancelado: { bg: '#FEE2E2', text: '#B91C1C' },
+  abierto: { bg: 'var(--success-bg)', text: 'var(--success-text)' },
+  cubierto: { bg: 'var(--info-bg)', text: 'var(--info-text)' },
+  completado: { bg: 'var(--neutral-bg)', text: 'var(--neutral-text)' },
+  cancelado: { bg: 'var(--danger-bg)', text: 'var(--danger-text)' },
 }
 
 const HISTORICO = [
@@ -39,8 +41,24 @@ export default function TurnoDetalle() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(0)
   const [accepted, setAccepted] = useState<Set<string>>(new Set())
+  const [editandoFicha, setEditandoFicha] = useState(false)
+  const [fichaLocal, setFichaLocal] = useState<FichaTurno | null>(null)
+  const [fichaForm, setFichaForm] = useState({ presentarse: '', contacto: '', vestimenta: '', tareas: '', noHacer: '' })
 
   const turno = turnos.find((t) => t.id === id) ?? turnos[0]
+  const ficha = turno.ficha ?? fichaLocal
+
+  const guardarFicha = () => {
+    setFichaLocal({
+      presentarse: fichaForm.presentarse,
+      contacto: fichaForm.contacto,
+      vestimenta: fichaForm.vestimenta,
+      primerasTareas: fichaForm.tareas.split('\n').map(s => s.trim()).filter(Boolean),
+      queNoHacer: fichaForm.noHacer.split('\n').map(s => s.trim()).filter(Boolean),
+    })
+    setEditandoFicha(false)
+    toast.success('Ficha del turno guardada. La verá quien tenga el turno asignado.')
+  }
   const candidatos = estudiantes.slice(0, 5).map((e, i) => ({
     ...e,
     matchScore: e.matchScore ?? [94, 88, 75, 62, 81][i] ?? 70,
@@ -70,9 +88,17 @@ export default function TurnoDetalle() {
             {turno.urgente && (
               <span
                 className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
-                style={{ backgroundColor: '#FEF9C3', color: '#A16207' }}
+                style={{ backgroundColor: 'var(--warning-bg)', color: 'var(--warning-text)' }}
               >
                 Urgente
+              </span>
+            )}
+            {turno.abiertoSinExperiencia && (
+              <span
+                className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                style={{ backgroundColor: 'var(--neutral-bg)', color: 'var(--neutral-text)' }}
+              >
+                Abierto a sin experiencia
               </span>
             )}
           </div>
@@ -125,7 +151,7 @@ export default function TurnoDetalle() {
             {tab === 'Confirmados' && (
               <span
                 className="ml-2 px-1.5 py-0.5 rounded-full text-xs"
-                style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+                style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
               >
                 {candidatos.filter((c) => c.confirmado).length}
               </span>
@@ -218,6 +244,93 @@ export default function TurnoDetalle() {
               ))}
             </div>
           </div>
+          {turno.abiertoSinExperiencia && (
+            <div>
+              <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+                Cobertura primer turno
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                Este turno está abierto a candidatos sin experiencia previa y prioriza en el matching
+                a estudiantes que buscan su primer turno. Si el primer turno de un candidato nuevo
+                acaba en no-show o incidencia grave, no se cobra la comisión de ese turno y se ayuda
+                a recubrirlo con prioridad. Condiciones gestionadas con la ETT partner.
+              </p>
+            </div>
+          )}
+          <div>
+            <h3 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+              Ficha del turno
+            </h3>
+            {ficha ? (
+              <FichaTurnoCard ficha={ficha} />
+            ) : editandoFicha ? (
+              <div className="space-y-4">
+                {([
+                  { key: 'presentarse', label: 'Dónde presentarse al llegar', placeholder: 'Ej: puerta de personal, C/ Mayor 1, timbre 2' },
+                  { key: 'contacto', label: 'Persona de contacto en el local', placeholder: 'Ej: María, encargada. Delantal rojo, suele estar en caja' },
+                  { key: 'vestimenta', label: 'Uniforme o vestimenta', placeholder: 'Ej: pantalón negro y zapato cerrado' },
+                  { key: 'tareas', label: 'Tareas de los primeros 15 minutos (una por línea)', placeholder: 'Fichar en el sistema\nRevisar el plano de mesas', textarea: true },
+                  { key: 'noHacer', label: 'Qué NO hacer / errores comunes (una por línea)', placeholder: 'No usar el ascensor de clientes', textarea: true },
+                ] as const).map((f) => (
+                  <div key={f.key}>
+                    <label className="block text-sm font-medium text-[var(--text-primary)] mb-1.5">{f.label}</label>
+                    {'textarea' in f && f.textarea ? (
+                      <textarea
+                        value={fichaForm[f.key]}
+                        onChange={(e) => setFichaForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
+                        placeholder={f.placeholder}
+                        rows={3}
+                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[var(--border)] text-sm outline-none focus:border-[var(--brand-primary)] resize-none"
+                        style={{ backgroundColor: 'var(--bg-subtle)', color: 'var(--text-primary)' }}
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        value={fichaForm[f.key]}
+                        onChange={(e) => setFichaForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
+                        placeholder={f.placeholder}
+                        className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[var(--border)] text-sm outline-none focus:border-[var(--brand-primary)]"
+                        style={{ backgroundColor: 'var(--bg-subtle)', color: 'var(--text-primary)' }}
+                      />
+                    )}
+                  </div>
+                ))}
+                <div className="flex gap-2">
+                  <button
+                    onClick={guardarFicha}
+                    className="px-4 py-2 rounded-[var(--radius-md)] text-sm font-semibold text-[var(--on-primary)]"
+                    style={{ backgroundColor: 'var(--brand-primary)' }}
+                  >
+                    Guardar ficha
+                  </button>
+                  <button
+                    onClick={() => setEditandoFicha(false)}
+                    className="px-4 py-2 rounded-[var(--radius-md)] text-sm font-medium border border-[var(--border)] text-[var(--text-secondary)]"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="p-4 rounded-[var(--radius-md)] border"
+                style={{ backgroundColor: 'var(--warning-bg)', borderColor: 'var(--border)' }}
+              >
+                <p className="text-sm mb-3" style={{ color: 'var(--text-primary)' }}>
+                  Este turno no tiene ficha. Quien lo acepte llegará sin saber dónde presentarse, a
+                  quién preguntar ni qué hacer los primeros minutos. Los turnos con ficha completa
+                  registran en torno a un 30 % menos de cancelaciones y no-shows.
+                </p>
+                <button
+                  onClick={() => setEditandoFicha(true)}
+                  className="px-4 py-2 rounded-[var(--radius-md)] text-sm font-semibold text-[var(--on-primary)]"
+                  style={{ backgroundColor: 'var(--brand-primary)' }}
+                >
+                  Completar ficha (2 min)
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -287,7 +400,7 @@ function CandidatoCard({
           {est.verificado && (
             <span
               className="px-2 py-0.5 rounded-full text-xs font-medium"
-              style={{ backgroundColor: '#DBEAFE', color: '#1D4ED8' }}
+              style={{ backgroundColor: 'var(--info-bg)', color: 'var(--info-text)' }}
             >
               Verificado
             </span>
@@ -295,7 +408,7 @@ function CandidatoCard({
           {isConfirmed && (
             <span
               className="px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1"
-              style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+              style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
             >
               <CheckCircle size={10} />
               Confirmado

@@ -12,10 +12,10 @@ const cookies = [
 ]
 
 const typeBadge: Record<string, string> = {
-  Necesaria: '#10B981',
-  Preferencias: '#F59E0B',
-  Analítica: '#1B2A4E',
-  Marketing: '#EF4444',
+  Necesaria: 'var(--success)',
+  Preferencias: 'var(--warning)',
+  Analítica: 'var(--info)',
+  Marketing: 'var(--danger)',
 }
 
 export default function Cookies() {

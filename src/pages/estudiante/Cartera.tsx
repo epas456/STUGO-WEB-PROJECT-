@@ -58,9 +58,9 @@ export default function EstudianteCartera() {
         {/* IRPF section */}
         <div className="p-5 rounded-[var(--radius-lg)]" style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border)' }}>
           <h2 className="font-semibold mb-3 text-sm" style={{ color: 'var(--text-primary)' }}>Estimación IRPF 2026</h2>
-          <div className="flex items-start gap-2 p-3 rounded-[var(--radius-md)] mb-4" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
-            <CheckCircle2 size={16} style={{ color: '#10B981', flexShrink: 0, marginTop: 2 }} />
-            <p className="text-xs" style={{ color: '#166534' }}>
+          <div className="flex items-start gap-2 p-3 rounded-[var(--radius-md)] mb-4" style={{ background: 'var(--success-bg)', border: '1px solid var(--success-bg)' }}>
+            <CheckCircle2 size={16} style={{ color: 'var(--success)', flexShrink: 0, marginTop: 2 }} />
+            <p className="text-xs" style={{ color: 'var(--success-text)' }}>
               Has ganado <strong>{totalAnual.toFixed(2)}€</strong> este año. Estás muy por debajo del mínimo exento ({IRPF_THRESHOLD.toLocaleString('es')}€). <strong>No pagas IRPF.</strong>
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function EstudianteCartera() {
             <span>Mínimo: {IRPF_THRESHOLD.toLocaleString('es')}€</span>
           </div>
           <div className="h-3 rounded-full overflow-hidden" style={{ background: 'var(--bg-muted)' }}>
-            <div className="h-full rounded-full" style={{ width: `${pct}%`, background: '#10B981' }} />
+            <div className="h-full rounded-full" style={{ width: `${pct}%`, background: 'var(--success)' }} />
           </div>
           <p className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
             Te quedan {(IRPF_THRESHOLD - totalAnual).toFixed(0)}€ antes de tener que declarar.
@@ -98,7 +98,7 @@ export default function EstudianteCartera() {
                 <td className="px-4 py-3 text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>{c.neto.toFixed(2)}€</td>
                 <td className="px-4 py-3">
                   <span className="px-2 py-0.5 rounded-full text-xs font-medium"
-                    style={{ background: c.estado === 'cobrado' ? '#F0FDF4' : '#FEF9C3', color: c.estado === 'cobrado' ? '#166534' : '#854D0E' }}>
+                    style={{ background: c.estado === 'cobrado' ? 'var(--success-bg)' : 'var(--warning-bg)', color: c.estado === 'cobrado' ? 'var(--success-text)' : 'var(--warning-text)' }}>
                     {c.estado === 'cobrado' ? '✓ Cobrado' : '⏳ Pendiente'}
                   </span>
                 </td>

@@ -1,3 +1,12 @@
+// Instrucciones operativas del local. Solo visibles para quien tiene el turno asignado.
+export interface FichaTurno {
+  presentarse: string
+  contacto: string
+  vestimenta: string
+  primerasTareas: string[]
+  queNoHacer: string[]
+}
+
 export interface Turno {
   id: string
   empresaId: string
@@ -26,6 +35,8 @@ export interface Turno {
   matchScore?: number
   tags: string[]
   createdAt: string
+  abiertoSinExperiencia?: boolean
+  ficha?: FichaTurno
 }
 
 export const turnos: Turno[] = [
@@ -57,6 +68,22 @@ export const turnos: Turno[] = [
     matchScore: 94,
     tags: ['sala', 'brunch', 'terraza', 'hotel'],
     createdAt: '2026-05-10',
+    ficha: {
+      presentarse: 'Entrada de personal por la calle lateral (Ctra. de Miramar 2). Timbre "Servicio". Llega 15 min antes.',
+      contacto: 'Jordi, jefe de sala. Chaleco gris, suele estar en la barra de la terraza.',
+      vestimenta: 'Pantalón negro y zapato cerrado antideslizante. La camisa y el delantal se entregan al llegar.',
+      primerasTareas: [
+        'Ficha en el sistema con el código que te dará Jordi',
+        'Revisa el plano de mesas de la terraza (está en el office)',
+        'Repasa la carta de brunch: 12 platos, alérgenos marcados',
+        'Prepara tu estación: bandeja, comandero, sacacorchos',
+      ],
+      queNoHacer: [
+        'No sirvas nada en la zona VIP sin avisar a Jordi',
+        'No uses el ascensor de clientes con bandejas',
+        'No prometas cambios de plato sin consultar a cocina',
+      ],
+    },
   },
   {
     id: 'tur-002',
@@ -86,6 +113,22 @@ export const turnos: Turno[] = [
     matchScore: 88,
     tags: ['azafata', 'congreso', 'tecnología', 'inglés', 'ifema'],
     createdAt: '2026-05-08',
+    ficha: {
+      presentarse: 'Pabellón 8 de IFEMA, puerta de personal (acceso sur). Di que vas con EventPro y enseña tu DNI.',
+      contacto: 'Marta, coordinadora de sala. Acreditación naranja de "STAFF LEAD"; estará en el mostrador de acreditaciones.',
+      vestimenta: 'El traje azul se entrega en el guardarropa de personal. Trae zapato negro cómodo: son 12 horas de pie.',
+      primerasTareas: [
+        'Recoge tu acreditación y el traje en el guardarropa',
+        'Asiste al briefing de 15 min en la sala N101 (08:15)',
+        'Memoriza la ubicación de las 4 salas y los aseos',
+        'Ocupa tu puesto asignado antes de la apertura de puertas (09:00)',
+      ],
+      queNoHacer: [
+        'No des indicaciones que no sepas seguras: deriva al mostrador de información',
+        'No abandones tu puesto sin avisar a Marta, ni en los descansos',
+        'No hagas fotos dentro de las salas de ponencias',
+      ],
+    },
   },
   {
     id: 'tur-003',
@@ -113,6 +156,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 72,
     tags: ['almacén', 'nocturno', 'logística', 'picking'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-09',
   },
   {
@@ -169,6 +213,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 79,
     tags: ['retail', 'moda', 'dependiente', 'reposición'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-11',
   },
   {
@@ -256,6 +301,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 76,
     tags: ['control accesos', 'congreso', 'castellana'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-14',
   },
   {
@@ -370,6 +416,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 65,
     tags: ['cajero', 'supermercado', 'finde', 'lleida'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-12',
   },
   {
@@ -483,6 +530,7 @@ export const turnos: Turno[] = [
     destacado: true,
     matchScore: 93,
     tags: ['coordinador', 'gala', 'lujo', 'noche'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-08',
   },
   {
@@ -597,6 +645,7 @@ export const turnos: Turno[] = [
     destacado: false,
     matchScore: 72,
     tags: ['reposición', 'nocturno', 'rebajas', 'retail'],
+    abiertoSinExperiencia: true,
     createdAt: '2026-05-12',
   },
   {

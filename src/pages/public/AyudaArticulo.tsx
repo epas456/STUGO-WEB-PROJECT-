@@ -4,14 +4,14 @@ import { articulosAyuda } from '@/mocks/articulos-ayuda'
 import { toast } from 'sonner'
 
 export default function AyudaArticulo() {
-  const { articulo } = useParams()
-  const art = articulosAyuda.find(a => a.slug === articulo)
+  const { slug } = useParams()
+  const art = articulosAyuda.find(a => a.slug === slug)
 
   if (!art) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-24 text-center">
         <h1 className="text-2xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Artículo no encontrado</h1>
-        <Link to="/centro-de-ayuda" style={{ color: 'var(--brand-primary)' }}>← Volver al Centro de ayuda</Link>
+        <Link to="/ayuda" style={{ color: 'var(--brand-primary)' }}>← Volver al Centro de ayuda</Link>
       </div>
     )
   }
@@ -22,7 +22,7 @@ export default function AyudaArticulo() {
     <div className="max-w-4xl mx-auto px-4 py-16">
       <div className="mb-8 flex items-center gap-2 text-sm flex-wrap" style={{ color: 'var(--text-tertiary)' }}>
         <Link to="/" className="hover:underline">Inicio</Link> <ChevronRight size={14} />
-        <Link to="/centro-de-ayuda" className="hover:underline">Centro de ayuda</Link> <ChevronRight size={14} />
+        <Link to="/ayuda" className="hover:underline">Centro de ayuda</Link> <ChevronRight size={14} />
         <span style={{ color: 'var(--text-primary)' }}>{art.titulo}</span>
       </div>
 
@@ -58,7 +58,7 @@ export default function AyudaArticulo() {
             <h3 className="font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>Artículos relacionados</h3>
             <div className="space-y-2">
               {related.map(r => (
-                <Link key={r.id} to={`/centro-de-ayuda/${r.categoria.toLowerCase()}/${r.slug}`}
+                <Link key={r.id} to={`/ayuda/${r.slug}`}
                   className="flex items-center gap-2 text-sm hover:underline" style={{ color: 'var(--brand-primary)' }}>
                   <ChevronRight size={14} /> {r.titulo}
                 </Link>

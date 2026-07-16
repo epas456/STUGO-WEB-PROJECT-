@@ -36,8 +36,8 @@ export default function EmpresaRegistro() {
   if (done) return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center max-w-sm">
-        <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: '#F0FDF4' }}>
-          <CheckCircle2 size={32} style={{ color: '#10B981' }} />
+        <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: 'var(--success-bg)' }}>
+          <CheckCircle2 size={32} style={{ color: 'var(--success)' }} />
         </div>
         <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>¡Empresa creada!</h1>
         <p className="mb-6 text-sm" style={{ color: 'var(--text-secondary)' }}>Publica tu primer turno y prueba la plataforma sin coste durante 14 días.</p>

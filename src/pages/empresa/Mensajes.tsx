@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Send, ArrowLeft, Eye } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { conversaciones } from '@/mocks/mensajes'
 import { AvatarCircle } from '@/components/AvatarCircle'
 
@@ -151,12 +152,13 @@ export default function Mensajes() {
                 En línea
               </p>
             </div>
-            <button
+            <Link
+              to={`/empresa/candidatos/${activeConv.estudianteId}`}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius-md)] border border-[var(--border)] text-xs font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-muted)]"
             >
               <Eye size={13} />
               Ver perfil
-            </button>
+            </Link>
           </div>
 
           {/* Messages */}

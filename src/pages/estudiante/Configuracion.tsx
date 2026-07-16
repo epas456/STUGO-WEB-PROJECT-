@@ -38,34 +38,24 @@ export default function EstudianteConfiguracion() {
 
         <Tabs.Content value="notificaciones">
           <div className="space-y-3">
-            {['Nuevo turno disponible (match alto)', 'Turno confirmado', 'Pago recibido', 'Valoración recibida', 'Nuevo badge desbloqueado', 'Recordatorio de turno (1h antes)'].map(label => (
-              <div key={label} className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid var(--border)' }}>
-                <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
-                <button className="w-10 h-6 rounded-full relative" style={{ background: 'var(--brand-primary)' }}>
-                  <span className="absolute top-1 right-1 w-4 h-4 bg-white rounded-full" />
-                </button>
-              </div>
+            {['Nuevo turno disponible (match alto)', 'Turno confirmado', 'Pago recibido', 'Valoración recibida', 'Recordatorio de turno (1h antes)'].map(label => (
+              <ToggleRow key={label} label={label} />
             ))}
           </div>
         </Tabs.Content>
 
         <Tabs.Content value="privacidad">
           <div className="space-y-3">
-            {['Mi perfil es visible para empresas', 'Mostrar mi disponibilidad en el mapa', 'Permitir contacto directo de empresas', 'Aparecer en el ranking de embajadores'].map(label => (
-              <div key={label} className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid var(--border)' }}>
-                <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
-                <button className="w-10 h-6 rounded-full relative" style={{ background: 'var(--brand-primary)' }}>
-                  <span className="absolute top-1 right-1 w-4 h-4 bg-white rounded-full" />
-                </button>
-              </div>
+            {['Mi perfil es visible para empresas', 'Mostrar mi disponibilidad en el mapa', 'Permitir contacto directo de empresas'].map(label => (
+              <ToggleRow key={label} label={label} />
             ))}
           </div>
         </Tabs.Content>
 
         <Tabs.Content value="eliminar">
-          <div className="p-5 rounded-[var(--radius-lg)]" style={{ border: '1px solid var(--danger)', background: '#FEF2F2' }}>
-            <h2 className="font-bold mb-2" style={{ color: '#991B1B' }}>Zona de peligro</h2>
-            <p className="text-sm mb-4" style={{ color: '#7F1D1D' }}>Esta acción es definitiva. Se borrarán tus turnos, valoraciones y badges. No podemos recuperarlos. Escribe <strong>ELIMINAR</strong> para confirmar.</p>
+          <div className="p-5 rounded-[var(--radius-lg)]" style={{ border: '1px solid var(--danger)', background: 'var(--danger-bg)' }}>
+            <h2 className="font-bold mb-2" style={{ color: 'var(--danger-text)' }}>Zona de peligro</h2>
+            <p className="text-sm mb-4" style={{ color: 'var(--danger-text)' }}>Esta acción es definitiva. Se borrarán tus turnos y valoraciones. No podemos recuperarlos. Escribe <strong>ELIMINAR</strong> para confirmar.</p>
             <input value={deleteText} onChange={e => setDeleteText(e.target.value)} placeholder="Escribe ELIMINAR"
               className={inputCls} style={{ ...inputSty, marginBottom: 12 }} />
             <button disabled={deleteText !== 'ELIMINAR'} onClick={() => toast.error('Cuenta eliminada. Hasta pronto.')}
@@ -76,6 +66,23 @@ export default function EstudianteConfiguracion() {
           </div>
         </Tabs.Content>
       </Tabs.Root>
+    </div>
+  )
+}
+
+function ToggleRow({ label }: { label: string }) {
+  const [on, setOn] = useState(true)
+  return (
+    <div className="flex items-center justify-between py-3" style={{ borderBottom: '1px solid var(--border)' }}>
+      <span className="text-sm" style={{ color: 'var(--text-primary)' }}>{label}</span>
+      <button
+        onClick={() => setOn(!on)}
+        className="w-10 h-6 rounded-full relative transition-colors"
+        style={{ background: on ? 'var(--brand-primary)' : 'var(--border)' }}
+        aria-pressed={on}
+      >
+        <span className="absolute top-1 w-4 h-4 bg-white rounded-full transition-all" style={{ left: on ? 'auto' : 4, right: on ? 4 : 'auto' }} />
+      </button>
     </div>
   )
 }

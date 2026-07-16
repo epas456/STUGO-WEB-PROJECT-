@@ -7,7 +7,7 @@ const PLANES = [
     id: 'free',
     nombre: 'Básico',
     precio: '0€/mes',
-    color: '#6B7280',
+    color: 'var(--text-tertiary)',
     features: ['5 turnos/mes', 'Hasta 10 candidatos', 'Soporte email'],
     limit: 5,
   },
@@ -15,7 +15,7 @@ const PLANES = [
     id: 'pro',
     nombre: 'Pro',
     precio: '49€/mes',
-    color: '#1B2A4E',
+    color: 'var(--info)',
     features: ['50 turnos/mes', 'Candidatos ilimitados', 'Soporte prioritario', 'Analíticas avanzadas'],
     limit: 50,
     popular: true,
@@ -24,7 +24,7 @@ const PLANES = [
     id: 'business',
     nombre: 'Business',
     precio: '149€/mes',
-    color: '#1B2A4E',
+    color: 'var(--info)',
     features: ['Turnos ilimitados', 'Candidatos ilimitados', 'Account manager dedicado', 'API access', 'Contrato SLA'],
     limit: Infinity,
   },
@@ -32,7 +32,7 @@ const PLANES = [
     id: 'enterprise',
     nombre: 'Enterprise',
     precio: 'A medida',
-    color: '#F59E0B',
+    color: 'var(--warning)',
     features: ['Todo Business +', 'Integración ERP', 'Onboarding personalizado', 'SLA garantizado 99.9%'],
     limit: Infinity,
   },
@@ -173,7 +173,7 @@ export default function Facturacion() {
             </div>
             <span
               className="ml-auto px-2.5 py-0.5 rounded-full text-xs font-medium"
-              style={{ backgroundColor: '#DCFCE7', color: '#15803D' }}
+              style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}
             >
               Principal
             </span>
@@ -218,8 +218,8 @@ export default function Facturacion() {
                       className="px-2.5 py-0.5 rounded-full text-xs font-semibold"
                       style={
                         f.estado === 'pagada'
-                          ? { backgroundColor: '#DCFCE7', color: '#15803D' }
-                          : { backgroundColor: '#FEF9C3', color: '#A16207' }
+                          ? { backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }
+                          : { backgroundColor: 'var(--warning-bg)', color: 'var(--warning-text)' }
                       }
                     >
                       {f.estado === 'pagada' ? 'Pagada' : 'Pendiente'}

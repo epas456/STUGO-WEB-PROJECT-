@@ -6,13 +6,13 @@ import { AvatarCircle } from '@/components/AvatarCircle'
 import { StarRating } from '@/components/StarRating'
 import { toast } from 'sonner'
 
-function MatchCircle({ score }: { score: number }) {
-  const color = score >= 85 ? '#10B981' : score >= 70 ? '#F59E0B' : '#8A90A8'
+function MatchCircle({ score, title }: { score: number; title?: string }) {
+  const color = score >= 85 ? 'var(--success)' : score >= 70 ? 'var(--warning)' : 'var(--text-tertiary)'
   const r = 36
   const circ = 2 * Math.PI * r
   const offset = circ - (score / 100) * circ
   return (
-    <div className="relative" style={{ width: 88, height: 88 }}>
+    <div className="relative" style={{ width: 88, height: 88 }} title={title}>
       <svg width={88} height={88} className="-rotate-90">
         <circle cx={44} cy={44} r={r} fill="none" stroke="var(--bg-muted)" strokeWidth={6} />
         <circle
@@ -36,15 +36,6 @@ function MatchCircle({ score }: { score: number }) {
       </span>
     </div>
   )
-}
-
-const BADGE_COLORS: Record<string, { bg: string; text: string }> = {
- 'top-rated': { bg: '#FEF3C7', text: '#92400E' },
-  puntual: { bg: '#D1FAE5', text: '#065F46' },
- 'hosteleria-pro': { bg: '#FEE2E2', text: '#991B1B' },
-  verificado: { bg: '#DBEAFE', text: '#1E40AF' },
- 'eventos-experto': { bg: '#F3E8FF', text: '#6B21A8' },
- 'nueva-estrella': { bg: '#FFF7ED', text: '#9A3412' },
 }
 
 const DIAS_SEMANA = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
@@ -98,10 +89,18 @@ export default function CandidatoDetalle() {
               {est.verificado && (
                 <span
                   className="flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full"
-                  style={{ backgroundColor: '#DBEAFE', color: '#1E40AF' }}
+                  style={{ backgroundColor: 'var(--info-bg)', color: 'var(--info-text)' }}
                 >
                   <ShieldCheck size={12} />
                   Verificado
+                </span>
+              )}
+              {est.nTurnos === 0 && (
+                <span
+                  className="text-xs font-semibold px-2 py-0.5 rounded-full"
+                  style={{ backgroundColor: 'var(--neutral-bg)', color: 'var(--neutral-text)' }}
+                >
+                  Nuevo en STUGO
                 </span>
               )}
             </div>
@@ -110,14 +109,38 @@ export default function CandidatoDetalle() {
               <span className="flex items-center gap-1"><Clock size={13} />{est.edad} años</span>
               <span className="flex items-center gap-1"><Briefcase size={13} />{est.nTurnos} turnos</span>
             </div>
-            <StarRating value={est.valoracion} readonly size={18} />
-            <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-              {est.valoracion.toFixed(1)} de media
-            </p>
+            {est.nTurnos === 0 ? (
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Sin valoraciones todavía: busca su primer turno.
+              </p>
+            ) : (
+              <>
+                <StarRating value={est.valoracion} readonly size={18} />
+                <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
+                  {est.valoracion.toFixed(1)} de media
+                </p>
+              </>
+            )}
           </div>
 
-          <MatchCircle score={est.matchScore ?? 75} />
+          <MatchCircle
+            score={est.matchScore ?? 75}
+            title={
+              est.nTurnos === 0
+                ? 'Perfil nuevo: el score se calcula con disponibilidad, distancia y datos del perfil, no con historial. Sube en cuanto complete su primer turno.'
+                : undefined
+            }
+          />
         </div>
+
+        {est.nTurnos === 0 && (
+          <p className="mt-4 text-xs leading-relaxed p-3 rounded-[var(--radius-md)]"
+            style={{ backgroundColor: 'var(--bg-subtle)', color: 'var(--text-secondary)' }}>
+            El match score de un perfil nuevo se calcula con su disponibilidad, distancia y datos del
+            perfil, no con un historial que aún no existe. Sube en cuanto complete su primer turno.
+            Si tu turno está abierto a candidatos sin experiencia, aplica la cobertura primer turno.
+          </p>
+        )}
 
         {/* Bio */}
         {est.bio && (
@@ -164,29 +187,6 @@ export default function CandidatoDetalle() {
         </div>
       </div>
 
-      {/* Badges */}
-      {est.badges.length > 0 && (
-        <div
-          className="rounded-[var(--radius-lg)] p-5 mb-6"
-          style={{ backgroundColor: 'var(--bg-base)', boxShadow: 'var(--shadow-md)' }}
-        >
-          <h2 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>Badges</h2>
-          <div className="flex flex-wrap gap-2">
-            {est.badges.map((b) => {
-              const badgeStyle = BADGE_COLORS[b] ?? { bg: 'var(--bg-muted)', text: 'var(--text-secondary)' }
-              return (
-                <span
-                  key={b}
-                  className="px-3 py-1 rounded-full text-xs font-semibold"
-                  style={{ backgroundColor: badgeStyle.bg, color: badgeStyle.text }}
-                >
-                  {b.replace(/-/g, ' ')}
-                </span>
-              )
-            })}
-          </div>
-        </div>
-      )}
 
       {/* Sectores */}
       <div
@@ -238,8 +238,8 @@ export default function CandidatoDetalle() {
                         <span
                           className="inline-block w-6 h-6 rounded-md"
                           style={{
-                            backgroundColor: available ? '#D1FAE5' : 'var(--bg-muted)',
-                            border: available ? '1px solid #10B981' : '1px solid transparent',
+                            backgroundColor: available ? 'var(--success-bg)' : 'var(--bg-muted)',
+                            border: available ? '1px solid var(--success)' : '1px solid transparent',
                           }}
                           title={available ? 'Disponible' : 'No disponible'}
                         />
@@ -253,7 +253,7 @@ export default function CandidatoDetalle() {
         </div>
         <div className="flex items-center gap-4 mt-3">
           <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
-            <span className="inline-block w-4 h-4 rounded-sm" style={{ backgroundColor: '#D1FAE5', border: '1px solid #10B981' }} />
+            <span className="inline-block w-4 h-4 rounded-sm" style={{ backgroundColor: 'var(--success-bg)', border: '1px solid var(--success)' }} />
             Disponible
           </span>
           <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
@@ -285,7 +285,7 @@ export default function CandidatoDetalle() {
           onClick={handleBlock}
           disabled={blocked}
           className="flex items-center gap-2 px-5 py-2.5 rounded-[var(--radius-md)] text-sm font-semibold transition-colors hover:bg-red-50 disabled:opacity-50"
-          style={{ color: '#EF4444', border: '1px solid #FCA5A5' }}
+          style={{ color: 'var(--danger)', border: '1px solid var(--danger-text)' }}
         >
           <Ban size={15} />
           {blocked ? 'Bloqueado' : 'Bloquear'}

@@ -18,6 +18,9 @@ import {
   Lightbulb,
   Clock,
 } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { useStore } from '@/store/useStore'
 import { turnos } from '@/mocks/turnos'
 import { estudiantes } from '@/mocks/estudiantes'
@@ -54,7 +57,7 @@ const kpis = [
     trend: '+12%',
     up: true,
     icon: Briefcase,
-    color: '#1B2A4E',
+    color: 'var(--info)',
     bg: 'var(--bg-subtle)',
   },
   {
@@ -63,8 +66,8 @@ const kpis = [
     trend: '-5%',
     up: false,
     icon: Users,
-    color: '#F59E0B',
-    bg: '#FEF9EE',
+    color: 'var(--warning)',
+    bg: 'var(--warning-bg)',
   },
   {
     label: 'Valoración media',
@@ -72,8 +75,8 @@ const kpis = [
     trend: '+0.2',
     up: true,
     icon: Star,
-    color: '#10B981',
-    bg: '#ECFDF5',
+    color: 'var(--success)',
+    bg: 'var(--success-bg)',
   },
   {
     label: 'Ahorro vs ETT',
@@ -81,8 +84,8 @@ const kpis = [
     trend: '+18%',
     up: true,
     icon: TrendingUp,
-    color: '#1B2A4E',
-    bg: '#F5F3FF',
+    color: 'var(--info)',
+    bg: 'var(--info-bg)',
   },
 ]
 
@@ -117,6 +120,7 @@ export default function Dashboard() {
   const hora = new Date().getHours()
   const saludo = hora < 12 ? 'Buenos días' : hora < 20 ? 'Buenas tardes' : 'Buenas noches'
 
+  const [aceptados, setAceptados] = useState<Set<string>>(new Set())
   const candidatosPendientes = estudiantes
     .filter((e) => e.matchScore !== undefined)
     .sort((a, b) => (b.matchScore ?? 0) - (a.matchScore ?? 0))
@@ -293,12 +297,23 @@ export default function Dashboard() {
                 </div>
                 <MatchScoreCircle score={est.matchScore ?? 80} size={44} />
                 <div className="flex gap-1 shrink-0">
-                  <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--on-primary)]" style={{ backgroundColor: 'var(--brand-primary)' }}>
-                    Aceptar
-                  </button>
-                  <button className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--text-secondary)] bg-[var(--bg-muted)]">
+                  {aceptados.has(est.id) ? (
+                    <span className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)]" style={{ backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' }}>
+                      Aceptado
+                    </span>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        setAceptados((prev) => new Set([...prev, est.id]))
+                        toast.success(`${est.nombre} confirmado para el turno. Le hemos avisado.`)
+                      }}
+                      className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--on-primary)]" style={{ backgroundColor: 'var(--brand-primary)' }}>
+                      Aceptar
+                    </button>
+                  )}
+                  <Link to={`/empresa/candidatos/${est.id}`} className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius-md)] text-[var(--text-secondary)] bg-[var(--bg-muted)]">
                     Ver
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -309,7 +324,7 @@ export default function Dashboard() {
       {/* Tip box */}
       <div
         className="rounded-[var(--radius-lg)] border p-4 flex items-start gap-3"
-        style={{ backgroundColor: '#FFFBEA', borderColor: 'var(--brand-accent)' }}
+        style={{ backgroundColor: 'var(--warning-bg)', borderColor: 'var(--brand-accent)' }}
       >
         <Lightbulb size={20} style={{ color: 'var(--brand-accent)', flexShrink: 0 }} />
         <div>

@@ -12,7 +12,7 @@ export interface AuthUser {
 
 export interface Notification {
   id: string
-  type: 'turno' | 'mensaje' | 'valoracion' | 'badge' | 'pago' | 'oportunidad'
+  type: 'turno' | 'mensaje' | 'valoracion' | 'pago' | 'oportunidad'
   title: string
   message: string
   read: boolean
@@ -26,6 +26,10 @@ interface AppStore {
   notifications: Notification[]
   cookieConsent: 'pending' | 'accepted' | 'rejected' | 'custom'
   sidebarCollapsed: boolean
+  // Turnos que el estudiante ha aceptado en esta demo (persistidos en localStorage)
+  turnosAceptados: string[]
+  aceptarTurno: (id: string) => void
+  cancelarTurno: (id: string) => void
   login: (role: 'empresa' | 'estudiante', user: AuthUser) => void
   logout: () => void
   setTheme: (theme: 'light' | 'dark') => void
@@ -52,6 +56,17 @@ export const useStore = create<AppStore>()(
       notifications: [],
       cookieConsent: 'pending',
       sidebarCollapsed: false,
+      turnosAceptados: [],
+
+      aceptarTurno: (id) =>
+        set((s) => ({
+          turnosAceptados: s.turnosAceptados.includes(id)
+            ? s.turnosAceptados
+            : [...s.turnosAceptados, id],
+        })),
+
+      cancelarTurno: (id) =>
+        set((s) => ({ turnosAceptados: s.turnosAceptados.filter((t) => t !== id) })),
 
       login: (role, user) => set({ auth: { role, user } }),
       logout: () => set({ auth: { role: 'public', user: null } }),
@@ -94,6 +109,7 @@ export const useStore = create<AppStore>()(
         auth: s.auth,
         cookieConsent: s.cookieConsent,
         sidebarCollapsed: s.sidebarCollapsed,
+        turnosAceptados: s.turnosAceptados,
       }),
     }
   )

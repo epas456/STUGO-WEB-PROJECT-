@@ -29,15 +29,6 @@ export const notificacionesMock: Notification[] = [
     link: '/estudiante/cartera',
   },
   {
-    id: 'not-004',
-    type: 'badge',
-    title: '¡Nuevo badge desbloqueado!',
-    message: 'Has conseguido el badge "Veterano" por completar más de 50 turnos. Tu perfil es ahora más visible para las empresas.',
-    read: false,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
-    link: '/estudiante/perfil',
-  },
-  {
     id: 'not-005',
     type: 'mensaje',
     title: 'Nuevo mensaje de Restaurante La Paloma',
@@ -90,15 +81,6 @@ export const notificacionesMock: Notification[] = [
     read: true,
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 36).toISOString(),
     link: '/estudiante/valoraciones/pendientes',
-  },
-  {
-    id: 'not-011',
-    type: 'badge',
-    title: 'Cerca de conseguir un nuevo badge',
-    message: 'Solo te faltan 3 turnos puntuales para conseguir el badge "Puntualidad Perfecta". ¡Sigue así!',
-    read: true,
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
-    link: '/estudiante/perfil',
   },
   {
     id: 'not-012',

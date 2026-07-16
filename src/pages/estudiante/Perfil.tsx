@@ -1,13 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
-import { CheckCircle, Clock, XCircle, Upload, Lock } from 'lucide-react'
-import { badges } from '@/mocks/badges'
+import { CheckCircle, Clock, XCircle, Upload, BookOpen, ChevronRight } from 'lucide-react'
 import { estudiantes } from '@/mocks/estudiantes'
 import { StarRating } from '@/components/StarRating'
 import { AvatarCircle } from '@/components/AvatarCircle'
-import { BadgeIcon } from '@/components/BadgeIcon'
 
-const TABS = ['Datos personales', 'Documentos', 'Mi reputación', 'Mis badges', 'Sectores y disponibilidad']
+const TABS = ['Datos personales', 'Documentos', 'Mi reputación', 'Sectores y disponibilidad']
 
 const estudiante = estudiantes[0]
 
@@ -65,16 +64,6 @@ const RATING_BREAKDOWN = [
   { label: 'Comunicación', value: 4.9 },
 ]
 
-// Student has unlocked first 6 badges, rest are locked
-const UNLOCKED_IDS = [
- 'badge-top-rated',
- 'badge-puntual',
- 'badge-hosteleria-pro',
- 'badge-verificado',
- 'badge-primero-turno',
- 'badge-responde-rapido',
-]
-
 export default function Perfil() {
   const [activeTab, setActiveTab] = useState(0)
   const [form, setForm] = useState<PersonalForm>({
@@ -101,9 +90,9 @@ export default function Perfil() {
   }
 
   const docEstadoLabel = (estado: 'verificado' | 'pendiente' | 'rechazado') => {
-    if (estado === 'verificado') return { text: 'Verificado', style: { backgroundColor: '#DCFCE7', color: '#15803D' } }
-    if (estado === 'pendiente') return { text: 'Pendiente', style: { backgroundColor: '#FEF9C3', color: '#A16207' } }
-    return { text: 'Rechazado', style: { backgroundColor: '#FEE2E2', color: '#B91C1C' } }
+    if (estado === 'verificado') return { text: 'Verificado', style: { backgroundColor: 'var(--success-bg)', color: 'var(--success-text)' } }
+    if (estado === 'pendiente') return { text: 'Pendiente', style: { backgroundColor: 'var(--warning-bg)', color: 'var(--warning-text)' } }
+    return { text: 'Rechazado', style: { backgroundColor: 'var(--danger-bg)', color: 'var(--danger-text)' } }
   }
 
   return (
@@ -128,6 +117,20 @@ export default function Perfil() {
           </div>
         </div>
       </div>
+
+      {/* Básicos del sector */}
+      <Link
+        to="/estudiante/basicos"
+        className="flex items-center gap-3 p-3.5 rounded-[var(--radius-md)] border transition-colors hover:bg-[var(--bg-subtle)]"
+        style={{ borderColor: 'var(--border)', background: 'var(--bg-base)' }}
+      >
+        <BookOpen size={16} className="shrink-0" style={{ color: 'var(--brand-primary)' }} />
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Básicos del sector</p>
+          <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>Lo mínimo antes de tu primer turno en hostelería, retail, eventos o logística. 2 min por sector.</p>
+        </div>
+        <ChevronRight size={16} className="shrink-0" style={{ color: 'var(--text-tertiary)' }} />
+      </Link>
 
       {/* Tabs */}
       <div className="flex gap-0.5 border-b border-[var(--border)] overflow-x-auto">
@@ -328,70 +331,8 @@ export default function Perfil() {
         </div>
       )}
 
-      {/* Mis badges */}
-      {activeTab === 3 && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {badges.map((badge) => {
-            const unlocked = UNLOCKED_IDS.includes(badge.id)
-            const progress = unlocked ? 100 : Math.floor(Math.random() * 60) + 10
-            const progressTarget = unlocked ? 5 : 5
-            const progressCurrent = unlocked ? progressTarget : Math.ceil((progress / 100) * progressTarget)
-            return (
-              <div
-                key={badge.id}
-                className="rounded-[var(--radius-lg)] border border-[var(--border)] p-4 text-center space-y-2 relative overflow-hidden"
-                style={{
-                  backgroundColor: 'var(--bg-base)',
-                  boxShadow: 'var(--shadow-md)',
-                  opacity: unlocked ? 1 : 0.45,
-                }}
-              >
-                {!unlocked && (
-                  <div className="absolute top-2 right-2">
-                    <Lock size={12} style={{ color: 'var(--text-tertiary)' }} />
-                  </div>
-                )}
-                <div
-                  className="w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center text-2xl mx-auto"
-                  style={{
-                    backgroundColor: badge.color + '20',
-                    border: `2px solid ${unlocked ? badge.color : 'var(--border)'}`,
-                  }}
-                >
-                  <BadgeIcon name={badge.icon} color={badge.color} />
-                </div>
-                <p className="text-xs font-semibold text-[var(--text-primary)]">{badge.nombre}</p>
-                <p className="text-[10px] text-[var(--text-secondary)] leading-snug">{badge.descripcion}</p>
-                {!unlocked && (
-                  <div>
-                    <div className="h-1 rounded-full bg-[var(--bg-muted)] mt-1.5">
-                      <div
-                        className="h-full rounded-full"
-                        style={{ width: `${progress}%`, backgroundColor: badge.color }}
-                      />
-                    </div>
-                    <p className="text-[10px] text-[var(--text-secondary)] mt-0.5">
-                      {progressCurrent}/{progressTarget} para desbloquear
-                    </p>
-                  </div>
-                )}
-                <span
-                  className="inline-block px-1.5 py-0.5 rounded text-[9px] font-semibold uppercase"
-                  style={{
-                    backgroundColor: badge.color + '20',
-                    color: badge.color,
-                  }}
-                >
-                  {badge.rareza}
-                </span>
-              </div>
-            )
-          })}
-        </div>
-      )}
-
       {/* Sectores y disponibilidad */}
-      {activeTab === 4 && (
+      {activeTab === 3 && (
         <div className="space-y-6">
           <div
             className="rounded-[var(--radius-lg)] border border-[var(--border)] p-6 space-y-4"
