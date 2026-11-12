@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STUGO · Personal joven para almacenes</title>
+<meta name="description" content="Estudiantes jóvenes para trabajo puntual en almacenes de Mataró y el Maresme.">
+<meta name="theme-color" content="#0E0F12">
+<script>document.documentElement.className='js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* ───────── Identidad ───────── */
+:root{
+  --ink:#0E0F12;--cream:#F2EFE7;--lime:#D6F84A;--coral:#FF6B47;
+  --soft:#D9D6CC;--muted:#B9B6AC;--muted-dark:#4B4C47;
+  --spring:cubic-bezier(.22,1,.36,1);
+  --blur:16px;                         /* móvil; 24px desde 720px */
+  /* cristal sobre tinta */
+  --g-bg:rgba(242,239,231,.10);
+  --g-bd:rgba(242,239,231,.22);
+  --g-hi:rgba(242,239,231,.35);
+  --glow:rgba(242,239,231,.13);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:'Space Grotesk',system-ui,sans-serif;font-size:18px;line-height:1.5;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.steps :focus-visible,form :focus-visible{outline-color:var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+[hidden]{display:none!important}
+
+/* ───────── Cristal ───────── */
+.glass{
+  background:var(--g-bg);
+  -webkit-backdrop-filter:blur(var(--blur)) saturate(160%);
+  backdrop-filter:blur(var(--blur)) saturate(160%);
+  border:1px solid var(--g-bd);
+  box-shadow:inset 0 1px 0 0 var(--g-hi);   /* reflejo de 1px, sin difuminado */
+}
+/* brillo que sigue al puntero: círculo de un solo color */
+.glow{position:relative;overflow:hidden}
+.glow>*{position:relative}
+.glow::before{content:"";position:absolute;left:-110px;top:-110px;width:220px;height:220px;border-radius:50%;background:var(--glow);filter:blur(36px);opacity:0;transform:translate3d(var(--mx,0px),var(--my,0px),0);transition:opacity .5s var(--spring);pointer-events:none}
+@media (hover:hover){.glow:hover::before{opacity:1}}
+
+/* ───────── Burbujas de fondo ───────── */
+.bubbles{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bub{position:absolute;transform:translate3d(0,calc(var(--p,0) * var(--f,1) * -40px),0)}
+.bub i,.ib{display:block;border-radius:50%;filter:blur(60px);will-change:transform;animation:fa 16s cubic-bezier(.45,0,.55,1) infinite}
+.b1{top:4%;left:-80px;--f:1}
+.b1 i{width:280px;height:280px;background:rgba(214,248,74,.17)}
+.b2{top:54%;right:-100px;--f:.6}
+.b2 i{width:320px;height:320px;background:rgba(242,239,231,.14);animation-name:fb;animation-duration:19s}
+.b3,.b4,.ib{display:none}
+.b3{bottom:-120px;left:22%;--f:.8}
+.b3 i{width:420px;height:420px;background:rgba(214,248,74,.12);animation-name:fc;animation-duration:20s}
+.b4{top:16%;right:14%;--f:.4}
+.b4 i{width:220px;height:220px;background:rgba(242,239,231,.12);animation-name:fb;animation-duration:13s}
+@keyframes fa{0%,100%{transform:translate3d(0,0,0)}33%{transform:translate3d(46px,-32px,0)}66%{transform:translate3d(-24px,38px,0)}}
+@keyframes fb{0%,100%{transform:translate3d(0,0,0)}30%{transform:translate3d(-40px,28px,0)}70%{transform:translate3d(30px,-44px,0)}}
+@keyframes fc{0%,100%{transform:translate3d(0,0,0)}40%{transform:translate3d(54px,24px,0)}75%{transform:translate3d(-36px,-30px,0)}}
+
+/* ───────── Nav de cristal ───────── */
+header{position:sticky;top:0;z-index:10;padding:10px 10px 0}
+.bar{position:relative;max-width:1100px;margin:0 auto;height:60px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 4px 0 18px;transition:transform .5s var(--spring)}
+.bar>*{position:relative}
+.bar .g{position:absolute;inset:0;border-radius:999px;transition:transform .5s var(--spring),opacity .5s var(--spring)}
+.bar .g2{opacity:0;background:rgba(14,15,18,.78);-webkit-backdrop-filter:blur(calc(var(--blur) * 1.7)) saturate(160%);backdrop-filter:blur(calc(var(--blur) * 1.7)) saturate(160%)}
+.scrolled .bar{transform:translate3d(0,-3px,0)}
+.scrolled .g{transform:scaleY(.88)}
+.scrolled .g1{opacity:0}
+.scrolled .g2{opacity:1}
+.logo{display:inline-flex;align-items:center;min-height:50px;font-weight:700;font-size:26px;letter-spacing:-.04em;line-height:1;text-decoration:none;transform-origin:left center;transition:transform .5s var(--spring)}
+.logo span{color:var(--lime)}
+.scrolled .logo{transform:scale(.9)}
+
+/* selector */
+.toggle{position:relative;display:inline-flex;border-radius:999px;padding:3px;gap:2px}
+.toggle .pill{position:absolute;top:3px;left:0;height:44px;width:0;border-radius:999px;background:var(--lime);transform:translate3d(var(--px,0px),0,0)}
+.toggle.ready .pill{transition:transform .55s var(--spring),width .55s var(--spring)}
+.toggle button{position:relative;font:inherit;font-weight:600;font-size:14px;border:0;background:transparent;color:var(--cream);padding:0 12px;border-radius:999px;cursor:pointer;min-height:44px;white-space:nowrap;transition:color .4s var(--spring),transform .4s var(--spring)}
+.toggle button[aria-pressed="true"]{color:var(--ink)}
+.toggle button:active{transform:scale(.97)}
+html:not(.js) .toggle button[aria-pressed="true"]{background:var(--lime)}
+
+/* ───────── Hero ───────── */
+.hero{padding:48px 0 64px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:10px 15px;border-radius:999px;color:var(--cream)}
+.tag::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--coral)}
+h1{margin:26px 0 0;font-size:clamp(42px,8vw,88px);line-height:.98;font-weight:700;letter-spacing:-.045em}
+h1 em{font-style:normal;color:var(--lime)}
+h1 .w{display:inline-block}
+.lead{margin:24px 0 0;font-size:20px;color:var(--soft);max-width:600px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;text-decoration:none;background:var(--lime);color:var(--ink);font-weight:700;font-size:18px;padding:0 28px;border-radius:999px;margin-top:32px;border:0;cursor:pointer;font-family:inherit;transition:transform .4s var(--spring)}
+@media (hover:hover){.btn:hover{transform:scale(1.03)}}
+.btn:active{transform:scale(.97)}
+.note{margin-top:16px;color:var(--muted);font-size:14px}
+
+/* ───────── Pasos (superficie crema, cristal tintado en tinta) ───────── */
+.steps{
+  --g-bg:rgba(14,15,18,.08);--g-bd:rgba(14,15,18,.20);--g-hi:rgba(255,255,255,.75);--glow:rgba(255,255,255,.6);
+  position:relative;overflow:hidden;background:var(--cream);color:var(--ink);margin:0 8px;border-radius:28px;padding:56px 0}
+.steps .wrap{position:relative}
+.steps h2{margin:0 0 32px;font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-.04em}
+.ib{position:absolute;top:-70px;right:-60px;width:380px;height:380px;background:rgba(14,15,18,.10);animation-name:fb;animation-duration:18s}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+.card{border-radius:28px;padding:26px;transition:transform .5s var(--spring)}
+@media (hover:hover){.card:hover{transform:translate3d(0,-4px,0) scale(1.015)}}
+.card b{display:inline-block;background:var(--ink);color:var(--lime);font-family:'JetBrains Mono',monospace;font-size:15px;padding:6px 13px;border-radius:999px}
+.card h3{margin:20px 0 0;font-size:24px;line-height:1.1;letter-spacing:-.03em}
+.card p{margin:10px 0 0;color:var(--muted-dark);font-size:16px}
+
+/* ───────── Bloque extra (panel de cristal sobre tinta) ───────── */
+.extra{padding:56px 0 64px;scroll-margin-top:84px}
+.panel{border-radius:28px;padding:30px 22px}
+.panel h2{margin:0 0 12px;font-size:clamp(28px,4vw,40px);letter-spacing:-.04em;line-height:1.1}
+.panel p{margin:0;color:var(--soft);max-width:640px}
+form{margin-top:28px;background:var(--cream);color:var(--ink);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:16px}
+label{display:block;margin-bottom:7px}
+input{width:100%;min-height:50px;font:inherit;font-size:17px;padding:12px 16px;border:1.5px solid var(--ink);border-radius:16px;background:#fff;color:var(--ink)}
+form .legal{margin:0;font-size:14px;color:var(--muted-dark);max-width:none}
+form .legal a{display:inline-block;padding:12px 0;color:var(--ink)}
+form .btn{background:var(--ink);color:var(--cream);margin-top:4px;width:100%}
+
+/* ───────── Pie ───────── */
+footer{border-top:1px solid rgba(242,239,231,.16);padding:24px 0 32px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:4px 32px;justify-content:space-between;align-items:center}
+footer span{display:inline-flex;flex-wrap:wrap;align-items:center;min-height:44px;gap:0 6px}
+footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--cream)}
+
+/* ───────── Movimiento ───────── */
+.js .rv{opacity:0}
+.js .rv.in{opacity:1;animation:rise .7s var(--spring) backwards;animation-delay:calc(var(--i,0) * 80ms)}
+.js .words .w{opacity:0}
+.js .words.in .w{opacity:1;animation:word .7s var(--spring) backwards;animation-delay:calc(80ms + var(--w,0) * 60ms)}
+.swap{--rise:14px}
+@keyframes rise{from{opacity:0;transform:translate3d(0,var(--rise,24px),0);filter:blur(8px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes word{from{opacity:0;transform:translate3d(0,var(--rise,24px),0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.leaving{opacity:0;transform:translate3d(0,-12px,0);transition:opacity .4s var(--spring),transform .4s var(--spring)}
+
+@media (max-width:379px){
+  .bar{padding-left:14px;gap:6px}
+  .logo{font-size:23px}
+  .toggle button{font-size:13px;padding:0 8px}
+}
+
+/* ───────── Tablet / escritorio ───────── */
+@media (min-width:720px){
+  :root{--blur:24px}
+  .wrap{padding:0 28px}
+  .mono{font-size:12px}
+  header{padding:14px 16px 0}
+  .bar{height:68px;padding:0 6px 0 24px}
+  .logo{font-size:30px}
+  .toggle{padding:4px;gap:4px}
+  .toggle .pill{top:4px}
+  .toggle button{font-size:15px;padding:0 20px}
+  .hero{padding:80px 0 96px}
+  .lead{font-size:21px}
+  .steps{margin:0 16px;border-radius:36px;padding:76px 0}
+  .steps h2{margin-bottom:40px}
+  .b3,.b4,.ib{display:block}
+  .card{border-radius:32px;padding:30px}
+  .extra{padding:80px 0 88px}
+  .panel{border-radius:36px;padding:48px}
+  form{border-radius:28px;padding:28px}
+}
+@media (min-width:860px){
+  .grid{grid-template-columns:repeat(3,1fr);gap:20px}
+  .panel.split{display:grid;grid-template-columns:1fr minmax(0,440px);gap:48px;align-items:center}
+  .panel.split form{margin-top:0}
+}
+
+/* ───────── Accesibilidad: movimiento reducido ───────── */
+@media (prefers-reduced-motion:reduce){
+  .bub i,.ib{animation:none}
+  .bub{transform:none}
+  .js .rv.in,.js .words.in .w{animation:fade .15s linear backwards;animation-delay:0s}
+  .bar,.bar .g,.logo,.card,.btn,.toggle button,.toggle.ready .pill,.glow::before{transition:opacity .15s linear,color .15s linear}
+  .card:hover,.btn:hover,.btn:active,.toggle button:active{transform:none}
+}
+
+/* ───────── Accesibilidad: transparencia reducida ───────── */
+@media (prefers-reduced-transparency:reduce){
+  :root{--g-bg:#252629;--g-bd:#404144;--g-hi:#5C5C5B}
+  .steps{--g-bg:#DFDCD5;--g-bd:#C3C1BB;--g-hi:#FFFFFF}
+  .glass,.bar .g2{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .bar .g2{background:#17181B}
+  .bubbles,.ib,.glow::before{display:none}
+  footer{border-top-color:#2F3033}
+}
+
+/* ───────── Sin soporte de backdrop-filter ───────── */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  :root{--g-bg:#252629;--g-bd:#404144;--g-hi:#5C5C5B}
+  .steps{--g-bg:#DFDCD5;--g-bd:#C3C1BB;--g-hi:#FFFFFF}
+  .bar .g2{background:#17181B}
+}
+</style>
+</head>
+<body>
+
+<div class="bubbles" aria-hidden="true">
+<div class="bub b1"><i></i></div>
+<div class="bub b2"><i></i></div>
+<div class="bub b3"><i></i></div>
+<div class="bub b4"><i></i></div>
+</div>
+
+<header id="nav">
+<div class="bar">
+<i class="g g1 glass" aria-hidden="true"></i><i class="g g2 glass" aria-hidden="true"></i>
+<a class="logo" href="#" aria-label="STUGO, inicio">stugo<span>.</span></a>
+<div class="toggle glass" role="group" aria-label="Elige tu perfil">
+<span class="pill" aria-hidden="true"></span>
+<button type="button" id="b-empresa" aria-pressed="true">Soy empresa</button>
+<button type="button" id="b-estudiante" aria-pressed="false">Soy estudiante</button>
+</div>
+</div>
+</header>
+
+<main>
+
+<!-- EMPRESA -->
+<div id="v-empresa">
+<section class="hero"><div class="wrap">
+<span class="tag mono glass rv">Almacenes · Mataró · Maresme</span>
+<h1 class="words">Gente joven para tu almacén. <em>Hoy.</em></h1>
+<p class="lead rv" style="--i:5">Estudiantes de tu zona con ganas de trabajar, para turnos puntuales en cualquier puesto dentro del almacén. Tú nos cuentas qué necesitas y contratas directamente.</p>
+<a class="btn rv" style="--i:6" href="https://wa.me/34631568700">Escríbenos por WhatsApp ↗</a>
+<p class="note rv" style="--i:7">Sin turno, sin coste. Solo WhatsApp: +34 631 568 700</p>
+</div></section>
+<section class="steps"><i class="ib" aria-hidden="true"></i><div class="wrap">
+<h2 class="rv">Tres pasos. Sin llamadas a ciegas.</h2>
+<div class="grid">
+<div class="card glass glow rv"><b>01</b><h3>Nos cuentas el turno</h3><p>Cuándo, cuánta gente y qué hay que hacer.</p></div>
+<div class="card glass glow rv"><b>02</b><h3>Seleccionamos a la gente</h3><p>Jóvenes de tu zona, elegidos para lo que pides.</p></div>
+<div class="card glass glow rv"><b>03</b><h3>Tú contratas directamente</h3><p>Sin intermediarios. Y si necesitas más, repites.</p></div>
+</div>
+</div></section>
+<section class="extra"><div class="wrap">
+<div class="panel glass glow rv">
+<h2>Si alguien falla, lo arreglamos.</h2>
+<p>Si una persona no se presenta o no cumple, reponemos al trabajador o te devolvemos el importe. Eliges tú. Pagas un porcentaje sobre las horas trabajadas solo cuando hay turno.</p>
+</div>
+</div></section>
+</div>
+
+<!-- ESTUDIANTE -->
+<div id="v-estudiante" hidden>
+<section class="hero"><div class="wrap">
+<span class="tag mono glass rv">Trabajo puntual · Mataró · Maresme</span>
+<h1 class="words">Trabaja cuando te <em>encaje.</em></h1>
+<p class="lead rv" style="--i:4">Turnos puntuales en almacenes de tu zona para compaginar con tus clases. Es gratis para ti.</p>
+<a class="btn rv" style="--i:5" href="#apuntate">Quiero que me avisen ↓</a>
+</div></section>
+<section class="steps"><i class="ib" aria-hidden="true"></i><div class="wrap">
+<h2 class="rv">Así de simple.</h2>
+<div class="grid">
+<div class="card glass glow rv"><b>01</b><h3>Te apuntas</h3><p>Nombre y contacto. Sin CV ni entrevistas eternas.</p></div>
+<div class="card glass glow rv"><b>02</b><h3>Te avisamos</h3><p>Cuando haya un turno que te cuadre, te escribimos.</p></div>
+<div class="card glass glow rv"><b>03</b><h3>Trabajas</h3><p>Haces el turno en un almacén cerca de ti.</p></div>
+</div>
+</div></section>
+<section class="extra" id="apuntate"><div class="wrap">
+<div class="panel split glass glow rv">
+<div>
+<h2>Déjanos tus datos.</h2>
+<p>Te avisamos cuando haya turno. Gratis para el trabajador.</p>
+</div>
+<form action="https://formsubmit.co/hola@stugo.es" method="POST">
+<input type="hidden" name="_subject" value="Nuevo estudiante apuntado · stugo.es">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://stugo.es/#estudiante">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div><label class="mono" for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="given-name" required></div>
+<div><label class="mono" for="contacto">WhatsApp o email</label><input id="contacto" name="contacto" type="text" required></div>
+<div><label class="mono" for="estudios">Qué estudias</label><input id="estudios" name="estudios" type="text"></div>
+<button class="btn" type="submit">Avisadme de turnos</button>
+<p class="legal">Al enviar, aceptas la <a href="privacidad.html">Política de privacidad</a>.</p>
+</form>
+</div>
+</div></section>
+</div>
+
+</main>
+
+<footer>
+<div class="wrap">
+<span>stugo.es · 2026</span>
+<span>WhatsApp +34 631 568 700 · <a href="mailto:hola@stugo.es">hola@stugo.es</a> · <a href="https://www.instagram.com/stugo.es">Instagram</a> · <a href="https://www.linkedin.com/company/stugo-es">LinkedIn</a></span>
+<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span>
+</div>
+</footer>
+
+<script>
+(function(){
+var d=document,root=d.documentElement;
+var e=d.getElementById('v-empresa'),s=d.getElementById('v-estudiante');
+var be=d.getElementById('b-empresa'),bs=d.getElementById('b-estudiante');
+var toggle=d.querySelector('.toggle'),pill=toggle.querySelector('.pill');
+var nav=d.getElementById('nav'),bubbles=d.querySelector('.bubbles');
+var rm=window.matchMedia('(prefers-reduced-motion: reduce)');
+var each=function(list,fn){Array.prototype.forEach.call(list,fn)};
+
+/* Titular: una palabra = un span, para el escalonado */
+each(d.querySelectorAll('h1.words'),function(h){
+  var n=0;
+  (function split(node){
+    each(Array.prototype.slice.call(node.childNodes),function(c){
+      if(c.nodeType===1){split(c);return}
+      if(c.nodeType!==3)return;
+      var f=d.createDocumentFragment();
+      c.textContent.split(/(\s+)/).forEach(function(p){
+        if(!p)return;
+        if(/^\s+$/.test(p)){f.appendChild(d.createTextNode(' '));return}
+        var sp=d.createElement('span');sp.className='w';sp.style.setProperty('--w',n++);sp.textContent=p;f.appendChild(sp);
+      });
+      node.replaceChild(f,c);
+    });
+  })(h);
+});
+
+/* Escalonado de 80 ms entre tarjetas */
+each(d.querySelectorAll('.grid'),function(g){each(g.children,function(c,i){c.style.setProperty('--i',i)})});
+
+/* Aparición al hacer scroll */
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(en){
+  en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}});
+},{threshold:.12,rootMargin:'0px 0px -6% 0px'}):null;
+function arm(scope){
+  each(scope.querySelectorAll('.rv,.words'),function(el){
+    el.classList.remove('in');
+    if(io)io.observe(el);else el.classList.add('in');
+  });
+}
+arm(d);
+
+/* Píldora deslizante del selector */
+function movePill(){
+  var b=be.getAttribute('aria-pressed')==='true'?be:bs;
+  pill.style.width=b.offsetWidth+'px';
+  pill.style.setProperty('--px',b.offsetLeft+'px');
+}
+
+/* Selector Empresa / Estudiante */
+var timer,swapTimer;
+function show(w,instant){
+  var emp=w==='empresa',inn=emp?e:s,out=emp?s:e;
+  be.setAttribute('aria-pressed',emp);bs.setAttribute('aria-pressed',!emp);
+  movePill();
+  try{history.replaceState(null,'','#'+w)}catch(x){}
+  clearTimeout(timer);
+  e.classList.remove('leaving');s.classList.remove('leaving');
+  if(!inn.hidden)return;
+  function swap(){
+    out.classList.remove('leaving');
+    out.hidden=true;inn.hidden=false;
+    if(!instant){inn.classList.add('swap');clearTimeout(swapTimer);swapTimer=setTimeout(function(){inn.classList.remove('swap')},1200)}
+    arm(inn);
+  }
+  if(instant||rm.matches){swap();return}
+  out.classList.add('leaving');
+  timer=setTimeout(swap,240);
+}
+be.addEventListener('click',function(){show('empresa')});
+bs.addEventListener('click',function(){show('estudiante')});
+if(location.hash==='#estudiante')show('estudiante',true);
+movePill();
+requestAnimationFrame(function(){requestAnimationFrame(function(){toggle.classList.add('ready')})});
+window.addEventListener('resize',movePill);
+window.addEventListener('load',movePill);
+if(d.fonts&&d.fonts.ready)d.fonts.ready.then(movePill);
+
+/* Nav compacto + parallax de burbujas (máx. 40px) */
+var tick=false;
+function onScroll(){
+  if(tick)return;tick=true;
+  requestAnimationFrame(function(){
+    tick=false;
+    var y=window.pageYOffset||0;
+    nav.classList.toggle('scrolled',y>24);
+    if(!rm.matches){
+      var max=root.scrollHeight-window.innerHeight;
+      bubbles.style.setProperty('--p',max>0?Math.min(1,y/max).toFixed(3):0);
+    }
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+/* Brillo de cristal que sigue al puntero */
+each(d.querySelectorAll('.glow'),function(c){
+  c.addEventListener('pointermove',function(ev){
+    if(ev.pointerType==='touch')return;
+    var r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',(ev.clientX-r.left)+'px');
+    c.style.setProperty('--my',(ev.clientY-r.top)+'px');
+  });
+});
+})();
+</script>
+</body>
+</html>
