@@ -10,5 +10,7 @@ Web estática, sin build. Publicada en Vercel (proyecto `stugo`, dominio stugo.e
 | `aviso-legal.html` | Aviso legal |
 | `privacidad.html` | Política de privacidad |
 | `cookies.html` | Política de cookies |
+| `analitica.js` | Banner de cookies y Google Tag Manager (`GTM-5758GWRZ`), que solo se carga si el visitante acepta |
+| `vercel.json` | Redirección `stugo.es/t` → portada con etiquetas UTM (origen `tarjeta`, medio `nfc`), para las tarjetas NFC |
 
-Para publicar: arrastra los 4 archivos a vercel.com/drop → «Deploy to an existing project» → `stugo`.
+Para publicar: arrastra todos los archivos a vercel.com/drop → «Deploy to an existing project» → `stugo`.

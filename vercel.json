@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/t",
+      "destination": "/?utm_source=tarjeta&utm_medium=nfc&utm_campaign=empresas",
+      "permanent": false
+    }
+  ]
+}
