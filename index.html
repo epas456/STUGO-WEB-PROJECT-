@@ -7,9 +7,17 @@
 <meta name="description" content="Estudiantes jóvenes para trabajo puntual en almacenes de Mataró y el Maresme.">
 <meta name="theme-color" content="#0E0F12">
 <script>document.documentElement.className='js'</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-grotesk-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/space-grotesk-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/space-grotesk-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/space-grotesk-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/jetbrains-mono-latin-700-normal.woff2) format('woff2')}
 /* ───────── Identidad ───────── */
 :root{
   --ink:#0E0F12;--cream:#F2EFE7;--lime:#D6F84A;--coral:#FF6B47;
@@ -128,6 +136,7 @@ form .btn{background:var(--ink);color:var(--cream);margin-top:4px;width:100%}
 footer{border-top:1px solid rgba(242,239,231,.16);padding:24px 0 32px;color:var(--muted);font-size:15px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:4px 32px;justify-content:space-between;align-items:center}
 footer span{display:inline-flex;flex-wrap:wrap;align-items:center;min-height:44px;gap:0 6px}
+footer .stg-link{color:var(--cream)}
 footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--cream)}
 
 /* ───────── Movimiento ───────── */
@@ -199,6 +208,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;co
   .steps{--g-bg:#DFDCD5;--g-bd:#C3C1BB;--g-hi:#FFFFFF}
   .bar .g2{background:#17181B}
 }
+.stg-link{background:none;border:0;padding:0 4px;min-height:44px;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -274,11 +284,12 @@ footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;co
 <form action="https://formsubmit.co/hola@stugo.es" method="POST">
 <input type="hidden" name="_subject" value="Nuevo estudiante apuntado · stugo.es">
 <input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="true">
 <input type="hidden" name="_next" value="https://stugo.es/#estudiante">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-<div><label class="mono" for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="given-name" required></div>
-<div><label class="mono" for="contacto">WhatsApp o email</label><input id="contacto" name="contacto" type="text" required></div>
-<div><label class="mono" for="estudios">Qué estudias</label><input id="estudios" name="estudios" type="text"></div>
+<div><label class="mono" for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="given-name" maxlength="80" required></div>
+<div><label class="mono" for="contacto">WhatsApp o email</label><input id="contacto" name="contacto" type="text" maxlength="120" required></div>
+<div><label class="mono" for="estudios">Qué estudias</label><input id="estudios" name="estudios" type="text" maxlength="120"></div>
 <button class="btn" type="submit">Avisadme de turnos</button>
 <p class="legal">Al enviar, aceptas la <a href="privacidad.html">Política de privacidad</a>.</p>
 </form>
@@ -292,117 +303,11 @@ footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;co
 <div class="wrap">
 <span>stugo.es · 2026</span>
 <span>WhatsApp +34 631 568 700 · <a href="mailto:hola@stugo.es">hola@stugo.es</a> · <a href="https://www.instagram.com/stugo.es">Instagram</a> · <a href="https://www.linkedin.com/company/stugo-es">LinkedIn</a></span>
-<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a> · <a href="#" data-cookies>Gestionar cookies</a></span>
+<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a> · <button type="button" class="stg-link" data-cookies>Gestionar cookies</button></span>
 </div>
 </footer>
 
-<script>
-(function(){
-var d=document,root=d.documentElement;
-var e=d.getElementById('v-empresa'),s=d.getElementById('v-estudiante');
-var be=d.getElementById('b-empresa'),bs=d.getElementById('b-estudiante');
-var toggle=d.querySelector('.toggle'),pill=toggle.querySelector('.pill');
-var nav=d.getElementById('nav'),bubbles=d.querySelector('.bubbles');
-var rm=window.matchMedia('(prefers-reduced-motion: reduce)');
-var each=function(list,fn){Array.prototype.forEach.call(list,fn)};
-
-/* Titular: una palabra = un span, para el escalonado */
-each(d.querySelectorAll('h1.words'),function(h){
-  var n=0;
-  (function split(node){
-    each(Array.prototype.slice.call(node.childNodes),function(c){
-      if(c.nodeType===1){split(c);return}
-      if(c.nodeType!==3)return;
-      var f=d.createDocumentFragment();
-      c.textContent.split(/(\s+)/).forEach(function(p){
-        if(!p)return;
-        if(/^\s+$/.test(p)){f.appendChild(d.createTextNode(' '));return}
-        var sp=d.createElement('span');sp.className='w';sp.style.setProperty('--w',n++);sp.textContent=p;f.appendChild(sp);
-      });
-      node.replaceChild(f,c);
-    });
-  })(h);
-});
-
-/* Escalonado de 80 ms entre tarjetas */
-each(d.querySelectorAll('.grid'),function(g){each(g.children,function(c,i){c.style.setProperty('--i',i)})});
-
-/* Aparición al hacer scroll */
-var io=('IntersectionObserver' in window)?new IntersectionObserver(function(en){
-  en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}});
-},{threshold:.12,rootMargin:'0px 0px -6% 0px'}):null;
-function arm(scope){
-  each(scope.querySelectorAll('.rv,.words'),function(el){
-    el.classList.remove('in');
-    if(io)io.observe(el);else el.classList.add('in');
-  });
-}
-arm(d);
-
-/* Píldora deslizante del selector */
-function movePill(){
-  var b=be.getAttribute('aria-pressed')==='true'?be:bs;
-  pill.style.width=b.offsetWidth+'px';
-  pill.style.setProperty('--px',b.offsetLeft+'px');
-}
-
-/* Selector Empresa / Estudiante */
-var timer,swapTimer;
-function show(w,instant){
-  var emp=w==='empresa',inn=emp?e:s,out=emp?s:e;
-  be.setAttribute('aria-pressed',emp);bs.setAttribute('aria-pressed',!emp);
-  movePill();
-  try{history.replaceState(null,'','#'+w)}catch(x){}
-  clearTimeout(timer);
-  e.classList.remove('leaving');s.classList.remove('leaving');
-  if(!inn.hidden)return;
-  function swap(){
-    out.classList.remove('leaving');
-    out.hidden=true;inn.hidden=false;
-    if(!instant){inn.classList.add('swap');clearTimeout(swapTimer);swapTimer=setTimeout(function(){inn.classList.remove('swap')},1200)}
-    arm(inn);
-  }
-  if(instant||rm.matches){swap();return}
-  out.classList.add('leaving');
-  timer=setTimeout(swap,240);
-}
-be.addEventListener('click',function(){show('empresa')});
-bs.addEventListener('click',function(){show('estudiante')});
-if(location.hash==='#estudiante')show('estudiante',true);
-movePill();
-requestAnimationFrame(function(){requestAnimationFrame(function(){toggle.classList.add('ready')})});
-window.addEventListener('resize',movePill);
-window.addEventListener('load',movePill);
-if(d.fonts&&d.fonts.ready)d.fonts.ready.then(movePill);
-
-/* Nav compacto + parallax de burbujas (máx. 40px) */
-var tick=false;
-function onScroll(){
-  if(tick)return;tick=true;
-  requestAnimationFrame(function(){
-    tick=false;
-    var y=window.pageYOffset||0;
-    nav.classList.toggle('scrolled',y>24);
-    if(!rm.matches){
-      var max=root.scrollHeight-window.innerHeight;
-      bubbles.style.setProperty('--p',max>0?Math.min(1,y/max).toFixed(3):0);
-    }
-  });
-}
-window.addEventListener('scroll',onScroll,{passive:true});
-onScroll();
-
-/* Brillo de cristal que sigue al puntero */
-each(d.querySelectorAll('.glow'),function(c){
-  c.addEventListener('pointermove',function(ev){
-    if(ev.pointerType==='touch')return;
-    var r=c.getBoundingClientRect();
-    c.style.setProperty('--mx',(ev.clientX-r.left)+'px');
-    c.style.setProperty('--my',(ev.clientY-r.top)+'px');
-  });
-});
-})();
-</script>
-<script src="analitica.js" defer></script>
+<script src="/app.js" defer></script>
+<script src="/analitica.js" defer></script>
 </body>
 </html>

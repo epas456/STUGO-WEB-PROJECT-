@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada · STUGO</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Información sobre el uso de cookies en la web de STUGO.">
+<meta name="theme-color" content="#0E0F12">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-grotesk-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/space-grotesk-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/space-grotesk-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/space-grotesk-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/jetbrains-mono-latin-700-normal.woff2) format('woff2')}
+:root{--ink:#0E0F12;--cream:#F2EFE7;--lime:#D6F84A;--coral:#FF6B47;--soft:#D9D6CC;--muted:#B9B6AC;
+  --spring:cubic-bezier(.22,1,.36,1);--blur:16px;
+  --g-bg:rgba(242,239,231,.10);--g-bd:rgba(242,239,231,.22);--g-hi:rgba(242,239,231,.35)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:'Space Grotesk',system-ui,sans-serif;font-size:17px;line-height:1.6;letter-spacing:-0.01em;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+.glass{background:var(--g-bg);-webkit-backdrop-filter:blur(var(--blur)) saturate(160%);backdrop-filter:blur(var(--blur)) saturate(160%);border:1px solid var(--g-bd);box-shadow:inset 0 1px 0 0 var(--g-hi)}
+.bubbles{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bubbles i{position:absolute;display:block;border-radius:50%;filter:blur(60px);will-change:transform;animation:fa 16s cubic-bezier(.45,0,.55,1) infinite}
+.b1{top:4%;left:-80px;width:280px;height:280px;background:rgba(214,248,74,.15)}
+.b2{top:56%;right:-100px;width:320px;height:320px;background:rgba(242,239,231,.13);animation-name:fb;animation-duration:19s}
+@keyframes fa{0%,100%{transform:translate3d(0,0,0)}33%{transform:translate3d(46px,-32px,0)}66%{transform:translate3d(-24px,38px,0)}}
+@keyframes fb{0%,100%{transform:translate3d(0,0,0)}30%{transform:translate3d(-40px,28px,0)}70%{transform:translate3d(30px,-44px,0)}}
+header{position:sticky;top:0;z-index:10;padding:10px 10px 0}
+.bar{position:relative;max-width:1100px;margin:0 auto;height:60px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 6px 0 18px}
+.bar>*{position:relative}
+.bar .g{position:absolute;inset:0;border-radius:999px;background:rgba(14,15,18,.78);-webkit-backdrop-filter:blur(calc(var(--blur) * 1.7)) saturate(160%);backdrop-filter:blur(calc(var(--blur) * 1.7)) saturate(160%)}
+.logo{display:inline-flex;align-items:center;min-height:48px;font-weight:700;font-size:26px;letter-spacing:-.04em;line-height:1;text-decoration:none}
+.logo span{color:var(--lime)}
+.back{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;transition:transform .4s var(--spring)}
+@media (hover:hover){.back:hover{transform:scale(1.03)}}
+.back:active{transform:scale(.97)}
+main{padding:40px 0 64px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:10px 15px;border-radius:999px}
+.tag::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--coral)}
+h1{margin:22px 0 28px;font-size:clamp(38px,7vw,64px);line-height:1;font-weight:700;letter-spacing:-.045em}
+.doc{border-radius:28px;padding:28px 22px}
+.doc h2{margin:36px 0 10px;font-size:23px;line-height:1.15;letter-spacing:-.03em}
+.doc h2:first-child{margin-top:0}
+.doc p,.doc li{color:var(--soft)}
+.doc p{margin:0 0 14px}
+.doc ul{margin:0 0 14px;padding-left:20px}
+.doc li{margin-bottom:6px}
+.doc strong{color:var(--cream)}
+.doc a,.doc .stg-link{color:var(--cream)}
+.doc .stg-link{padding:0;min-height:0;font-weight:600}
+.doc code{font-family:'JetBrains Mono',monospace;font-size:.85em;color:var(--cream);word-break:break-all}
+.ph{background:transparent;color:var(--cream);border:1px dashed var(--muted);border-radius:6px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:.82em}
+.tbl{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:16px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-top:1px solid rgba(242,239,231,.18);color:var(--soft)}
+.tbl th{color:var(--cream);font-weight:600;width:34%}
+footer{border-top:1px solid rgba(242,239,231,.16);padding:24px 0 32px;color:var(--muted);font-size:15px}
+footer .wrap{max-width:1100px;display:flex;flex-wrap:wrap;gap:4px 32px;justify-content:space-between;align-items:center}
+footer span{display:inline-flex;flex-wrap:wrap;align-items:center;min-height:44px;gap:0 6px}
+footer .stg-link{color:var(--cream)}
+footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--cream)}
+footer a[aria-current]{text-decoration:none;color:var(--muted)}
+@media (min-width:720px){
+  :root{--blur:24px}
+  body{font-size:18px}
+  .mono{font-size:12px}
+  header{padding:14px 16px 0}
+  .bar{height:68px;padding:0 10px 0 24px}
+  .logo{font-size:30px}
+  main{padding:64px 0 88px}
+  .doc{border-radius:36px;padding:48px}
+  .doc h2{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  .bubbles i{animation:none}
+  .back{transition:none}
+  .back:hover,.back:active{transform:none}
+}
+@media (prefers-reduced-transparency:reduce){
+  :root{--g-bg:#252629;--g-bd:#404144;--g-hi:#5C5C5B}
+  .glass,.bar .g{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .bar .g{background:#17181B}
+  .bubbles{display:none}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  :root{--g-bg:#252629;--g-bd:#404144;--g-hi:#5C5C5B}
+  .bar .g{background:#17181B}
+}
+.stg-link{background:none;border:0;padding:0 4px;min-height:44px;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="bubbles" aria-hidden="true"><i class="b1"></i><i class="b2"></i></div>
+<header>
+<div class="bar">
+<i class="g glass" aria-hidden="true"></i>
+<a class="logo" href="/" aria-label="STUGO, inicio">stugo<span>.</span></a>
+<a class="back glass" href="/">← Volver</a>
+</div>
+</header>
+<main><div class="wrap">
+<span class="tag mono glass">Error 404</span>
+<h1>Esta página no existe.</h1>
+<article class="doc glass">
+<p>Puede que el enlace esté mal escrito o que la página se haya movido.</p>
+<p><a href="/">Volver a la portada</a> · <a href="https://wa.me/34631568700">Escríbenos por WhatsApp</a></p>
+</article>
+</div></main>
+<footer>
+<div class="wrap">
+<span>stugo.es · 2026</span>
+<span>WhatsApp +34 631 568 700 · <a href="mailto:hola@stugo.es">hola@stugo.es</a></span>
+<span><a href="/aviso-legal.html">Aviso legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/cookies.html">Cookies</a> · <button type="button" class="stg-link" data-cookies>Gestionar cookies</button></span>
+</div>
+</footer>
+<script src="/analitica.js" defer></script>
+</body>
+</html>

@@ -6,9 +6,17 @@
 <title>Política de cookies · STUGO</title>
 <meta name="description" content="Información sobre el uso de cookies en la web de STUGO.">
 <meta name="theme-color" content="#0E0F12">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-grotesk-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/space-grotesk-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/space-grotesk-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/space-grotesk-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/jetbrains-mono-latin-700-normal.woff2) format('woff2')}
 :root{--ink:#0E0F12;--cream:#F2EFE7;--lime:#D6F84A;--coral:#FF6B47;--soft:#D9D6CC;--muted:#B9B6AC;
   --spring:cubic-bezier(.22,1,.36,1);--blur:16px;
   --g-bg:rgba(242,239,231,.10);--g-bd:rgba(242,239,231,.22);--g-hi:rgba(242,239,231,.35)}
@@ -46,7 +54,9 @@ h1{margin:22px 0 28px;font-size:clamp(38px,7vw,64px);line-height:1;font-weight:7
 .doc ul{margin:0 0 14px;padding-left:20px}
 .doc li{margin-bottom:6px}
 .doc strong{color:var(--cream)}
-.doc a{color:var(--cream)}
+.doc a,.doc .stg-link{color:var(--cream)}
+.doc .stg-link{padding:0;min-height:0;font-weight:600}
+.doc code{font-family:'JetBrains Mono',monospace;font-size:.85em;color:var(--cream);word-break:break-all}
 .ph{background:transparent;color:var(--cream);border:1px dashed var(--muted);border-radius:6px;padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:.82em}
 .tbl{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:16px}
 .tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-top:1px solid rgba(242,239,231,.18);color:var(--soft)}
@@ -54,6 +64,7 @@ h1{margin:22px 0 28px;font-size:clamp(38px,7vw,64px);line-height:1;font-weight:7
 footer{border-top:1px solid rgba(242,239,231,.16);padding:24px 0 32px;color:var(--muted);font-size:15px}
 footer .wrap{max-width:1100px;display:flex;flex-wrap:wrap;gap:4px 32px;justify-content:space-between;align-items:center}
 footer span{display:inline-flex;flex-wrap:wrap;align-items:center;min-height:44px;gap:0 6px}
+footer .stg-link{color:var(--cream)}
 footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--cream)}
 footer a[aria-current]{text-decoration:none;color:var(--muted)}
 @media (min-width:720px){
@@ -82,6 +93,7 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
   :root{--g-bg:#252629;--g-bd:#404144;--g-hi:#5C5C5B}
   .bar .g{background:#17181B}
 }
+.stg-link{background:none;border:0;padding:0 4px;min-height:44px;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -98,28 +110,32 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
 <h1>Política de cookies</h1>
 <article class="doc glass">
 <h2>1. Qué son las cookies</h2>
-<p>Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar información sobre tu visita. Existen tecnologías similares, como el almacenamiento local del navegador, que cumplen la misma función.</p>
+<p>Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar información sobre tu visita. Existen tecnologías similares, como el almacenamiento local del navegador, que cumplen la misma función. En esta política llamamos «cookies» a todas ellas.</p>
 <h2>2. Cookies que utiliza este sitio</h2>
-<p>Este sitio solo usa cookies de <strong>analítica</strong>, y únicamente si las aceptas en el aviso que aparece al entrar. Si las rechazas o no respondes, no se instala ninguna y la web funciona igual.</p>
-<p>Guardamos tu elección (aceptar o rechazar) en el almacenamiento local de tu navegador, para no volver a preguntarte durante 24 meses. Es una tecnología estrictamente necesaria para recordar tu decisión y no requiere consentimiento.</p>
+<p>Este sitio solo usa <strong>cookies de analítica</strong>, y <strong>solo si las aceptas</strong> en el aviso que aparece al entrar. Si las rechazas o no eliges, no se instala ninguna y no se carga ninguna herramienta de analítica. No usamos cookies de publicidad ni de redes sociales.</p>
+<p>Las usamos para saber cuántas personas visitan la web y por qué canal llegan (por ejemplo, desde Google o desde nuestras tarjetas de contacto). No las usamos para identificarte.</p>
 <table class="tbl">
-<tr><th scope="row">_ga</th><td>Google Analytics (tercero). Distingue a los visitantes para contar visitas. Duración: 2 años.</td></tr>
-<tr><th scope="row">_ga_&lt;identificador&gt;</th><td>Google Analytics (tercero). Mantiene el estado de la sesión. Duración: 2 años.</td></tr>
-<tr><th scope="row">ph_phc_…_posthog</th><td>PostHog (tercero, servidores en la UE). Identificador anónimo de visitante y sesión para contar visitas y su origen. Duración: 1 año.</td></tr>
-<tr><th scope="row">stugo_cookies</th><td>Propia (almacenamiento local). Recuerda tu elección sobre las cookies. Duración: 24 meses.</td></tr>
+<tr><th scope="row"><code>_ga</code></th><td>Google Analytics (Google Ireland Ltd., tercero). Distingue visitantes para contar visitas. Duración: 2 años.</td></tr>
+<tr><th scope="row"><code>_ga_&lt;ID&gt;</code></th><td>Google Analytics (tercero). Mantiene el estado de la sesión. Duración: 2 años.</td></tr>
+<tr><th scope="row"><code>ph_&lt;clave&gt;_posthog</code></th><td>PostHog (tercero, servidores en la UE). Identificador anónimo de visitante y de sesión para contar visitas y su origen. Se guarda como cookie y en el almacenamiento local. Duración: 1 año.</td></tr>
+<tr><th scope="row"><code>stugo_cookies</code></th><td>STUGO (propia, almacenamiento local). Recuerda tu elección sobre las cookies. Es técnica y necesaria, por lo que no requiere consentimiento. Duración: 24 meses.</td></tr>
 </table>
-<p>Con la analítica medimos cuántas personas visitan la web y por qué canal llegan (por ejemplo, desde Google o desde una tarjeta de contacto). No usamos cookies de publicidad. La analítica se gestiona con Google Tag Manager y Google Analytics, de Google, y con PostHog, que almacena los datos en servidores de la Unión Europea.</p>
-<h2>3. Servicios de terceros</h2>
+<p>Las herramientas de analítica se gestionan con Google Tag Manager, que solo se carga si aceptas. Usamos el modo de consentimiento de Google con la publicidad siempre desactivada.</p>
+<h2>3. Cómo aceptar, rechazar o cambiar tu elección</h2>
+<p>Al entrar puedes <strong>aceptar</strong>, <strong>rechazar</strong> o <strong>configurar</strong> las cookies con el mismo esfuerzo. Puedes cambiar de opinión en cualquier momento con el botón <button type="button" class="stg-link" data-cookies>Gestionar cookies</button>, que también está en el pie de todas las páginas. Si retiras el consentimiento, borramos las cookies de analítica de tu navegador y dejamos de medir tu visita.</p>
+<p>Tu elección se guarda 24 meses. Pasado ese tiempo, o si cambian las herramientas que usamos, te volveremos a preguntar.</p>
+<p>También puedes ver, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Safari, Firefox, Edge u otro).</p>
+<h2>4. Servicios de terceros</h2>
 <ul>
-<li><strong>Tipografías:</strong> las fuentes de la web se cargan desde Google Fonts. Google no instala cookies por ello, pero recibe datos técnicos de la conexión, como tu dirección IP.</li>
+<li><strong>Tipografías:</strong> se sirven desde nuestro propio servidor. No se conecta con Google Fonts ni con ningún otro proveedor externo.</li>
 <li><strong>Formulario:</strong> al enviar el formulario de estudiantes, tus datos se envían a FormSubmit, que puede mostrar una página propia de confirmación o de verificación sujeta a sus políticas.</li>
 <li><strong>Enlaces externos:</strong> si pulsas en los enlaces a WhatsApp, Instagram o LinkedIn, sales de este sitio y esos servicios pueden utilizar sus propias cookies conforme a sus políticas.</li>
 </ul>
-<h2>4. Cómo gestionar las cookies</h2>
-<p>Puedes cambiar tu elección en cualquier momento con el enlace «Gestionar cookies» que aparece al pie de cada página. También puedes ver, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Safari, Firefox, Edge u otro).</p>
-<h2>5. Cambios en esta política</h2>
-<p>Si incorporamos otras cookies que requieran consentimiento, actualizaremos esta política y te lo pediremos antes de instalarlas.</p>
-<h2>6. Más información</h2>
+<h2>5. Transferencias internacionales</h2>
+<p>Google puede tratar datos fuera del Espacio Económico Europeo. En ese caso, la transferencia se ampara en el Marco de Privacidad de Datos UE-EE. UU. o en las cláusulas contractuales tipo de la Comisión Europea. Los datos de PostHog se alojan en servidores de la Unión Europea.</p>
+<h2>6. Cambios en esta política</h2>
+<p>Si incorporamos nuevas cookies que requieran consentimiento, actualizaremos esta política y te lo pediremos antes de instalarlas.</p>
+<h2>7. Más información</h2>
 <p>Para cualquier duda, escríbenos a <a href="mailto:hola@stugo.es">hola@stugo.es</a>. El tratamiento de tus datos personales se explica en la <a href="privacidad.html">Política de privacidad</a>.</p>
 </article>
 </div></main>
@@ -127,9 +143,9 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
 <div class="wrap">
 <span>stugo.es · 2026</span>
 <span>WhatsApp +34 631 568 700 · <a href="mailto:hola@stugo.es">hola@stugo.es</a></span>
-<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html" aria-current="page">Cookies</a> · <a href="#" data-cookies>Gestionar cookies</a></span>
+<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html" aria-current="page">Cookies</a> · <button type="button" class="stg-link" data-cookies>Gestionar cookies</button></span>
 </div>
 </footer>
-<script src="analitica.js" defer></script>
+<script src="/analitica.js" defer></script>
 </body>
 </html>

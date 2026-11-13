@@ -6,9 +6,17 @@
 <title>Política de privacidad · STUGO</title>
 <meta name="description" content="Cómo trata STUGO los datos personales de estudiantes y empresas.">
 <meta name="theme-color" content="#0E0F12">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/space-grotesk-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/space-grotesk-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/space-grotesk-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/space-grotesk-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/jetbrains-mono-latin-700-normal.woff2) format('woff2')}
 :root{--ink:#0E0F12;--cream:#F2EFE7;--lime:#D6F84A;--coral:#FF6B47;--soft:#D9D6CC;--muted:#B9B6AC;
   --spring:cubic-bezier(.22,1,.36,1);--blur:16px;
   --g-bg:rgba(242,239,231,.10);--g-bd:rgba(242,239,231,.22);--g-hi:rgba(242,239,231,.35)}
@@ -54,6 +62,7 @@ h1{margin:22px 0 28px;font-size:clamp(38px,7vw,64px);line-height:1;font-weight:7
 footer{border-top:1px solid rgba(242,239,231,.16);padding:24px 0 32px;color:var(--muted);font-size:15px}
 footer .wrap{max-width:1100px;display:flex;flex-wrap:wrap;gap:4px 32px;justify-content:space-between;align-items:center}
 footer span{display:inline-flex;flex-wrap:wrap;align-items:center;min-height:44px;gap:0 6px}
+footer .stg-link{color:var(--cream)}
 footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:var(--cream)}
 footer a[aria-current]{text-decoration:none;color:var(--muted)}
 @media (min-width:720px){
@@ -82,6 +91,7 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
   :root{--g-bg:#252629;--g-bd:#404144;--g-hi:#5C5C5B}
   .bar .g{background:#17181B}
 }
+.stg-link{background:none;border:0;padding:0 4px;min-height:44px;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -106,8 +116,8 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
 <ul>
 <li><strong>Estudiantes:</strong> los datos del formulario (nombre, WhatsApp o email y, si lo indicas, qué estudias) y los que nos facilites después para gestionar un turno.</li>
 <li><strong>Empresas:</strong> los datos de contacto de la persona que nos escribe (nombre, teléfono, email, empresa) y la información del turno que necesita cubrir.</li>
-<li><strong>Visitantes de la web:</strong> si aceptas las cookies de analítica, datos de navegación como las páginas que visitas, el canal por el que llegas y datos técnicos del dispositivo, de forma agregada.</li>
 <li><strong>Mensajes:</strong> el contenido de las conversaciones que mantengas con nosotros por WhatsApp o email.</li>
+<li><strong>Visitantes de la web:</strong> solo si aceptas las cookies de analítica, datos de navegación como las páginas que visitas, el canal por el que llegas y datos técnicos del dispositivo, que usamos de forma agregada.</li>
 </ul>
 <p>No pedimos datos de categorías especiales (salud, ideología, etc.). Por favor, no los incluyas en tus mensajes.</p>
 <h2>3. Para qué los usamos y con qué base legal</h2>
@@ -115,30 +125,30 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
 <tr><th scope="row">Avisarte de turnos disponibles</th><td>Tu consentimiento, que nos das al enviar el formulario (art. 6.1.a RGPD).</td></tr>
 <tr><th scope="row">Gestionar un turno y ponerte en contacto con la empresa o el estudiante</th><td>Aplicación de medidas precontractuales o ejecución de un contrato a petición tuya (art. 6.1.b RGPD).</td></tr>
 <tr><th scope="row">Responder a tus consultas</th><td>Tu consentimiento o nuestro interés legítimo en atender a quien nos escribe (art. 6.1.a y 6.1.f RGPD).</td></tr>
-<tr><th scope="row">Medir las visitas a la web</th><td>Tu consentimiento, que nos das al aceptar las cookies de analítica (art. 6.1.a RGPD). Puedes retirarlo en cualquier momento.</td></tr>
+<tr><th scope="row">Medir las visitas a la web</th><td>Tu consentimiento, que nos das al aceptar las cookies de analítica (art. 6.1.a RGPD y art. 22.2 LSSI-CE). Puedes retirarlo en cualquier momento desde «Gestionar cookies».</td></tr>
 <tr><th scope="row">Facturación y obligaciones fiscales</th><td>Cumplimiento de obligaciones legales (art. 6.1.c RGPD).</td></tr>
 </table>
 <p>No tomamos decisiones automatizadas ni elaboramos perfiles con tus datos.</p>
 <h2>4. Durante cuánto tiempo</h2>
-<p>Conservamos los datos de los estudiantes mientras quieran recibir avisos de turnos. Puedes pedir la baja en cualquier momento escribiendo a <a href="mailto:hola@stugo.es">hola@stugo.es</a>. Después, los datos se conservan bloqueados solo durante los plazos legales en los que pueda exigirse alguna responsabilidad. Los datos de analítica se conservan 14 meses. Los datos de facturación se conservan durante los plazos que marca la normativa fiscal y mercantil.</p>
+<p>Conservamos los datos de los estudiantes mientras quieran recibir avisos de turnos. Puedes pedir la baja en cualquier momento escribiendo a <a href="mailto:hola@stugo.es">hola@stugo.es</a>. Después, los datos se conservan bloqueados solo durante los plazos legales en los que pueda exigirse alguna responsabilidad. Los datos de facturación se conservan durante los plazos que marca la normativa fiscal y mercantil. Los datos de analítica se conservan como máximo 14 meses; la duración de cada cookie se indica en la <a href="cookies.html">Política de cookies</a>.</p>
 <h2>5. A quién se comunican</h2>
 <ul>
 <li><strong>Empresas con almacén:</strong> cuando hay un turno que te encaja y lo aceptas, comunicamos a la empresa los datos necesarios para que pueda contratarte directamente.</li>
 <li><strong>Estudiantes:</strong> reciben los datos de contacto de la empresa necesarios para realizar el turno.</li>
-<li><strong>Proveedores que nos prestan servicio</strong> como encargados del tratamiento: FormSubmit (recepción del formulario y envío a nuestro correo), el proveedor de alojamiento web, el proveedor de correo electrónico y Google (Google Tag Manager y Google Analytics) y PostHog (analítica, servidores en la UE), solo si aceptas las cookies de analítica.</li>
+<li><strong>Proveedores que nos prestan servicio</strong> como encargados del tratamiento: FormSubmit (recepción del formulario y envío a nuestro correo), Vercel (alojamiento web), Google Workspace (correo electrónico) y, solo si aceptas las cookies de analítica, Google Ireland Ltd. (Google Analytics y Google Tag Manager) y PostHog (analítica con servidores en la UE).</li>
 <li><strong>WhatsApp:</strong> si nos escribes por WhatsApp, el servicio lo presta WhatsApp Ireland Ltd. conforme a su propia política de privacidad.</li>
 <li><strong>Administraciones públicas</strong>, cuando exista una obligación legal.</li>
 </ul>
 <p>No vendemos tus datos ni los cedemos a terceros con fines publicitarios.</p>
 <h2>6. Transferencias internacionales</h2>
-<p>Algunos proveedores (como FormSubmit o Google, que sirve las tipografías y la analítica de esta web) pueden estar situados fuera del Espacio Económico Europeo. En esos casos, la transferencia se ampara en las garantías previstas en el RGPD, como el Marco de Privacidad de Datos UE-EE. UU. o las cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+<p>Algunos proveedores (como FormSubmit, Vercel o Google) pueden tratar datos fuera del Espacio Económico Europeo. En esos casos, la transferencia se ampara en las garantías previstas en el RGPD, como el Marco de Privacidad de Datos UE-EE. UU. o las cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
 <h2>7. Tus derechos</h2>
 <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, y retirar tu consentimiento en cualquier momento, escribiendo a <a href="mailto:hola@stugo.es">hola@stugo.es</a> e indicando qué derecho quieres ejercer. Podemos pedirte que acredites tu identidad.</p>
 <p>Si consideras que no hemos tratado tus datos correctamente, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es">www.aepd.es</a>).</p>
 <h2>8. Edad mínima</h2>
 <p>El servicio está dirigido a personas de 18 años o más. Si eres menor de esa edad, no nos envíes tus datos.</p>
 <h2>9. Seguridad</h2>
-<p>Aplicamos medidas técnicas y organizativas razonables para proteger tus datos frente a accesos no autorizados, pérdida o alteración.</p>
+<p>Aplicamos medidas técnicas y organizativas razonables para proteger tus datos frente a accesos no autorizados, pérdida o alteración. Por ejemplo, la web solo funciona con conexión cifrada (HTTPS) y las tipografías se sirven desde nuestro propio servidor, sin enviar tu dirección IP a terceros al cargar la página.</p>
 <h2>10. Cambios en esta política</h2>
 <p>Podemos actualizar esta política para adaptarla a cambios legales o del servicio. La fecha de la última actualización aparece al principio de la página.</p>
 </article>
@@ -147,9 +157,9 @@ footer a[aria-current]{text-decoration:none;color:var(--muted)}
 <div class="wrap">
 <span>stugo.es · 2026</span>
 <span>WhatsApp +34 631 568 700 · <a href="mailto:hola@stugo.es">hola@stugo.es</a></span>
-<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html" aria-current="page">Privacidad</a> · <a href="cookies.html">Cookies</a> · <a href="#" data-cookies>Gestionar cookies</a></span>
+<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html" aria-current="page">Privacidad</a> · <a href="cookies.html">Cookies</a> · <button type="button" class="stg-link" data-cookies>Gestionar cookies</button></span>
 </div>
 </footer>
-<script src="analitica.js" defer></script>
+<script src="/analitica.js" defer></script>
 </body>
 </html>
