@@ -12,7 +12,7 @@
   var KEY = 'stugo_cookies';
   var VERSION = 2;                              // súbela si cambian las herramientas de la política
   var MAX_AGE = 24 * 30.44 * 24 * 3600 * 1000;  // 24 meses
-  var TRACK = /^(_ga|_gid|_gat|_gcl|ph_)/;      // cookies y claves de analítica
+  var TRACK = /^(_ga|_gid|_gat|_gcl|ph_|__ph_)/;      // cookies y claves de analítica
 
   var d = document, w = window, loaded = false, box, lastFocus;
 
