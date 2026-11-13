@@ -29,9 +29,9 @@
   bar.setAttribute('aria-label', 'Preferencias de cookies');
   bar.hidden = true;
   bar.innerHTML =
-    '<p>Usamos cookies de analítica (Google Analytics) para saber cuántas personas visitan la web y desde dónde llegan. Solo se activan si las aceptas. Más información en la <a href="cookies.html">Política de cookies</a>.</p>' +
+    '<p>Usamos cookies de analítica (Google Analytics y PostHog, este último con servidores en la UE) para saber cuántas personas visitan la web y desde dónde llegan. Solo se activan si las aceptas. Más información en la <a href="cookies.html">Política de cookies</a>.</p>' +
     '<div class="stg-panel" hidden>' +
-      '<label for="stg-analitica"><input type="checkbox" id="stg-analitica"><span><b>Analítica.</b> Google Analytics, para medir visitas y su origen.</span></label>' +
+      '<label for="stg-analitica"><input type="checkbox" id="stg-analitica"><span><b>Analítica.</b> Google Analytics y PostHog (UE), para medir visitas y su origen.</span></label>' +
       '<div class="stg-row"><button type="button" data-a="guardar">Guardar preferencias</button></div>' +
     '</div>' +
     '<div class="stg-row">' +
