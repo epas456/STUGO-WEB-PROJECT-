@@ -83,6 +83,8 @@
       disable_surveys: true,
       respect_dnt: true
     });
+    /* Quien acepta vuelve a estar dentro aunque antes hubiera rechazado */
+    w.posthog.opt_in_capturing();
   }
 
   function decide(a) {
